@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1569332750228.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "349|29|354|24|\n",
+    "hash" : "4054143764",
+    "id" : "9B40214E",
+    "lastKnownWriteTime" : 1569423785,
+    "last_content_update" : 1569423783989,
+    "path" : "H:/shiny_library/BariatricSurgeryAZ/www/index.html",
+    "project_path" : "www/index.html",
+    "properties" : {
+        "cursorPosition" : "30,24",
+        "scrollLine" : "16",
+        "tempName" : "Untitled2"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "html"
+}

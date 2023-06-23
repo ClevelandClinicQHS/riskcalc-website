@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(shiny)\nlibrary(shinyjs)\nlibrary(yonder)\nlibrary(kableExtra)\n\nshiny::addResourcePath(\"shinyjs\", system.file(\"srcjs\", package = \"shinyjs\"))\n\nsource(\"samplesize.R\", local = T)\n",
+    "created" : 1571676283058.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1709211210",
+    "id" : "83661AB",
+    "lastKnownWriteTime" : 1569957954,
+    "last_content_update" : 1569957954,
+    "path" : "/Volumes/jix/shiny_library/samplesize/global.R",
+    "project_path" : "global.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

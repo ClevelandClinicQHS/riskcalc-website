@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1569098718335.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "42236856",
+    "lastKnownWriteTime" : 1569099503,
+    "last_content_update" : 1569251811693,
+    "path" : "H:/shiny_library/samplesize/www/style.css",
+    "project_path" : "www/style.css",
+    "properties" : {
+        "cursorPosition" : "11,20",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "css"
+}

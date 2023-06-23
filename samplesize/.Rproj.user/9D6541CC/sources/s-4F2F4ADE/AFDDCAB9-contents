@@ -1,0 +1,48 @@
+library(shiny)
+library(yonder)
+library(shinyjs)
+
+jscode <- "
+shinyjs.design = function(name) {
+  var b = document.getElementById(name);
+  for (i = 0; i < b.length; i++) {
+    b[i].classList.remove('active');;
+  }
+}
+"
+
+
+server = function(input, output, session) {
+    output$summary = renderPrint({
+        print(input$RCT)
+        print(input$CaseControl)
+        print(input$Cohort)
+    })
+    
+    
+    observeEvent(input$RCT, 
+                 {
+                     js$design("CaseCotrol")
+                     js$design("Cohort")
+                 })
+    
+    observeEvent(input$CaseControl, 
+                 {
+                     updateListGroupInput("RCT", selected = NULL)
+                     updateListGroupInput("Cohort", selected = NULL)
+                 })
+    
+    observeEvent(input$Cohort, 
+                 {
+                     updateListGroupInput("RCT", selected = NULL)
+                     updateListGroupInput("CaseControl", selected = NULL)
+                 })
+}
+
+ui = div(
+    useShinyjs(),
+    extendShinyjs(text = jscode),
+    htmlTemplate("www/index.html")
+)
+
+shinyApp(ui, server)

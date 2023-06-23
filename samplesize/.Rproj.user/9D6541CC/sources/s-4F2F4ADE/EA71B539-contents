@@ -1,0 +1,26 @@
+library(shiny)
+library(shinyjs)
+library(yonder)
+
+shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))
+
+RCTDeactive="b = document.getElementById('RCT').getElementsByTagName('button');
+    for (i = 0; i < b.length; i++) {
+        b[i].classList.remove('active');
+    };"
+
+CaseControlDeactive="b = document.getElementById('CaseControl').getElementsByTagName('button');
+    for (i = 0; i < b.length; i++) {
+        b[i].classList.remove('active');
+    };"
+
+CohortDeactive="b = document.getElementById('Cohort').getElementsByTagName('button');
+    for (i = 0; i < b.length; i++) {
+        b[i].classList.remove('active');
+    };"
+
+showIntroAndHint = function() {
+    shinyjs::show(id = "introduction")
+    shinyjs::hide(id = "outcome")
+    shinyjs::show(id = "hint", anim = TRUE)
+}

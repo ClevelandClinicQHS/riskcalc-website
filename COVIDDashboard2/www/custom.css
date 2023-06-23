@@ -1,0 +1,53 @@
+.content-wrapper { height: 1550px !important;}
+.navbar-custom-menu {padding-top:4px !important;padding-bottom:4px !important; margin:0 !important}
+.nav .navbar-nav {padding-top:4px !important;padding-bottom:4px !important; margin:0 !important}
+.dropdown .notifications-menu {padding-top:4px !important;padding-bottom:4px !important; margin:0 !important}
+.dropdown-toggle {padding-top:4px !important;padding-bottom:4px !important; margin:0 !important}
+
+/* logo */
+.skin-blue .main-header .logo {
+        background-color: #384d5f;
+        min-height:55px !important;
+        padding-top: 5px !important;
+        font-weight: 450;
+}
+
+/* logo when hovered */
+.skin-blue .main-header .logo:hover {
+        background-color: #384d5f;
+        min-height:55px !important;
+        padding-top: 5px !important;
+        font-weight: 450;
+}
+
+/* navbar (rest of the header) */
+.skin-blue .main-header .navbar {
+        background-color: #384d5f;
+        min-height:55px !important;
+        }        
+
+/* main sidebar */
+.skin-blue .main-sidebar {
+        background-color: #f4b943;
+        }
+
+/* active selected tab in the sidebarmenu */
+.skin-blue .main-sidebar .sidebar .sidebar-menu .active a{
+        background-color: #ff0000;
+        }
+
+/* other links in the sidebarmenu */
+.skin-blue .main-sidebar .sidebar .sidebar-menu a{
+        background-color: #00ff00;
+        color: #000000;
+        }
+
+/* other links in the sidebarmenu when hovered */
+        .skin-blue .main-sidebar .sidebar .sidebar-menu a:hover{
+        background-color: #ff69b4;
+        }
+/* toggle button when hovered  */                    
+        .skin-blue .main-header .navbar .sidebar-toggle:hover{
+        background-color: #ff69b4;
+        }
+                              

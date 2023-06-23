@@ -1,0 +1,171 @@
+function(input, output, session) {
+    useShinyjs(html = TRUE)
+    
+    observeEvent(input$design,{
+        print(input$design)
+        if (input$design=="Introduction") {
+            shinyjs::show(id="introduction")
+            shinyjs::hide(id="outcome_rct")
+            shinyjs::hide(id="outcome_cc")
+            shinyjs::hide(id="outcome_cohort")
+            shinyjs::hide(id="outcome_cross")
+        }
+        if (input$design %in% c("NonInferiority", "Superiority", "Equivalence")) {
+            shinyjs::hide(id="introduction")
+            shinyjs::show(id="outcome_rct")
+            shinyjs::hide(id="outcome_cc")
+            shinyjs::hide(id="outcome_cohort")
+            shinyjs::hide(id="outcome_cross")
+        }
+        if (input$design == "CaseControl") {
+            shinyjs::hide(id="introduction")
+            shinyjs::hide(id="outcome_rct")
+            shinyjs::show(id="outcome_cc")
+            shinyjs::hide(id="outcome_cohort")
+            shinyjs::hide(id="outcome_cross")
+        }
+        if (input$design == "Cohort") {
+            shinyjs::hide(id="introduction")
+            shinyjs::hide(id="outcome_rct")
+            shinyjs::hide(id="outcome_cc")
+            shinyjs::show(id="outcome_cohort")
+            shinyjs::hide(id="outcome_cross")
+        }
+        if (input$design == "CrossSectional") {
+            shinyjs::hide(id="introduction")
+            shinyjs::hide(id="outcome_rct")
+            shinyjs::hide(id="outcome_cc")
+            shinyjs::hide(id="outcome_cohort")
+            shinyjs::show(id="outcome_cross")
+        }
+        if(input$design=="Introduction") {
+            shinyjs::hide(id="run-tab")
+        } else {
+            shinyjs::show(id="run-tab")
+        }
+    })
+    
+    observeEvent(input$rctDesign,
+                 {
+                     showNavPane(input$rctDesign)
+                 })
+    observeEvent(input$ccDesign,
+                 {
+                     showNavPane(input$ccDesign)
+                 })
+    observeEvent(input$cohortDesign,
+                 {
+                     showNavPane(input$cohortDesign)
+                 })
+    
+    # RCT --------------------
+    rct_mean_values <- reactiveValues(
+        lastUpdated = NULL
+    )
+    observe({
+        lapply(c("rct_mean_treat", "rct_mean_control"), function(x) {
+            observe({
+                input[[x]]
+                rct_mean_values$lastUpdated <- x
+            })
+        })
+    })
+    observeEvent(input$rct_mean_treat,
+                 {
+                     updateTextInput(id="rct_mean_diff", value = as.numeric(input$rct_mean_treat)-as.numeric(input$rct_mean_control))
+                 }
+    )
+    observeEvent(input$rct_mean_control,
+                 {
+                     updateTextInput(id="rct_mean_diff", value = as.numeric(input$rct_mean_treat)-as.numeric(input$rct_mean_control))
+                 }
+    )
+    observeEvent(input$rct_mean_treat,
+                 {
+                     updateTextInput(id="rct_mean_diff", value = as.numeric(input$rct_mean_treat)-as.numeric(input$rct_mean_control))
+                 }
+    )
+    observeEvent(input$rct_mean_diff,
+                 {
+                     if (input$design  %in% c("NonInferiority", "Superiority", "Equivalence") & input$rctDesign=="continuous") {
+                     if (is.null(rct_mean_values$lastUpdated) | rct_mean_values$lastUpdated == "rct_mean_treat") {
+                         updateTextInput(id="rct_mean_control", value = as.numeric(input$rct_mean_treat)-as.numeric(input$rct_mean_diff))
+                     } else {
+                         updateTextInput(id="rct_mean_treat", value = as.numeric(input$rct_mean_control)+as.numeric(input$rct_mean_diff))
+                     }
+                 }}
+    )
+    observeEvent(input$radiobar1, {
+        if (input$radiobar1 == "proportion") {
+            shinyjs::show("rctProportion")
+            shinyjs::hide("rctOR")
+        } else {
+            shinyjs::hide("rctProportion")
+            shinyjs::show("rctOR")
+        }
+    })
+    
+    v = reactiveValues(res = NULL)
+    
+    observeEvent(input$run,{
+        if (input$design %in% c("NonInferiority", "Superiority", "Equivalence") & input$rctDesign=="continuous"){
+            res = rct_continuous(treat = input$rct_mean_treat, control = input$rct_mean_control, 
+                                 diff=input$rct_mean_diff, delta=input$rct_delta_c, sd=input$rct_sd, 
+                                 r=input$r_rct_c, power=input$beta_rct_c, alpha=input$alpha_rct_c, design=input$design)
+                output_data = data.frame(
+                    V1 = c("Significance level (1-alpha)", "Power (1-beta, % chance of detecting)", "Ratio of sample size, treat/control", "Expected mean in the treatment group", "Expected mean in the control group", "SD", "Margin", "Result", "Sample Size - Treat", "Sample Size - Control", "Total sample size"),
+                    V2 = c(1-input$alpha_rct_c, input$beta_rct_c, input$r_rct_c, input$rct_mean_treat, input$rct_mean_control, input$rct_sd, input$rct_delta_c, "", res$n_treat, res$n_control, res$n_total)
+                ) %>% 
+                    knitr::kable("html", escape = F, align=c("l", "c")) %>% 
+                    kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
+                    row_spec(8, bold = T, background = "#EEF5DB") %>% 
+                    add_header_above(c("Sample size"=2), background = "#666666", color = "#ffffff")
+                output_data = gsub("</th></tr>.*</thead>","</thead>", output_data)
+                v$res = output_data
+        }
+        if (input$design %in% c("NonInferiority", "Superiority", "Equivalence") & input$rctDesign=="dichotomous"){
+            if (input$radiobar1 == "proportion") {
+                res = rct_proportion(treat=input$rct_p_treat, control=input$rct_p_control,  
+                                 delta=input$rct_delta_p, 
+                                 r=input$r_rct_p, power=input$beta_rct_p, alpha=input$alpha_rct_p, design=input$design)
+                output_data = data.frame(
+                    V1 = c("Significance level (1-alpha)", "Power (1-beta, % chance of detecting)", "Ratio of sample size, treat/control", "Expected proportion in the treatment group", "Expected proportion in the control group","Margin", "Result", "Sample Size - Treat", "Sample Size - Control", "Total sample size"),
+                    V2 = c(1-input$alpha_rct_p, input$beta_rct_p, input$r_rct_p, input$rct_p_treat, input$rct_p_control, input$rct_delta_p, "", res$n_treat, res$n_control, res$n_total)
+                ) %>% 
+                    knitr::kable("html", escape = F, align=c("l", "c")) %>% 
+                    kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
+                    row_spec(7, bold = T, background = "#EEF5DB") %>% 
+                    add_header_above(c("Sample size"=2), background = "#666666", color = "#ffffff")
+                output_data = gsub("</th></tr>.*</thead>","</thead>", output_data)
+                v$res = output_data
+            } else {
+                res = rct_proportion(OR = input$rct_p_or,  
+                                     delta_exp=input$rct_deltalog_p, 
+                                     r=input$r_rct_p, power=input$beta_rct_p, alpha=input$alpha_rct_p, design=input$design)
+                output_data = data.frame(
+                    V1 = c("Significance level (1-alpha)", "Power (1-beta, % chance of detecting)", "Ratio of sample size, treat/control", "Odds ratio","Margin", "Result", "Sample Size - Treat", "Sample Size - Control", "Total sample size"),
+                    V2 = c(1-input$alpha_rct_p, input$beta_rct_p, input$r_rct_p, input$rct_p_or, input$rct_deltalog_p, "", res$n_treat, res$n_control, res$n_total)
+                ) %>% 
+                    knitr::kable("html", escape = F, align=c("l", "c")) %>% 
+                    kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
+                    row_spec(6, bold = T, background = "#EEF5DB") %>% 
+                    add_header_above(c("Sample size"=2), background = "#666666", color = "#ffffff")
+                output_data = gsub("</th></tr>.*</thead>","</thead>", output_data)
+                v$res = output_data
+            }
+        }
+        shinyjs::show("tableOutput")
+        })
+    
+    output$summary_table <- renderText({
+        v$res
+    })
+
+    observe({
+        lapply(names(input)[names(input)!="run"], function(x) {
+            observeEvent(input[[x]], {
+                shinyjs::hide("tableOutput")
+            })
+        })
+    })
+}

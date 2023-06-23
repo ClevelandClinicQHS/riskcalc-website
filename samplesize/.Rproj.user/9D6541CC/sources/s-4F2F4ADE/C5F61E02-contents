@@ -1,0 +1,12 @@
+library(shiny)
+library(yonder)
+
+# Define server logic for random distribution app ----
+server <- function(input, output) {
+    output$summary <- renderPrint({
+        p(paste(input$group1, "aaa"))
+    })
+}
+
+# Create Shiny app ----
+shinyApp(ui = htmlTemplate("www/index.html"), server)

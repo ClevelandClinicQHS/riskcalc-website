@@ -1,0 +1,278 @@
+Model,Outcome,Variable,Value
+Surgery,CAD,A1C,-0.07925679
+Surgery,CAD,ACEInhibitorsYes,-0.134532288
+Surgery,CAD,Age,-0.024233839
+Surgery,CAD,BMI,0.009827796
+Surgery,CAD,CholesterolLoweringYes,-0.120184056
+Surgery,CAD,InsulinYes,-0.017132026
+Surgery,CAD,WarfarinYes,-0.132146188
+Surgery,CAD,AspirinYes,-0.374744378
+Surgery,CAD,NonInsulinDiabetesMedicationYes,0.325034856
+Surgery,CAD,OtherAntihypertensizesYes,-0.206955526
+Surgery,CAD,Diastolic,0.009550779
+Surgery,CAD,eGFR,0.003416767
+Surgery,CAD,GenderFemale,0.527157501
+Surgery,CAD,HX_CHFYes,-0.515831763
+Surgery,CAD,HX_COPDYes,-0.190194604
+Surgery,CAD,HX_CVDYes,-0.099212068
+Surgery,CAD,HX_DiabeticNeuropathyYes,-0.108354391
+Surgery,CAD,HX_DyslipidemiaYes,-0.15731978
+Surgery,CAD,HX_HypertensionYes,0.048877824
+Surgery,CAD,HX_NephropathyYes,-0.273459148
+Surgery,CAD,HX_PADYes,-0.255360555
+Surgery,CAD,RaceBlack,0.193027172
+Surgery,CAD,RackOther,-0.188946168
+Surgery,CAD,SmokingStatusCurrent,-0.423806414
+Surgery,CAD,SmokingStatusQuit,-0.265615012
+Surgery,CAD,Systolic,-0.00336263
+Surgery,CAD,Triglyceride,-2.10E-04
+Surgery,CAD,(Intercept),5.758604158
+No surgery,CAD,A1C,0.078950928
+No surgery,CAD,ACEInhibitorsYes,0.155354387
+No surgery,CAD,Age,0.021005179
+No surgery,CAD,BMI,-0.012337452
+No surgery,CAD,CholesterolLoweringYes,0.12496009
+No surgery,CAD,InsulinYes,-0.022500084
+No surgery,CAD,WarfarinYes,0.132249692
+No surgery,CAD,AspirinYes,0.369789412
+No surgery,CAD,NonInsulinDiabetesMedicationYes,-0.293164112
+No surgery,CAD,OtherAntihypertensizesYes,0.184976027
+No surgery,CAD,Diastolic,-0.009670661
+No surgery,CAD,eGFR,-0.003391474
+No surgery,CAD,GenderFemale,-0.525314759
+No surgery,CAD,HX_CHFYes,0.424785739
+No surgery,CAD,HX_COPDYes,0.141462328
+No surgery,CAD,HX_CVDYes,0.107373337
+No surgery,CAD,HX_DiabeticNeuropathyYes,0.116107644
+No surgery,CAD,HX_DyslipidemiaYes,0.185327117
+No surgery,CAD,HX_HypertensionYes,-0.012066485
+No surgery,CAD,HX_NephropathyYes,0.208825998
+No surgery,CAD,HX_PADYes,0.225614659
+No surgery,CAD,RaceBlack,-0.176423944
+No surgery,CAD,RackOther,0.229395292
+No surgery,CAD,SmokingStatusCurrent,0.380668215
+No surgery,CAD,SmokingStatusQuit,0.254706758
+No surgery,CAD,Systolic,0.003197949
+No surgery,CAD,Triglyceride,2.42E-04
+Surgery,CHF,A1C,0.136195683
+Surgery,CHF,ACEInhibitorsYes,-0.116546383
+Surgery,CHF,Age,0.032725567
+Surgery,CHF,BMI,0.031423534
+Surgery,CHF,CholesterolLoweringYes,-4.37E-04
+Surgery,CHF,InsulinYes,0.210290266
+Surgery,CHF,WarfarinYes,0.389156698
+Surgery,CHF,AspirinYes,0.167331158
+Surgery,CHF,NonInsulinDiabetesMedicationYes,-0.325575266
+Surgery,CHF,OtherAntihypertensizesYes,0.379905509
+Surgery,CHF,Diastolic,-0.013778868
+Surgery,CHF,eGFR,-0.002800699
+Surgery,CHF,GenderFemale,-0.222163046
+Surgery,CHF,HX_CADYes,0.546421628
+Surgery,CHF,HX_COPDYes,0.391336177
+Surgery,CHF,HX_CVDYes,0.272731796
+Surgery,CHF,HX_DiabeticNeuropathyYes,0.134591549
+Surgery,CHF,HX_DyslipidemiaYes,-0.169827384
+Surgery,CHF,HX_HypertensionYes,0.16429632
+Surgery,CHF,HX_NephropathyYes,0.510804892
+Surgery,CHF,HX_PADYes,0.220941646
+Surgery,CHF,RaceBlack,0.207250183
+Surgery,CHF,RackOther,0.331422174
+Surgery,CHF,SmokingStatusCurrent,0.262007007
+Surgery,CHF,SmokingStatusQuit,0.203839586
+Surgery,CHF,Systolic,0.009700273
+Surgery,CHF,Triglyceride,-1.10E-04
+Surgery,CHF,(Intercept),-1.128913894
+No surgery,CHF,A1C,0.138731776
+No surgery,CHF,ACEInhibitorsYes,-0.096873379
+No surgery,CHF,Age,0.031774571
+No surgery,CHF,BMI,0.0332668
+No surgery,CHF,CholesterolLoweringYes,0.024678137
+No surgery,CHF,InsulinYes,0.19628513
+No surgery,CHF,WarfarinYes,0.38288181
+No surgery,CHF,AspirinYes,0.16841093
+No surgery,CHF,NonInsulinDiabetesMedicationYes,-0.378711252
+No surgery,CHF,OtherAntihypertensizesYes,0.388774208
+No surgery,CHF,Diastolic,-0.013703144
+No surgery,CHF,eGFR,-0.002810711
+No surgery,CHF,GenderFemale,-0.205152299
+No surgery,CHF,HX_CADYes,0.54373071
+No surgery,CHF,HX_COPDYes,0.408610547
+No surgery,CHF,HX_CVDYes,0.286518501
+No surgery,CHF,HX_DiabeticNeuropathyYes,0.133965981
+No surgery,CHF,HX_DyslipidemiaYes,-0.191105759
+No surgery,CHF,HX_HypertensionYes,0.173260085
+No surgery,CHF,HX_NephropathyYes,0.485424683
+No surgery,CHF,HX_PADYes,0.252707412
+No surgery,CHF,RaceBlack,0.186799542
+No surgery,CHF,RackOther,0.354686097
+No surgery,CHF,SmokingStatusCurrent,0.235753115
+No surgery,CHF,SmokingStatusQuit,0.205171893
+No surgery,CHF,Systolic,0.010511008
+No surgery,CHF,Triglyceride,-1.10E-04
+Surgery,CVD,A1C,-0.068186807
+Surgery,CVD,ACEInhibitorsYes,0.217196765
+Surgery,CVD,Age,-0.034104947
+Surgery,CVD,BMI,-0.001277004
+Surgery,CVD,CholesterolLoweringYes,0.065093725
+Surgery,CVD,InsulinYes,-0.069529371
+Surgery,CVD,WarfarinYes,0.216743704
+Surgery,CVD,AspirinYes,-0.054311022
+Surgery,CVD,NonInsulinDiabetesMedicationYes,0.286360604
+Surgery,CVD,OtherAntihypertensizesYes,-0.29292269
+Surgery,CVD,Diastolic,0.00303984
+Surgery,CVD,eGFR,0.002767089
+Surgery,CVD,GenderFemale,-0.077174282
+Surgery,CVD,HX_CADYes,-0.184457397
+Surgery,CVD,HX_CHFYes,-0.218825622
+Surgery,CVD,HX_COPDYes,0.173960395
+Surgery,CVD,HX_DiabeticNeuropathyYes,-0.343177796
+Surgery,CVD,HX_DyslipidemiaYes,0.040177893
+Surgery,CVD,HX_HypertensionYes,-0.356162318
+Surgery,CVD,HX_NephropathyYes,-0.20700166
+Surgery,CVD,HX_PADYes,-0.023451673
+Surgery,CVD,RaceBlack,-0.142425156
+Surgery,CVD,RackOther,-0.657196063
+Surgery,CVD,SmokingStatusCurrent,-0.317206505
+Surgery,CVD,SmokingStatusQuit,-0.298041791
+Surgery,CVD,Systolic,-0.001812777
+Surgery,CVD,Triglyceride,-5.32E-04
+Surgery,CVD,(Intercept),8.210252727
+No surgery,CVD,A1C,0.06271563
+No surgery,CVD,ACEInhibitorsYes,-0.198891019
+No surgery,CVD,Age,0.03116474
+No surgery,CVD,BMI,-0.001007435
+No surgery,CVD,CholesterolLoweringYes,-0.058423145
+No surgery,CVD,InsulinYes,0.047193833
+No surgery,CVD,WarfarinYes,-0.227993354
+No surgery,CVD,AspirinYes,0.041235372
+No surgery,CVD,NonInsulinDiabetesMedicationYes,-0.240166699
+No surgery,CVD,OtherAntihypertensizesYes,0.27245189
+No surgery,CVD,Diastolic,-0.003259635
+No surgery,CVD,eGFR,-0.002105207
+No surgery,CVD,GenderFemale,0.086292592
+No surgery,CVD,HX_CADYes,0.192136758
+No surgery,CVD,HX_CHFYes,0.138965094
+No surgery,CVD,HX_COPDYes,-0.224974356
+No surgery,CVD,HX_DiabeticNeuropathyYes,0.33999849
+No surgery,CVD,HX_DyslipidemiaYes,-0.01357177
+No surgery,CVD,HX_HypertensionYes,0.392567643
+No surgery,CVD,HX_NephropathyYes,0.143575416
+No surgery,CVD,HX_PADYes,-0.009501373
+No surgery,CVD,RaceBlack,0.160076411
+No surgery,CVD,RackOther,0.707560894
+No surgery,CVD,SmokingStatusCurrent,0.288642967
+No surgery,CVD,SmokingStatusQuit,0.279160978
+No surgery,CVD,Systolic,0.002033961
+No surgery,CVD,Triglyceride,5.17E-04
+Surgery,Death,A1C,0.042432387
+Surgery,Death,ACEInhibitorsYes,-0.189510754
+Surgery,Death,Age,0.043896564
+Surgery,Death,BMI,0.032251453
+Surgery,Death,CholesterolLoweringYes,-0.150426295
+Surgery,Death,InsulinYes,0.513536514
+Surgery,Death,WarfarinYes,0.129775275
+Surgery,Death,AspirinYes,0.109374745
+Surgery,Death,NonInsulinDiabetesMedicationYes,-0.337434435
+Surgery,Death,OtherAntihypertensizesYes,0.44342961
+Surgery,Death,Diastolic,-0.005009428
+Surgery,Death,eGFR,-0.004344733
+Surgery,Death,GenderFemale,-0.304382084
+Surgery,Death,HX_CADYes,0.073760062
+Surgery,Death,HX_CHFYes,0.59172491
+Surgery,Death,HX_COPDYes,0.300682295
+Surgery,Death,HX_CVDYes,0.347798258
+Surgery,Death,HX_DiabeticNeuropathyYes,0.066606823
+Surgery,Death,HX_DyslipidemiaYes,-0.260862823
+Surgery,Death,HX_HypertensionYes,-0.20989584
+Surgery,Death,HX_NephropathyYes,0.384064944
+Surgery,Death,HX_PADYes,0.163068152
+Surgery,Death,RaceBlack,-0.194943384
+Surgery,Death,RackOther,-0.715512692
+Surgery,Death,SmokingStatusCurrent,0.53731875
+Surgery,Death,SmokingStatusQuit,0.140991371
+Surgery,Death,Systolic,0.00531916
+Surgery,Death,Triglyceride,1.27E-04
+Surgery,Death,(Intercept),-0.644623796
+No surgery,Death,A1C,0.054186504
+No surgery,Death,ACEInhibitorsYes,-0.167435532
+No surgery,Death,Age,0.045634379
+No surgery,Death,BMI,0.028775089
+No surgery,Death,CholesterolLoweringYes,-0.141827826
+No surgery,Death,InsulinYes,0.528557795
+No surgery,Death,WarfarinYes,0.14093737
+No surgery,Death,AspirinYes,0.106258586
+No surgery,Death,NonInsulinDiabetesMedicationYes,-0.354441902
+No surgery,Death,OtherAntihypertensizesYes,0.422100285
+No surgery,Death,Diastolic,-0.006402775
+No surgery,Death,eGFR,-0.003922269
+No surgery,Death,GenderFemale,-0.290176009
+No surgery,Death,HX_CADYes,0.028355908
+No surgery,Death,HX_CHFYes,0.61392296
+No surgery,Death,HX_COPDYes,0.339550174
+No surgery,Death,HX_CVDYes,0.292169593
+No surgery,Death,HX_DiabeticNeuropathyYes,0.072043608
+No surgery,Death,HX_DyslipidemiaYes,-0.256548407
+No surgery,Death,HX_HypertensionYes,-0.198827741
+No surgery,Death,HX_NephropathyYes,0.390832047
+No surgery,Death,HX_PADYes,0.171232619
+No surgery,Death,RaceBlack,-0.198091376
+No surgery,Death,RackOther,-0.757874423
+No surgery,Death,SmokingStatusCurrent,0.556928267
+No surgery,Death,SmokingStatusQuit,0.122216984
+No surgery,Death,Systolic,0.005982276
+No surgery,Death,Triglyceride,1.14E-04
+Surgery,Nephropathy,A1C,-0.121832378
+Surgery,Nephropathy,ACEInhibitorsYes,-0.128751434
+Surgery,Nephropathy,Age,-0.026931044
+Surgery,Nephropathy,BMI,-0.017040689
+Surgery,Nephropathy,CholesterolLoweringYes,-0.028696635
+Surgery,Nephropathy,InsulinYes,-0.116349419
+Surgery,Nephropathy,WarfarinYes,-0.045404079
+Surgery,Nephropathy,AspirinYes,0.023831437
+Surgery,Nephropathy,NonInsulinDiabetesMedicationYes,0.100795624
+Surgery,Nephropathy,OtherAntihypertensizesYes,-0.192591889
+Surgery,Nephropathy,Diastolic,0.003640212
+Surgery,Nephropathy,eGFR,0.040172663
+Surgery,Nephropathy,GenderFemale,-0.187844518
+Surgery,Nephropathy,HX_CADYes,0.026231762
+Surgery,Nephropathy,HX_CHFYes,-0.468629256
+Surgery,Nephropathy,HX_COPDYes,0.133096918
+Surgery,Nephropathy,HX_CVDYes,-0.508929893
+Surgery,Nephropathy,HX_DiabeticNeuropathyYes,-0.355679848
+Surgery,Nephropathy,HX_DyslipidemiaYes,0.048491374
+Surgery,Nephropathy,HX_HypertensionYes,-0.264600662
+Surgery,Nephropathy,HX_PADYes,-0.2544381
+Surgery,Nephropathy,RaceBlack,-0.071264183
+Surgery,Nephropathy,RackOther,0.351937248
+Surgery,Nephropathy,SmokingStatusCurrent,0.198875398
+Surgery,Nephropathy,SmokingStatusQuit,-0.058750427
+Surgery,Nephropathy,Systolic,-0.006872873
+Surgery,Nephropathy,Triglyceride,-3.91E-04
+Surgery,Nephropathy,(Intercept),5.695150524
+No surgery,Nephropathy,A1C,0.121527582
+No surgery,Nephropathy,ACEInhibitorsYes,0.131266695
+No surgery,Nephropathy,Age,0.021914068
+No surgery,Nephropathy,BMI,0.015272394
+No surgery,Nephropathy,CholesterolLoweringYes,0.062785761
+No surgery,Nephropathy,InsulinYes,0.117875405
+No surgery,Nephropathy,WarfarinYes,-0.005236749
+No surgery,Nephropathy,AspirinYes,-0.018586994
+No surgery,Nephropathy,NonInsulinDiabetesMedicationYes,-0.082429216
+No surgery,Nephropathy,OtherAntihypertensizesYes,0.188220349
+No surgery,Nephropathy,Diastolic,-0.003337213
+No surgery,Nephropathy,eGFR,-0.041098506
+No surgery,Nephropathy,GenderFemale,0.233431363
+No surgery,Nephropathy,HX_CADYes,-0.014513781
+No surgery,Nephropathy,HX_CHFYes,0.451066954
+No surgery,Nephropathy,HX_COPDYes,-0.184964893
+No surgery,Nephropathy,HX_CVDYes,0.485465188
+No surgery,Nephropathy,HX_DiabeticNeuropathyYes,0.421282261
+No surgery,Nephropathy,HX_DyslipidemiaYes,-0.051416671
+No surgery,Nephropathy,HX_HypertensionYes,0.318861215
+No surgery,Nephropathy,HX_PADYes,0.283903244
+No surgery,Nephropathy,RaceBlack,0.07728878
+No surgery,Nephropathy,RackOther,-0.303778054
+No surgery,Nephropathy,SmokingStatusCurrent,-0.225064588
+No surgery,Nephropathy,SmokingStatusQuit,0.062242557
+No surgery,Nephropathy,Systolic,0.006956707
+No surgery,Nephropathy,Triglyceride,3.33E-04

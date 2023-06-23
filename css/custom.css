@@ -1,0 +1,114 @@
+/* Put your custom styles here */
+
+
+
+a.back-to-top {
+    display: none;
+    width: 60px;
+    height: 60px;
+    text-indent: -9999px;
+    position: fixed;
+    z-index: 999;
+    right: 20px;
+    bottom: 20px;
+    background: #ced8db 43%;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('up-arrow.png');
+}
+
+a:hover.back-to-top {
+    background-color: #484848;
+}
+
+a.calc-link {
+    color: #000000;
+}
+
+a:hover.calc-link {
+    text-decoration: underline;
+    color: #000000;
+}
+
+a h3 {
+    color: rgb(51, 51, 51);
+}
+
+@media only screen and (min-width : 768px) {
+    #calc-list .dropdown-menu {
+        columns: 2;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        list-style-position: inside;
+    }
+}
+
+@media only screen and (min-width : 1024px) {
+    #calc-list .dropdown-menu {
+        columns: 3;
+        -webkit-columns: 3;
+        -moz-columns: 3;
+        list-style-position: inside;
+    }
+}
+
+
+.navbar-default {
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width:768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width:992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width:1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.well {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 5%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 5%);
+}
+
+ul li {
+    font-size: 14px;
+    color: #515157;
+    margin-bottom: 5px;
+}

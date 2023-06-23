@@ -1,0 +1,59 @@
+
+
+/* Put your custom styles here */
+
+
+
+a.back-to-top
+{
+    display: none;
+    width: 60px;
+    height: 60px;
+    text-indent: -9999px;
+    position: fixed;
+    z-index: 999;
+    right: 20px;
+    bottom: 20px;
+    background: #ced8db 43%;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('up-arrow.png');
+}
+
+a:hover.back-to-top
+{
+    background-color: #484848;
+}
+
+a.calc-link
+{
+}
+
+a:hover.calc-link
+{
+    text-decoration: underline;
+}
+
+@media only screen and (min-width : 768px)
+{
+    #calc-list .dropdown-menu
+	{
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    list-style-position: inside;
+	}
+}
+@media only screen and (min-width : 1024px)
+{
+    #calc-list .dropdown-menu
+	{
+    columns: 3;
+    -webkit-columns: 3;
+    -moz-columns: 3;
+    list-style-position: inside;
+	}
+}

@@ -1,0 +1,27 @@
+# a random data.dat table
+data.dat = data.frame(
+    EGFR = sample(100, 100, replace=T),
+    aaa = sample(100, 100, replace=T)
+)
+
+# set possible seeds
+seeds = c(1:1000)
+
+for (i in seeds) {
+    set.seed(i)
+    data.dat$random = runif(nrow(data.dat))
+    data.dat = data.dat[order(data.dat$random),]
+    data.dat$group = c(rep("Train", floor(nrow(data.dat)*0.6)),
+                       rep("Validation", nrow(data.dat)-floor(nrow(data.dat)*0.6)))
+    t = t.test(EGFR ~ group, data.dat)
+    if (t$p.value > 0.05) {
+        data.dat[data.dat$group=="Train", ]$group = c(rep("Train", floor(nrow(data.dat)*0.6*0.6)),
+                                                rep("Test", floor(nrow(data.dat)*0.6)- floor(nrow(data.dat)*0.6*0.6)))
+        print(paste("group variable created with seed =", i, "and p-value =", round(t$p.value,3)))
+        final.dat = data.dat
+        break
+    }
+    if (i==seeds[length(seed)]) {
+        print("group variable not created, please use a new set of seeds")
+    }
+}

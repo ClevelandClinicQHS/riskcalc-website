@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1569256223637.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4130728493",
+    "id" : "57B5B1F4",
+    "lastKnownWriteTime" : 1569267957,
+    "last_content_update" : 1569267958582,
+    "path" : "H:/shiny_library/BariatricSurgeryAZ/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+        "cursorPosition" : "198,83",
+        "scrollLine" : "147"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

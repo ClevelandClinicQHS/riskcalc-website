@@ -1,0 +1,11 @@
+Model,Outcome,Type,BaseRisk
+Surgery,CAD,survreg,4.5399929762484854e-5
+Surgery,CHF,crr,0.9973178135859891
+Surgery,CVD,survreg,4.5399929762484854e-5
+Surgery,Death,coxph,0.00409063898486179
+Surgery,Nephropathy,survreg,4.5399929762484854e-5
+No surgery,CAD,crr,0.9448129125689774
+No surgery,CHF,crr,0.9976851200569352
+No surgery,CVD,crr,0.9947134113397179
+No surgery,Death,coxph,0.003837677733490703
+No surgery,Nephropathy,crr,0.8595787805131072

@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571060846988.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "44B3AA49",
+    "lastKnownWriteTime" : 1571149515,
+    "last_content_update" : 1571149515585,
+    "path" : "H:/shiny_library/Type2DiabetesSecondTherapy/app.R",
+    "project_path" : "app.R",
+    "properties" : {
+        "cursorPosition" : "270,34",
+        "scrollLine" : "254"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
