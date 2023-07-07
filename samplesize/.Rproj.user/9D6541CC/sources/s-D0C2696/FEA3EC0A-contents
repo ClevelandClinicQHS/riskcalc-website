@@ -1,5 +1,0 @@
-library(shiny)
-library(yonder)
-
-htmlTemplate("www/index.html")
-

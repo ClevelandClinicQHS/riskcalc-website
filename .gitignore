@@ -1,1 +1,7 @@
-
+*.*
+!index.html
+!*.R
+!README.md
+!.git*
+._*
+_*

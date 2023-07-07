@@ -1,8 +1,0 @@
-datasets="/opt/R-3.5.1/lib64/R/library/datasets"
-grDevices="/opt/R-3.5.1/lib64/R/library/grDevices"
-graphics="/opt/R-3.5.1/lib64/R/library/graphics"
-methods="/opt/R-3.5.1/lib64/R/library/methods"
-shiny="/home/jix/R/x86_64-pc-linux-gnu-library/3.5/shiny"
-shinyjs="/opt/R-3.5.1/lib64/R/library/shinyjs"
-stats="/opt/R-3.5.1/lib64/R/library/stats"
-utils="/opt/R-3.5.1/lib64/R/library/utils"

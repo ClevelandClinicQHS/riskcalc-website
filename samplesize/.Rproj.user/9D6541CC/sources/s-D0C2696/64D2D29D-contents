@@ -1,6 +1,0 @@
-designState = function(name) {
-    var b = document.getElementById(name);
-    for (i = 0; i < b.length; i++) {
-        b[i].classList.remove('active');
-    }
-};

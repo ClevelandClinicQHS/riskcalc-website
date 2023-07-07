@@ -1,3 +1,0 @@
-"X","EarlyIntubation","Weight","Comorbid","Time.from.Hospital.Admission.to.ICU.Admission","High.HR","High.RR","High.T","Lowest.pH","Highest.PCO2","Worst.Glascow.Coma.Score","Lowest.Bicarb","High.Blood.Urea.Nitrogen","High.White.Blood.Cell.Count","RSV.Positive","Low.HR","Low.White.Blood.Cell.Count","High.White.Blood.Cell.Count.1","Lowest.SBP","Low.PaO2","Lowest.pH.Highest.PCO2","Predicted.Primary.Outcome","Predicted.Secondary.Outcome"
-"1","No",6.25,0,0,105,30,37,7.4,40,15,24.5,11.5,"10",0,80,"40","2",3,"3",0.185,2.44447446084938,3.34095295021636
-"2","No",6.25,0,0,105,30,37,7.4,40,15,24.5,11.5,"10",0,80,"30","3",5,"4",0.185,2.44447446084938,3.33544654331311
