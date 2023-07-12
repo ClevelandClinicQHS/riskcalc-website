@@ -22,7 +22,11 @@ shinyUI(fluidPage(
   mainPanel(h1("Visual acuity of 20/200 or worse"),
             p("Probability of having visual acuity of 20/200 or worse 3 years following plaque radiation therapy is estimated to be:"),
             h4(textOutput("text1"), align="center"),
-            p("This probability estimate is intended to serve as a general guide. Individual results may vary.")
+            p("This probability estimate is intended to serve as a general guide. Individual results may vary."),
+            p(a("Source Code", 
+                href = "https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/3-year_Risk_of_Visual_Acuity",
+                style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;
+                      font-size: 12px;color: #2c3e50;text-align: center;text-decoration: underline;"))
             
             )
     )          
