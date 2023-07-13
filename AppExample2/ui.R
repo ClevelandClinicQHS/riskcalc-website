@@ -6,7 +6,7 @@ library(shinyWidgets)
 
 fluidPage(
   shinyjs::useShinyjs(), 
-  theme = shinytheme("flatly"),
+  theme = shinytheme("darkly"),
   
   tags$script(HTML(
     'function myFunction() {
