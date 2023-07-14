@@ -8,7 +8,7 @@ https://riskcalc.org/ is a repository of risk calculators for various clinical o
 
 # Structure
 
-The risk calculators are built from the [R Shiny](https://shiny.posit.co/) web framework. Each sub-directory is itself an [R Shiny](https://shiny.posit.co/) application, in which the live version is accessible by indexing the website's root with the application name (i.e., https://riskcalc.org/<sub-directory>).
+The risk calculators are built from the [R Shiny](https://shiny.posit.co/) web framework. Each sub-directory is itself an [R Shiny](https://shiny.posit.co/) application, in which the live version is accessible by indexing the website's root with the application name (i.e., https://riskcalc.org/ _\<sub-directory\>_).
 
 For example, the source code for the app https://riskcalc.org/samplesize/ is in the [samplesize](https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/samplesize) sub-directory.
 
