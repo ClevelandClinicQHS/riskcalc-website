@@ -53,18 +53,21 @@ fluidPage(
          
          wellPanel(h3('Disclaimer'),
                    p("No Medical Advice. ALTHOUGH SOME CONTENT MAY BE PROVIDED BY INDIVIDUALS IN THE MEDICAL PROFESSION, YOU ACKNOWLEDGE THAT PROVISION OF SUCH CONTENT DOES NOT CREATE A MEDICAL PROFESSIONAL-PATIENT RELATIONSHIP AND DOES NOT CONSTITUTE AN OPINION, MEDICAL ADVICE, PROFESSIONAL DIAGNOSIS, SERVICE OR TREATMENT OF ANY CONDITION. Access to general information is provided for educational purposes only, through this site and links to other sites. Content is not recommended or endorsed by any doctor or healthcare provider. The information and Content provided are not substitutes for medical or professional care, and you should not use the information in place of a visit, call, consultation or the advice of your physician or other healthcare provider. You are liable or responsible for any advice, course of treatment, diagnosis or any other information, services or product obtained through this site.")),
-         p(a("Homepage",
-             href = "../", style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;
-                      font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"), 
+         p(
+           a("Homepage",
+             href = "../", 
+             style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"
+            ), 
            " | ",
            a("Website Error Messages",
              href = "javascript:myFunction()",
-             style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;
-                      font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"),
+             style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"
+            ),
            " | ",
            a("Source Code", 
              href = "https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/AppExample2", 
-             style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;
-                      font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"),
-           style = "text-align: center;"),
+             style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"
+            ),
+           style = "text-align: center;"
+          ),
          img(src='../logo-ccf.png', style = "max-width:30%; max-height:100%;")))
