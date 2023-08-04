@@ -119,6 +119,10 @@ shinyUI(fluidPage(
                  #href = "mailto:rcalcsupport@ccf.org",
                  style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;
                       font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"
+             )," | ",
+             a("Source Code", 
+               href = "https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/BreastPMRT", 
+               style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"
              ),
              style = "text-align: center;"
            ),

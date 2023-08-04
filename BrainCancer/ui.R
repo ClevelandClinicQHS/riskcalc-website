@@ -47,6 +47,10 @@ p(a("Homepage",
                       font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"),
  " | ", 
  a("Add to phone (Android)", href="https://www.cnet.com/tech/mobile/adding-one-touch-bookmarks-to-your-androids-home-screen/", target="_blank", style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;
-                      font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"),
+                      font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;")," | ",
+ a("Source Code", 
+   href = "https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/BrainCancer", 
+   style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"
+ ),
                     style = "text-align: center;"),
                   img(src='../logo-ccf.png', style = "max-width:30%; max-height:100%;"))))
