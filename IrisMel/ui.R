@@ -70,6 +70,13 @@ shinyUI(fluidPage(
                  inputId = "angle_cbd",
                  label = "Angle or iris root involvement",
                  value = FALSE),
+               p(
+                 a("Source Code", 
+                   href = "https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/IrisMel", 
+                   style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"
+                 ),
+                 style = "text-align: center;"
+               )
                ),
         
         column(width = 8,

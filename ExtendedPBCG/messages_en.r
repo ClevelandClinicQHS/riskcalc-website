@@ -148,6 +148,8 @@ info_en = HTML("
               <h3>For help please contact <a href='mailto:ankerst@tum.de'>ankerst@tum.de</a></h3>
               <br>
               <a href='R_code_PBCG_risk_calculator.R'>Download R code</a>
+              <br>
+              <a href='https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/ExtendedPBCG'>Source code</a>
               </span><p>
                ")
 

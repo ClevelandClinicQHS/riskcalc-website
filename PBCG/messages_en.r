@@ -117,6 +117,8 @@ info_en = HTML("
               <p>Past Negative Biopsy: One or more prior biopsies, all negative, no prior diagnosis of prostate cancer.</p>
               <br>
               <h3>Note: The Calculator is only applicable for persons without a previous diagnosis of prostate cancer.</h3>
+              <br>
+              <a href='https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/PBCG'>Source code</a>
               </span><p>
                ")
 
