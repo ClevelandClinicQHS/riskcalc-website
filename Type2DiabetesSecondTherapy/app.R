@@ -123,7 +123,14 @@ ui <- container(
             card(
                 header = p("Reference") %>% font(weight = "bold", align="center") %>% margin(top=0, bottom=0),
                 p("El Sanadi CE, Pantalone KM, Ji X, Kattan MW.", a("Development and Internal Validation of A Prediction Tool To Assist Clinicians Selecting Second-Line Therapy Following Metformin Monotherapy For Type 2 Diabetes.", href="https://pubmed.ncbi.nlm.nih.gov/33685669/"), "Endocr Pract. 2021 Apr;27(4):334-341. doi: 10.1016/j.eprac.2020.10.015. Epub 2020 Dec 15. PMID: 33685669.")
-            ) %>% margin(top = 3, bottom = 3)
+            ) %>% margin(top = 3, bottom = 3),
+            p(
+              a("Source Code", 
+                href = "https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/Type2DiabetesSecondTherapy", 
+                style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"
+              ),
+              style = "text-align: center;"
+            )
         )
     )
 )
