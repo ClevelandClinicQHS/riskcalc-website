@@ -14,12 +14,6 @@ shinyUI(
             h4("For more information on derivation and uses of this risk calculator, see ",
                a(tags$i("Cannon et al."),
                  href = "http://www.ncbi.nlm.nih.gov/pubmed/27363508", style = "color:DodgerMediumBlue",target = "_blank")),
-            p(
-              a("Source Code", 
-                href = "https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/napls", 
-                style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"
-              )
-            ),
             h5("Please check the box if your answer is yes"),
             checkboxInput("sips", "Does the patient have an interview-based SIPS diagnosis of a prodromal risk syndrome?", FALSE),
             checkboxInput("prof", "Were the ratings and test scores obtained by a professional?", FALSE),
@@ -46,6 +40,12 @@ shinyUI(
                                   a(tags$i("NAPLS"),
                                     href = "http://napls.commons.yale.edu/", style = "color:DodgerMediumBlue",target = "_blank"),")"))
                     ))
+            ),
+            p(
+              a("Source Code", 
+                href = "https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/napls", 
+                style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"
+              )
             )
             )
     )

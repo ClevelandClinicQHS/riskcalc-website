@@ -236,10 +236,9 @@ info_en = HTML("<h1>Information about calculator input</h1>
               <span class = 'reference-text'>References: 
               <br>Ankerst DP, Hoefler J, Bock S, Goodman PJ, Vickers A, Hernandez J, Sokoll LJ, Sanda MG, Wei JT, Leach RJ, Thompson IM. The Prostate Cancer Prevention Trial Risk Calculator 2.0 for the prediction of low- versus high-grade prostate cancer. Urology 83(6): 1362-7, 2014.
               <br>Grill S, Fallah M, Leach RJ, Thompson IM, Freedland S, Hemminki K, Ankerst DP, Incorporation of Detailed Family History from the Swedish Family-Cancer Database into the Prostate Cancer Prevention Trial Risk Calculator, The Journal of Urology® (2014), doi: 10.1016/j.juro.2014.09.018.
-              </span>
               <br>
               <a href='https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/PCPTRC'>Source code</a>
-              <p>
+              </span><p>
                ")
 
 

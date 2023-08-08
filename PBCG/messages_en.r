@@ -103,6 +103,8 @@ info_en = HTML("
               <h2>Reference</h2>
               <p>Ankerst, Donna P., Johanna Straubinger, Katharina Selig, Lourdes Guerrios, Amanda De Hoedt, Javier Hernandez, Michael A. Liss, et al. “A Contemporary Prostate Biopsy Risk Calculator Based on Multiple Heterogeneous Cohorts.” European Urology 74, no. 2 (2018): 197–203. doi:<a href=https://doi.org/10.1016/j.eururo.2018.05.003>10.1016/j.eururo.2018.05.003.</a></p>
               <br>
+              <a href='https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/PBCG'>Source code</a>
+              <br>
               <h2>Information about calculator input</h2>
                <h4>Prostate Specific Antigen Level (PSA)</h4>
               <p>This is the result, in nanograms per mililiter, of the PSA blood test.
@@ -117,8 +119,6 @@ info_en = HTML("
               <p>Past Negative Biopsy: One or more prior biopsies, all negative, no prior diagnosis of prostate cancer.</p>
               <br>
               <h3>Note: The Calculator is only applicable for persons without a previous diagnosis of prostate cancer.</h3>
-              <br>
-              <a href='https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/PBCG'>Source code</a>
               </span><p>
                ")
 
