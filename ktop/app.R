@@ -491,7 +491,11 @@ ui <- fluidPage(
                                                                 </div>
                                                                 <i>Eurotransplant International Foundation</i>
                                                                 <br>
-                                                            </p>")
+                                                            </p>"),
+                                                HTML("<p align='justify'>
+                                                                <br>
+                                                                <a href='https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/ktop'>Source code</a>.
+                                                            </p><br>")
                             )
                      )
                  ), 

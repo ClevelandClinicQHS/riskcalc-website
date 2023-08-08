@@ -80,6 +80,11 @@ fluidPage(
         " | ", 
         a("Add to phone (Android)", href="https://www.cnet.com/tech/mobile/adding-one-touch-bookmarks-to-your-androids-home-screen/", target="_blank", style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;
                       font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"),
+        " | ",
+        a("Source Code", 
+          href = "https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/AKIpostCardiacSurgery", 
+          style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"
+        ),
         style = "text-align: center;"
       ),
       img(src = '../logo-ccf.png', style = "max-width:50%; max-height:100%;")

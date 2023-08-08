@@ -123,7 +123,14 @@ selectInput('uiduringpreg', NULL, choices = c("No", "Yes"))
                        h5("Not applicable for women who had previous births", style="color:Red")
       )
     ),
-    p("* No model could be created and rates from the original cohort have been used.")
+    p("* No model could be created and rates from the original cohort have been used."),
+    p(
+      a("Source Code", 
+        href = "https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/UR_CHOICE", 
+        style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"
+      ),
+      style = "text-align: center;"
+    )
     
     
   )
