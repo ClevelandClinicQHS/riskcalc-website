@@ -118,7 +118,12 @@ h6("Includes cardiac, vascular, respiratory, EENT, upper GI, lower GI, hepatic, 
     a("Website Error Messages",
                           href = "mailto:rcalcsupport@ccf.org",
  style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;
-                          font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;")
+                          font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"),
+ " | ",
+ a("Source Code", 
+   href = "https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/PRECISE_Models", 
+   style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"
+ )
         
   )
 )
