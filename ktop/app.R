@@ -1,9 +1,9 @@
 ##########################################################
 # 
 # Description
+# This app was created under R version 4.0.xx. The package personograph is not available for later R versions.
 #
-#
-#
+#version date 2023-september
 
 ###############################
 # Libraries
@@ -52,7 +52,7 @@ fail_full_wet <- readRDS("models/fail_fgr_full_wet.rds")
 # of the data calculated in the data_description file
 min_waiting_years <- 0.2
 mean_waiting_years <- 5.3
-max_waiting_years <- 19.4
+max_waiting_years <- 19
 min_D_TXP_AGE <- 0
 mean_D_TXP_AGE <- 49.2
 max_D_TXP_AGE <- 86
@@ -158,8 +158,8 @@ ui <- fluidPage(
                                                 
                                                 div(style="vertical-align:top;display:inline-block;width:150px;text-align:left;",
                                                     radioButtons("program_simple",
-                                                                 HTML("ET allocation program"),
-                                                                 c("Not sure"=NA, 
+                                                                 HTML("ET waiting list"),
+                                                                 c("Not specified"=NA, 
                                                                    "ETKAS"="ETKAS",
                                                                    "ESP"="ESP"),
                                                                  selected=NA,
@@ -169,22 +169,24 @@ ui <- fluidPage(
                                                     numericInput("recipientage_simple",
                                                                  HTML("Age"),
                                                                  value=round(mean_R_TXP_AGE),
-                                                                 min=round(min_R_TXP_AGE),
-                                                                 max=round(max_R_TXP_AGE),
+                                                                 min=min_R_TXP_AGE,
+                                                                 max=max_R_TXP_AGE,
                                                                  width="80%"),
                                                     bsTooltip(id="recipientage_simple",
-                                                              title=paste0("Age of transplant recipient in years at transplant time"),
+                                                              title=paste0("Age of transplant recipient in years at transplant time (",
+                                                                           min_R_TXP_AGE, "-", max_R_TXP_AGE, ")"),
                                                               placement = "bottom", trigger = "hover")),
                                                 
                                                 div(style="vertical-align:top;display:inline-block;width:120px;",
                                                     numericInput("waitingyears_simple",
                                                                  HTML("Waiting time"),
                                                                  value=round(mean_waiting_years),
-                                                                 min=round(min_waiting_years),
-                                                                 max=round(max_waiting_years),
+                                                                 min=min_waiting_years,
+                                                                 max=max_waiting_years,
                                                                  width="80%"),
                                                     bsTooltip(id = "waitingyears_simple",
-                                                              title=paste0("Waiting time until transplant in years"),
+                                                              title=paste0("Waiting time until transplant in years (",
+                                                                           min_waiting_years, "-", max_waiting_years, ")"),
                                                               placement = "bottom", trigger = "hover")),
                                                 
                                                 div(
@@ -249,8 +251,8 @@ ui <- fluidPage(
                                                 
                                                 div(style="vertical-align:top;display:inline-block;width:150px;text-align:left;",
                                                     checkboxGroupInput("program",
-                                                                       "ET allocation program",
-                                                                       c("Not sure"=NA, 
+                                                                       "ET waiting list",
+                                                                       c("Not specified"=NA, 
                                                                          "ETKAS"="ETKAS",
                                                                          "ESP"="ESP"),
                                                                        #selected=NA,
@@ -435,9 +437,9 @@ ui <- fluidPage(
                                                                     outcome
                                                                 </div>
                                                                 <div class='indent'>
-                                                                    <i>ET allocation program</i><br>
+                                                                    <i>ET waiting list</i><br>
                                                                     Indicates the Eurotransplant allocation program 
-                                                                    of the organ recipient (see ETKAS and ESP)
+                                                                    of the organ recipient (see 'Not specified', 'ETKAS', and 'ESP')
                                                                 </div>
                                                                 <div class='indent'>
                                                                     <i>ETKAS</i><br>
@@ -453,6 +455,10 @@ ui <- fluidPage(
                                                                     <i>HLA</i><br>
                                                                     Human leukocyte antigen - more matches indicate a better 
                                                                     immunological fit between recipient and transplant
+                                                                </div>
+                                                                <div class='indent'>
+                                                                    <i>Not specified</i><br>
+                                                                    No distinction between ETKAS and ESP
                                                                 </div>
                                                                 <div class='indent'>
                                                                     <i>Transplant count</i><br>
@@ -491,11 +497,7 @@ ui <- fluidPage(
                                                                 </div>
                                                                 <i>Eurotransplant International Foundation</i>
                                                                 <br>
-                                                            </p>"),
-                                                HTML("<p align='justify'>
-                                                                <br>
-                                                                <a href='https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/ktop'>Source code</a>.
-                                                            </p><br>")
+                                                            </p>")
                             )
                      )
                  ), 
@@ -551,6 +553,18 @@ server <- function(input, output) {
         SEQ <- as.numeric(input$seq_simple)
         R_TXP_AGE <- as.numeric(input$recipientage_simple)
         waiting_years <- as.numeric(input$waitingyears_simple)
+        
+        
+        # Check if the values are suitable
+        shiny::validate(
+          need(all(R_TXP_AGE>=min_R_TXP_AGE & R_TXP_AGE<=max_R_TXP_AGE),
+               paste0("Please choose a value for the recipient age between ",
+                      min_R_TXP_AGE, " and ", max_R_TXP_AGE, ".")), 
+          need(all(waiting_years>=min_waiting_years & waiting_years<=max_waiting_years),
+               paste0("Please choose a value for the recipient BMI between ",
+                      min_waiting_years, " and ", max_waiting_years, "."))
+        )
+        
         
         
         # Crossing is needed if we have multiple values for one or more variables
