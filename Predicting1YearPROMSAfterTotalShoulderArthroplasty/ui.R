@@ -5,15 +5,17 @@ library(shinythemes)
 
 
 navbarPage(theme = shinytheme("cerulean"), 
-           title = p("Patient-Reported Outcomes Calculator for TSA Patients ",
-                     
-                     
-                       a("Source Code", 
-                         href = "https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/Predicting1YearPROMSAfterTotalShoulderArthroplasty", 
-                         style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;
-                      font-size: 10px;color: #2c3e50;font-weight: bold;text-align:right;display:inline-block;text-decoration: underline;")
-                     , style = 'font-size:32px; text-align: left'),
-           
+           title = span("Patient-Reported Outcomes Calculator for TSA Patients",
+                        style = 'font-size:32px'),
+           windowTitle = "Patient-Reported Outcomes Calculator for TSA Patients",
+           tags$script(HTML(
+             'function myFunction() {
+  var txt;
+  if (confirm("This is a mailbox for reporting website errors to programmers for the risk calculator website.  If you have questions or concerns about a specific calculator, please use the calculator Author Contact Information found on the publication for that calculator.  Each calculator is documented by a specific publication with a corresponding author.")) {
+    window.open("mailto:rcalcsupport@ccf.org");
+  }
+}'
+           )),
            navlistPanel(id = 'mainPage',
                         
                         'Patient information',
@@ -96,12 +98,14 @@ navbarPage(theme = shinytheme("cerulean"),
                                              step = 1),
                                  
                                  sliderInput(inputId = 'adi',
-                                             label = span('Area Deprivation Index', 
+                                             label = span("Area Deprivation Index (National Rank) Check out your ADI here: https://www.neighborhoodatlas.medicine.wisc.edu/mapping",
                                                           style = 'font-size:16px'),
                                              min = 1,
                                              max = 100,
                                              value = 1,
                                              step = 1),
+                                 
+                                 
                                  
                                  selectInput(inputId = 'insurance',
                                              label = span('Insurance Status', 
@@ -132,7 +136,7 @@ navbarPage(theme = shinytheme("cerulean"),
                                              choices = c("No", "Yes")),
                                  
                                  selectInput(inputId = 'priorsurgery',
-                                             label = span('Prior Surgery', 
+                                             label = span('Prior Surgery on the Same Shoulder', 
                                                           style = 'font-size:16px'),
                                              choices = c("No", "Yes")),
                                  
@@ -167,6 +171,9 @@ navbarPage(theme = shinytheme("cerulean"),
                         tabPanel(title = 'Patient Outcome',
                                  value = 'PRO',
                                  
+                                 span("Your 1-year predictions will be updated automatically in this table as you input patient's current PSS Total score below.", 
+                                      style = 'font-size:16px;font-weight:bold'),
+                                 
                                  fluidPage(
                                    tags$head(
                                      tags$style(HTML(
@@ -178,168 +185,182 @@ navbarPage(theme = shinytheme("cerulean"),
                                    ),
                                    tableOutput(outputId = 'currentPreds')
                                  ),
-                                
+                                 
                                  
                                  
                                  #Ask for current score. If they don't have it, give them survey
                                  
-                                                       tabPanel(title = 'PSS',
-                                                                
-                                                                #PAIN
-                                                                radioButtons(inputId = 'havePSS',
-                                                                             label = span("Do you know the patient's current PSS Total score?",
-                                                                                          style = 'font-size:16px'),
-                                                                             choices = c('Yes', 'No'),
-                                                                             inline = TRUE),
-                                                                
-                                                                #If they have PSS, do this.....
-                                                                conditionalPanel(condition = "input.havePSS == 'Yes'",
-                                                                                 sliderInput(inputId = 'inputPSS',
-                                                                                             label = span('Current PSS Total score:',
-                                                                                                          style = 'font-size:16px'),
-                                                                                             value = 0,
-                                                                                             min = 0,
-                                                                                             max = 100)
-                                                                ),
-                                                                
-                                                                #If they don't have PSS, fill out survey...
-                                                                conditionalPanel(condition = "input.havePSS == 'No'",
-                                                                                 
-                                                                                 #Title
-                                                                                 span('PSS Total',
-                                                                                      style = 'font-size:24px'),
-                                                                                 
-                                                                                 HTML('<br><br>'),
-                                                                                 
-                                                                                 span("Part I: Pain & Satisfaction: Please circle the number closest to your level of pain or satisfaction",
-                                                                                      style = 'font-size:20px'),
-                                                                                 HTML('<br><br>'),
-                                                                                 
-                                                                                 #Questions
-                                                                                 radioButtons(inputId = 'PSS_Q1',
-                                                                                              label = span('Pain at rest with your arm by your side:',
-                                                                                                           style = 'font-size:16px'),
-                                                                                              choices = c('Worst (0)' = 0,
-                                                                                                          '1' = 1,
-                                                                                                          '2' = 2,
-                                                                                                          '3' = 3,
-                                                                                                          '4' = 4,
-                                                                                                          '5' = 5,
-                                                                                                          '6' = 6,
-                                                                                                          '7' = 7,
-                                                                                                          '8' = 8,
-                                                                                                          '9' = 9,
-                                                                                                          'None (10)' = 10),
-                                                                                              inline = TRUE,
-                                                                                              selected = ''),
-                                                                                 
-                                                                                 radioButtons(inputId = 'PSS_Q2',
-                                                                                              label = span('Pain with normal activities (eating, dressing, bathing):',
-                                                                                                           style = 'font-size:16px'),
-                                                                                              choices = c('Worst (0)' = 0,
-                                                                                                          '1' = 1,
-                                                                                                          '2' = 2,
-                                                                                                          '3' = 3,
-                                                                                                          '4' = 4,
-                                                                                                          '5' = 5,
-                                                                                                          '6' = 6,
-                                                                                                          '7' = 7,
-                                                                                                          '8' = 8,
-                                                                                                          '9' = 9,
-                                                                                                          'None (10)' = 10),
-                                                                                              inline = TRUE,
-                                                                                              selected = ''),
-                                                                                 
-                                                                                 radioButtons(inputId = 'PSS_Q3',
-                                                                                              label = span('Pain with strenuous activities (reaching, lifting, pushing, pulling, throwing):',
-                                                                                                           style = 'font-size:16px'),
-                                                                                              choices = c('Worst (0)' = 0,
-                                                                                                          '1' = 1,
-                                                                                                          '2' = 2,
-                                                                                                          '3' = 3,
-                                                                                                          '4' = 4,
-                                                                                                          '5' = 5,
-                                                                                                          '6' = 6,
-                                                                                                          '7' = 7,
-                                                                                                          '8' = 8,
-                                                                                                          '9' = 9,
-                                                                                                          'None (10)' = 10),
-                                                                                              inline = TRUE,
-                                                                                              selected = ''),
-                                                                                 
-                                                                                 radioButtons(inputId = 'PSS_Q4',
-                                                                                              label = span('How satisfied are you with the current level of function of your shoulder?',
-                                                                                                           style = 'font-size:16px'),
-                                                                                              choices = c('Least (0)' = 0,
-                                                                                                          '1' = 1,
-                                                                                                          '2' = 2,
-                                                                                                          '3' = 3,
-                                                                                                          '4' = 4,
-                                                                                                          '5' = 5,
-                                                                                                          '6' = 6,
-                                                                                                          '7' = 7,
-                                                                                                          '8' = 8,
-                                                                                                          '9' = 9,
-                                                                                                          'Most (10)' = 10),
-                                                                                              inline = TRUE,
-                                                                                              selected = ''),
-                                                                                 
-                                                                                 HTML('<br>'),
-                                                                                 
-                                                                                 #Survey directions 
-                                                                                 span("Part II: Function: Please circle the number that best describes the level of difficulty you might have performing each activity.",
-                                                                                      style = 'font-size:20px'),
-                                                                                 HTML('<br><br>'),
-                                                                                 
-                                                                                 pssQuestion(inputId = 'PSS_Q5',
-                                                                                              label = 'Reach the small of your back to tuck in your shirt with your hand.'),
-                                                                                 pssQuestion(inputId = 'PSS_Q6',
-                                                                                              label = 'Wash the middle of your back/hook bra.'),
-                                                                                 pssQuestion(inputId = 'PSS_Q7',
-                                                                                              label = 'Perform necessary toileting activities.'),
-                                                                                 pssQuestion(inputId = 'PSS_Q8',
-                                                                                              label = 'Wash the back of opposite shoulder.'),
-                                                                                 pssQuestion(inputId = 'PSS_Q9',
-                                                                                              label = 'Comb hair.'),
-                                                                                 pssQuestion(inputId = 'PSS_Q10',
-                                                                                              label = 'Place hand behind head with elbow held straight out to the side.'),
-                                                                                 pssQuestion(inputId = 'PSS_Q11',
-                                                                                              label = 'Dress self (including put on coat and pull shirt of overhead).'),
-                                                                                 pssQuestion(inputId = 'PSS_Q12',
-                                                                                              label = 'Sleep on affected side.'),
-                                                                                 pssQuestion(inputId = 'PSS_Q13',
-                                                                                             label = 'Open a door with affected side.'),
-                                                                                 pssQuestion(inputId = 'PSS_Q14',
-                                                                                             label = 'Carry a bag of groceries with affected arm.'),
-                                                                                 pssQuestion(inputId = 'PSS_Q15',
-                                                                                             label = 'Carry a briefcase/small suitcase with affected arm.'),
-                                                                                 pssQuestion(inputId = 'PSS_Q16',
-                                                                                             label = 'Place a soup can (1-2 lbs.) on a shelf at shoulder level without bending elbow.'),
-                                                                                 pssQuestion(inputId = 'PSS_Q17',
-                                                                                             label = 'Place a one gallon container (8-10 lbs.) on a shelf at shoulder level without bending elbow.'),
-                                                                                 pssQuestion(inputId = 'PSS_Q18',
-                                                                                             label = 'Reach a shelf above your head without bending your elbow.'),
-                                                                                 pssQuestion(inputId = 'PSS_Q19',
-                                                                                             label = 'Place a soup can (1-2 lbs.) on a shelf overhead without bending your elbow.'),
-                                                                                 pssQuestion(inputId = 'PSS_Q20',
-                                                                                             label = 'Place a one gallon container (8-10 lbs.) on a shelf overhead without bending your elbow'),
-                                                                                 pssQuestion(inputId = 'PSS_Q21',
-                                                                                             label = 'Perform usual sport/hobby.'),
-                                                                                 pssQuestion(inputId = 'PSS_Q22',
-                                                                                             label = 'Perform household chores (cleaning, laundry, cooking).'),
-                                                                                 pssQuestion(inputId = 'PSS_Q23',
-                                                                                             label = 'Throw overhand/swim/overhead racquet sports.'),
-                                                                                 pssQuestion(inputId = 'PSS_Q24',
-                                                                                             label = 'Work full-time at your regular job.'),
-                                                                                 
-                                                                                 #Calulate PSS score
-                                                                                 span(textOutput(outputId = 'pssCalculated'), 
-                                                                                      style = 'font-size:20px')
-                                                                                 
-                                                                )
-                                                       
-                                                       
-                                            )
-                                            )
-                                            )
+                                 tabPanel(title = 'PSS',
+                                          
+                                          #PAIN
+                                          radioButtons(inputId = 'havePSS',
+                                                       label = span("Do you know the patient's current PSS Total score?",
+                                                                    style = 'font-size:16px'),
+                                                       choices = c('Yes', 'No'),
+                                                       inline = TRUE),
+                                          
+                                          #If they have PSS, do this.....
+                                          conditionalPanel(condition = "input.havePSS == 'Yes'",
+                                                           sliderInput(inputId = 'inputPSS',
+                                                                       label = span('Current PSS Total score:',
+                                                                                    style = 'font-size:16px'),
+                                                                       value = 33,
+                                                                       min = 0,
+                                                                       max = 100)
+                                          ),
+                                          
+                                          #If they don't have PSS, fill out survey...
+                                          conditionalPanel(condition = "input.havePSS == 'No'",
+                                                           
+                                                           #Title
+                                                           span('PSS Total',
+                                                                style = 'font-size:24px'),
+                                                           
+                                                           HTML('<br><br>'),
+                                                           
+                                                           span("Part I: Pain & Satisfaction: Please circle the number closest to your level of pain or satisfaction",
+                                                                style = 'font-size:20px'),
+                                                           HTML('<br><br>'),
+                                                           
+                                                           #Questions
+                                                           radioButtons(inputId = 'PSS_Q1',
+                                                                        label = span('Pain at rest with your arm by your side:',
+                                                                                     style = 'font-size:16px'),
+                                                                        choices = c('Worst (0)' = 0,
+                                                                                    '1' = 1,
+                                                                                    '2' = 2,
+                                                                                    '3' = 3,
+                                                                                    '4' = 4,
+                                                                                    '5' = 5,
+                                                                                    '6' = 6,
+                                                                                    '7' = 7,
+                                                                                    '8' = 8,
+                                                                                    '9' = 9,
+                                                                                    'None (10)' = 10),
+                                                                        inline = TRUE,
+                                                                        selected = ''),
+                                                           
+                                                           radioButtons(inputId = 'PSS_Q2',
+                                                                        label = span('Pain with normal activities (eating, dressing, bathing):',
+                                                                                     style = 'font-size:16px'),
+                                                                        choices = c('Worst (0)' = 0,
+                                                                                    '1' = 1,
+                                                                                    '2' = 2,
+                                                                                    '3' = 3,
+                                                                                    '4' = 4,
+                                                                                    '5' = 5,
+                                                                                    '6' = 6,
+                                                                                    '7' = 7,
+                                                                                    '8' = 8,
+                                                                                    '9' = 9,
+                                                                                    'None (10)' = 10),
+                                                                        inline = TRUE,
+                                                                        selected = ''),
+                                                           
+                                                           radioButtons(inputId = 'PSS_Q3',
+                                                                        label = span('Pain with strenuous activities (reaching, lifting, pushing, pulling, throwing):',
+                                                                                     style = 'font-size:16px'),
+                                                                        choices = c('Worst (0)' = 0,
+                                                                                    '1' = 1,
+                                                                                    '2' = 2,
+                                                                                    '3' = 3,
+                                                                                    '4' = 4,
+                                                                                    '5' = 5,
+                                                                                    '6' = 6,
+                                                                                    '7' = 7,
+                                                                                    '8' = 8,
+                                                                                    '9' = 9,
+                                                                                    'None (10)' = 10),
+                                                                        inline = TRUE,
+                                                                        selected = ''),
+                                                           
+                                                           radioButtons(inputId = 'PSS_Q4',
+                                                                        label = span('How satisfied are you with the current level of function of your shoulder?',
+                                                                                     style = 'font-size:16px'),
+                                                                        choices = c('Least (0)' = 0,
+                                                                                    '1' = 1,
+                                                                                    '2' = 2,
+                                                                                    '3' = 3,
+                                                                                    '4' = 4,
+                                                                                    '5' = 5,
+                                                                                    '6' = 6,
+                                                                                    '7' = 7,
+                                                                                    '8' = 8,
+                                                                                    '9' = 9,
+                                                                                    'Most (10)' = 10),
+                                                                        inline = TRUE,
+                                                                        selected = ''),
+                                                           
+                                                           HTML('<br>'),
+                                                           
+                                                           #Survey directions 
+                                                           span("Part II: Function: Please circle the number that best describes the level of difficulty you might have performing each activity.",
+                                                                style = 'font-size:20px'),
+                                                           HTML('<br><br>'),
+                                                           
+                                                           pssQuestion(inputId = 'PSS_Q5',
+                                                                       label = 'Reach the small of your back to tuck in your shirt with your hand.'),
+                                                           pssQuestion(inputId = 'PSS_Q6',
+                                                                       label = 'Wash the middle of your back/hook bra.'),
+                                                           pssQuestion(inputId = 'PSS_Q7',
+                                                                       label = 'Perform necessary toileting activities.'),
+                                                           pssQuestion(inputId = 'PSS_Q8',
+                                                                       label = 'Wash the back of opposite shoulder.'),
+                                                           pssQuestion(inputId = 'PSS_Q9',
+                                                                       label = 'Comb hair.'),
+                                                           pssQuestion(inputId = 'PSS_Q10',
+                                                                       label = 'Place hand behind head with elbow held straight out to the side.'),
+                                                           pssQuestion(inputId = 'PSS_Q11',
+                                                                       label = 'Dress self (including put on coat and pull shirt of overhead).'),
+                                                           pssQuestion(inputId = 'PSS_Q12',
+                                                                       label = 'Sleep on affected side.'),
+                                                           pssQuestion(inputId = 'PSS_Q13',
+                                                                       label = 'Open a door with affected side.'),
+                                                           pssQuestion(inputId = 'PSS_Q14',
+                                                                       label = 'Carry a bag of groceries with affected arm.'),
+                                                           pssQuestion(inputId = 'PSS_Q15',
+                                                                       label = 'Carry a briefcase/small suitcase with affected arm.'),
+                                                           pssQuestion(inputId = 'PSS_Q16',
+                                                                       label = 'Place a soup can (1-2 lbs.) on a shelf at shoulder level without bending elbow.'),
+                                                           pssQuestion(inputId = 'PSS_Q17',
+                                                                       label = 'Place a one gallon container (8-10 lbs.) on a shelf at shoulder level without bending elbow.'),
+                                                           pssQuestion(inputId = 'PSS_Q18',
+                                                                       label = 'Reach a shelf above your head without bending your elbow.'),
+                                                           pssQuestion(inputId = 'PSS_Q19',
+                                                                       label = 'Place a soup can (1-2 lbs.) on a shelf overhead without bending your elbow.'),
+                                                           pssQuestion(inputId = 'PSS_Q20',
+                                                                       label = 'Place a one gallon container (8-10 lbs.) on a shelf overhead without bending your elbow'),
+                                                           pssQuestion(inputId = 'PSS_Q21',
+                                                                       label = 'Perform usual sport/hobby.'),
+                                                           pssQuestion(inputId = 'PSS_Q22',
+                                                                       label = 'Perform household chores (cleaning, laundry, cooking).'),
+                                                           pssQuestion(inputId = 'PSS_Q23',
+                                                                       label = 'Throw overhand/swim/overhead racquet sports.'),
+                                                           pssQuestion(inputId = 'PSS_Q24',
+                                                                       label = 'Work full-time at your regular job.'),
+                                                           
+                                                           #Calulate PSS score
+                                                           span(textOutput(outputId = 'pssCalculated'), 
+                                                                style = 'font-size:20px')
+                                                           
+                                          )
+                                          
+                                          
                                  )
+                        )
+           ),
+           p(a("Homepage",
+               href = "../", style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;
+                      font-size: 12px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"), 
+             " | ",
+             a("Website Error Messages",
+               href = "javascript:myFunction()",
+               style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;
+                      font-size: 12px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"),
+             " | ",
+             a("Source Code", 
+               href = "https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/Predicting1YearPROMSAfterTotalShoulderArthroplasty", 
+               style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;
+                      font-size: 12px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"),
+             style = "text-align: center;")
+)
