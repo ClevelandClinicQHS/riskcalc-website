@@ -8,14 +8,6 @@ navbarPage(theme = shinytheme("cerulean"),
            title = span("Patient-Reported Outcomes Calculator for TSA Patients",
                         style = 'font-size:32px'),
            windowTitle = "Patient-Reported Outcomes Calculator for TSA Patients",
-           tags$script(HTML(
-             'function myFunction() {
-  var txt;
-  if (confirm("This is a mailbox for reporting website errors to programmers for the risk calculator website.  If you have questions or concerns about a specific calculator, please use the calculator Author Contact Information found on the publication for that calculator.  Each calculator is documented by a specific publication with a corresponding author.")) {
-    window.open("mailto:rcalcsupport@ccf.org");
-  }
-}'
-           )),
            navlistPanel(id = 'mainPage',
                         
                         'Patient information',
@@ -30,7 +22,16 @@ navbarPage(theme = shinytheme("cerulean"),
                                  
                                  #Button to go to start app
                                  actionButton(inputId = 'start',
-                                              label = 'Start')
+                                              label = 'Start'),
+                                 
+                                 tags$script(HTML(
+                                   'function myFunction() {
+  var txt;
+  if (confirm("This is a mailbox for reporting website errors to programmers for the risk calculator website.  If you have questions or concerns about a specific calculator, please use the calculator Author Contact Information found on the publication for that calculator.  Each calculator is documented by a specific publication with a corresponding author.")) {
+    window.open("mailto:rcalcsupport@ccf.org");
+  }
+}'
+                                 ))
                                  
                         ),
                         tabPanel(title = 'Patient Information',
