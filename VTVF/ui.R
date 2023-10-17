@@ -1,3 +1,5 @@
+#version tereshl@ccf.org dated 17 Oct 2023
+
 require(shinythemes)
 library(shinyBS)
 library(shinyWidgets)
@@ -39,10 +41,10 @@ fluidPage(theme = shinytheme("flatly"),
                          
                          selectInput("progr", "ICD therapy programming type", choices = c('Historic Convention', 'Delayed Therapy')),
                          
-                         checkboxInput("showImage", "Show/Hide programming type definitions", value = FALSE),
+                         checkboxInput("showImage", "Show/Hide Programming Type Definitions", value = FALSE),
                          conditionalPanel(
                            condition = "input.showImage",
-                           img(src = "table.png", width = "800px", height = "400px")
+                           img(src = "table.PNG", width = "800px", height = "400px")
                          ),
                          textInput('vt_zone_bpm', 'VT zone cut-off (bpm)',placeholder = '105 - 190'),
                          textInput('vf_zone_bpm', 'VF zone cut-off (bpm)',placeholder = '188 - 300'),

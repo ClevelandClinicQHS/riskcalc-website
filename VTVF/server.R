@@ -1,3 +1,5 @@
+#version tereshl@ccf.org dated 17 Oct 2023
+
 library(shiny)
 library(DT)
 library(shinyWidgets)
@@ -197,7 +199,7 @@ shinyServer(function(input, output){
     pred2 = eval(predict.risk.PVT, envir = data_df)
     pred2 = paste(round(pred2 * 100, 1), "%", sep='')
     
-    res = data.frame(Result = c("Probability of MMVT","Probability of PVT/VF"),
+    res = data.frame(Result = c("Probability of MMVT","Probability of PVT/VT"),
                      Probability = c(pred1,pred2))
     
     res}, options = list(
