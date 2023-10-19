@@ -1,6 +1,6 @@
 # server side
 function(input, output, session) {
-  
+
   #Calculating BMI based on input height/weight
   bmi <- reactive({
     703 * (input$weight / ((input$feet*12 + input$inches)^2))
@@ -48,6 +48,27 @@ function(input, output, session) {
     
     #PSS Total
     PSS_TOTAL <- pss_total_preds(age = input$age/12, # rescale data by iqr
+                       gender = input$gender,
+                       race = input$race,
+                       bmi = bmi()/7.5,
+                       cci = input$cci/2,
+                       smoking = input$smoking,
+                       education = input$education/4,
+                       adi = input$adi/35,
+                       insurance = input$insurance,
+                       mcs0 = input$mcs0/16.88,
+                       psydx = input$psydx,
+                       opioid = input$opioid,
+                       chronicpain = input$chronicpain,
+                       priorsurgery = input$priorsurgery,
+                       dximplant = input$dximplant,
+                       gbl = input$gbl,
+                       hcomp = input$hcomp,
+                       sprotatorcuff = input$sprotatorcuff,
+                       pss0 = pss_total()/20.92)
+    
+    # PSS Pain
+    PSS_PAIN <- pss_pain_preds(age = input$age/12, # rescale data by iqr
                                  gender = input$gender,
                                  race = input$race,
                                  bmi = bmi()/7.5,
@@ -66,27 +87,6 @@ function(input, output, session) {
                                  hcomp = input$hcomp,
                                  sprotatorcuff = input$sprotatorcuff,
                                  pss0 = pss_total()/20.92)
-    
-    # PSS Pain
-    PSS_PAIN <- pss_pain_preds(age = input$age/12, # rescale data by iqr
-                               gender = input$gender,
-                               race = input$race,
-                               bmi = bmi()/7.5,
-                               cci = input$cci/2,
-                               smoking = input$smoking,
-                               education = input$education/4,
-                               adi = input$adi/35,
-                               insurance = input$insurance,
-                               mcs0 = input$mcs0/16.88,
-                               psydx = input$psydx,
-                               opioid = input$opioid,
-                               chronicpain = input$chronicpain,
-                               priorsurgery = input$priorsurgery,
-                               dximplant = input$dximplant,
-                               gbl = input$gbl,
-                               hcomp = input$hcomp,
-                               sprotatorcuff = input$sprotatorcuff,
-                               pss0 = pss_total()/20.92)
     # PSS Function
     PSS_FUNC <- pss_func_preds(age = input$age/12, # rescale data by iqr
                                gender = input$gender,
@@ -109,24 +109,24 @@ function(input, output, session) {
                                pss0 = pss_total()/20.92)
     # PSS Satisfaction
     PSS_SAT <- pss_sat_preds(age = input$age, 
-                             gender = input$gender,
-                             race = input$race,
-                             bmi = bmi(),
-                             cci = input$cci,
-                             smoking = input$smoking,
-                             education = input$education,
-                             adi = input$adi,
-                             insurance = input$insurance,
-                             mcs0 = input$mcs0,
-                             psydx = input$psydx,
-                             opioid = input$opioid,
-                             chronicpain = input$chronicpain,
-                             priorsurgery = input$priorsurgery,
-                             dximplant = input$dximplant,
-                             gbl = input$gbl,
-                             hcomp = input$hcomp,
-                             sprotatorcuff = input$sprotatorcuff,
-                             pss0 = pss_total())
+                              gender = input$gender,
+                              race = input$race,
+                              bmi = bmi(),
+                              cci = input$cci,
+                              smoking = input$smoking,
+                              education = input$education,
+                              adi = input$adi,
+                              insurance = input$insurance,
+                              mcs0 = input$mcs0,
+                              psydx = input$psydx,
+                              opioid = input$opioid,
+                              chronicpain = input$chronicpain,
+                              priorsurgery = input$priorsurgery,
+                              dximplant = input$dximplant,
+                              gbl = input$gbl,
+                              hcomp = input$hcomp,
+                              sprotatorcuff = input$sprotatorcuff,
+                              pss0 = pss_total())
     
     preds <- data.frame(
       `Item` = c("Predicted 1-Year PSS Total",
@@ -145,7 +145,7 @@ function(input, output, session) {
   )
   
   ####################################
-  
-  
-  
+
+
+
 }
