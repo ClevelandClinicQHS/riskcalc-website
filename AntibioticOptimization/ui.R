@@ -3,10 +3,6 @@
 # Project: GUKI Antibiotic Optimization
 # Description: Contains the user interface
 
-# Load packages
-library(shiny)
-library(shinythemes)
-
 # Build the user interface
 fluidPage(
   ### DEVELOPMENT INDICATION
@@ -17,7 +13,7 @@ fluidPage(
   theme = shinytheme("flatly"),
   tags$head(tags$link(rel="shortcut icon", href="../assets/icons/favicon.ico", type="image/x-icon")),
   tags$head(tags$link(rel="apple-touch-icon", href="../assets/icons/apple-touch-icon.png", type="image/x-icon")),
-  titlePanel("Probability of culture sensitivity & resistance"),
+  titlePanel("Probability of culture susceptibility & resistance"),
 
   # Set the layout
   sidebarLayout(
@@ -26,24 +22,105 @@ fluidPage(
     sidebarPanel(
       id = "sidebar",
       
-      ## The inputs objects
-      
-      # Age of patient
-      numericInput(
-        inputId = "age",
-        label = "Age (years)",
-        value = NA_real_,
-        min = 18,
-        max = 100
-      ),
-      
-      # Sex
-      selectInput(
-        inputId = "sex",
-        label = "Sex",
-        choices = c("Male", "Female")
+      # Make a tab panel for the different input types
+      tabsetPanel(
+        
+        # Demographics
+        tabPanel(
+          title = "Demographics",
+          HTML("<br>"),
+          
+          # Age of patient
+          numericInput(
+            inputId = "age",
+            label = "Age (years)",
+            value = NA_real_,
+            min = 18,
+            max = 100
+          ),
+          
+          # Sex
+          selectInput(
+            inputId = "sex",
+            label = "Sex",
+            choices = c("Male", "Female")
+          ),
+          
+          # Living arrangements
+          selectInput(
+            inputId = "living_arrangement",
+            label = "Living Arrangements",
+            choices = c("Alone", "Homeless")
+          ),
+          
+          # Patient mobility
+          selectInput(
+            inputId = "mobility",
+            label = "Mobility",
+            choices = c("1-Completely Immobile", "2-Very Limited")
+          )
+        ),
+        
+        # Lab culture information
+        tabPanel(
+          title = "Specimen Information",
+          HTML("<br>"),
+          
+          # Facility of specimen
+          selectInput(
+            inputId = "facility",
+            label = "Facility",
+            choices = c("Akron", "Avon")
+          ),
+          
+          # Department specialty
+          selectInput(
+            inputId = "specialty",
+            label = "Department specialty",
+            choices = c("Laboratory", "Medical")
+          ),
+          
+          # Collection method
+          selectInput(
+            inputId = "collection",
+            label = "Collection method",
+            choices = c("URINE", "URINE - CLEAN CATCH")
+          ),
+          
+          # Days since last resistance
+          selectInput(
+            inputId = "days_since_resistance",
+            label = "Days since previous resistance (any organism)",
+            choices = c("No Measurement", "113-224")
+          ),
+          
+          # History of E.coli
+          selectInput(
+            inputId = "hx_ecoli",
+            label = "History of E. coli",
+            choices = c(Yes = "Y", No = "N", Unknown = "(Unknown)")
+          )
+        ),
+        
+        # Resistance history
+        tabPanel(
+          title = "Resistance History",
+          HTML("<br>"),
+          
+          # Radio buttons for each antibiotic
+          radioButtons(inputId = "hx_ampicillin", label = "Ampicillin", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
+          radioButtons(inputId = "hx_cefazolin", label = "Cefazolin", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
+          radioButtons(inputId = "hx_cefepime", label = "Cefepime", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
+          radioButtons(inputId = "hx_ceftriaxone", label = "Ceftriaxone", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
+          radioButtons(inputId = "hx_ciprofloxacin", label = "Ciprofloxacin", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
+          radioButtons(inputId = "hx_gentamicins", label = "Gentamicins", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
+          radioButtons(inputId = "hx_meropenem", label = "Meropenem", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
+          radioButtons(inputId = "hx_nitrofurantoin", label = "Nitrofurantoin", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
+          radioButtons(inputId = "hx_piperacillin", label = "Piperacillin-Tazobactam Combination", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
+          radioButtons(inputId = "hx_trimethoprim", label = "Trimethoprim-Sulfamethoxazole Combination", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
+          radioButtons(inputId = "hx_vancomycin", label = "Vancomycin", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE)
+        )
       )
-      
     ),
     
     # Main panel of result output
