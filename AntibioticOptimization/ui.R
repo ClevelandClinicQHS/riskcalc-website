@@ -43,21 +43,21 @@ fluidPage(
           selectInput(
             inputId = "sex",
             label = "Sex",
-            choices = c("Male", "Female")
+            choices = modeling_dataset_metadata$Sex
           ),
           
           # Living arrangements
           selectInput(
             inputId = "living_arrangement",
             label = "Living Arrangements",
-            choices = c("Alone", "Homeless")
+            choices = modeling_dataset_metadata$LivingArrangement
           ),
           
           # Patient mobility
           selectInput(
             inputId = "mobility",
             label = "Mobility",
-            choices = c("1-Completely Immobile", "2-Very Limited")
+            choices = modeling_dataset_metadata$MobilityStatus
           )
         ),
         
@@ -70,28 +70,28 @@ fluidPage(
           selectInput(
             inputId = "facility",
             label = "Facility",
-            choices = c("Akron", "Avon")
+            choices = modeling_dataset_metadata$Facility
           ),
           
           # Department specialty
           selectInput(
             inputId = "specialty",
             label = "Department specialty",
-            choices = c("Laboratory", "Medical")
+            choices = modeling_dataset_metadata$DepartmentSpecialty
           ),
           
           # Collection method
           selectInput(
             inputId = "collection",
             label = "Collection method",
-            choices = c("URINE", "URINE - CLEAN CATCH")
+            choices = modeling_dataset_metadata$CollectionMethod
           ),
           
           # Days since last resistance
           selectInput(
             inputId = "days_since_resistance",
             label = "Days since previous resistance (any organism)",
-            choices = c("No Measurement", "113-224")
+            choices = modeling_dataset_metadata$AnyOrganism_DaysSincePreviousResistance
           ),
           
           # History of E.coli
