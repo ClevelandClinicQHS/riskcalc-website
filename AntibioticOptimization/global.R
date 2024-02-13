@@ -17,7 +17,39 @@ for(i in model_list)
 
 # Function to get predictions for an input set of predictors (for each antibiotic)
 get_predictions <-
-  function(pred_dat) {
+  function(pred_dat, with_results) {
+    
+    # Get the right model
+    if(!with_results) {
+      
+      ampicillin <- ampicillin_before
+      cefazolin <- cefazolin_before
+      cefepime <- cefepime_before
+      ceftriaxone <- ceftriaxone_before
+      ciprofloxacin <- ciprofloxacin_before
+      gentamicins <- gentamicins_before
+      meropenem <- meropenem_before
+      nitrofurantoin <- nitrofurantoin_before
+      piperacillin <- piperacillin_before
+      trimethoprim <- trimethoprim_before
+      vancomycin <- vancomycin_before
+      
+    } else {
+      
+      ampicillin <- ampicillin_after
+      cefazolin <- cefazolin_after
+      cefepime <- cefepime_after
+      ceftriaxone <- ceftriaxone_after
+      ciprofloxacin <- ciprofloxacin_after
+      gentamicins <- gentamicins_after
+      meropenem <- meropenem_after
+      nitrofurantoin <- nitrofurantoin_after
+      piperacillin <- piperacillin_after
+      trimethoprim <- trimethoprim_after
+      vancomycin <- vancomycin_after
+      
+    }
+    
     
     # Get the predictions from each model
     temp_preds <- 
@@ -29,11 +61,11 @@ get_predictions <-
             "Cefepime",
             "Ceftriaxone",
             "Ciprofloxacin",
-            "Gentamicins",
+            "Gentamicin",
             "Meropenem",
             "Nitrofurantoin",
-            "Piperacillin-Tazobactam Combination",
-            "Trimethoprim-Sulfamethoxazole Combination",
+            "Piperacillin-Tazobactam",
+            "Trimethoprim-Sulfamethoxazole",
             "Vancomycin"
           ),
         Susceptibility = 
@@ -56,5 +88,33 @@ get_predictions <-
     temp_preds$Resistance <- 1 - temp_preds$Susceptibility
     
     temp_preds
+    
+  }
+
+# Function to populate organism list
+organisms <- names(modeling_dataset_metadata)[grepl("_Positive$", names(modeling_dataset_metadata))]
+indicate_organisms <- 
+  function(org_list) {
+    
+    # Check if the organism is in the selected set
+    in_set <- ifelse(organisms %in% org_list, "Y", "N")
+    
+    # Make a transposed data frame
+    temp <- data.frame(organisms, in_set) |> t()
+    
+    # Set the column names
+    colnames(temp) <- temp[1,]
+    
+    # Convert to data frame
+    temp <- as.data.frame(temp, row.names = NA)
+    
+    # Remove the row
+    temp <- temp[-1,]
+    
+    # Convert to factor
+    for(i in 1:ncol(temp))
+      temp[,i] <- as.factor(temp[,i])
+    
+    temp
     
   }

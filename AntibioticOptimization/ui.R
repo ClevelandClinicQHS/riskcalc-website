@@ -97,8 +97,33 @@ fluidPage(
           # History of E.coli
           selectInput(
             inputId = "hx_ecoli",
-            label = "History of E. coli",
+            label = "History of E. coli urinary tract infection",
             choices = c(Yes = "Y", No = "N", Unknown = "(Unknown)")
+          ),
+          
+          # Culture results
+          checkboxInput(inputId = "has_results", label = "Has an organism been identified in your urine specimen?"),
+          conditionalPanel(
+            condition = "input.has_results",
+            selectInput(
+              inputId = "culture_results",
+              label = "Organism(s) identified",
+              multiple = TRUE,
+              choices = 
+                c(
+                  "Escherichia_Coli_Positive", 
+                  "Klebsiella_Pneumoniae_Positive", 
+                  "Enterococcus_Faecalis_Positive", 
+                  "Pseudomonas_Aeruginosa_Positive", 
+                  "Proteus_Mirabilis_Positive", 
+                  "Enterobacter_spp_Positive", 
+                  "Coagulase_Negative_Staphylococcus_Positive", 
+                  "Group_B_Streptococcus_Positive", 
+                  "Acinetobacter_spp_Positive", 
+                  "Citrobacter_spp_Positive", 
+                  "Staphylococcus_Aureus_Positive"
+                )
+            )
           )
         ),
         
@@ -113,12 +138,28 @@ fluidPage(
           radioButtons(inputId = "hx_cefepime", label = "Cefepime", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
           radioButtons(inputId = "hx_ceftriaxone", label = "Ceftriaxone", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
           radioButtons(inputId = "hx_ciprofloxacin", label = "Ciprofloxacin", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
-          radioButtons(inputId = "hx_gentamicins", label = "Gentamicins", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
+          radioButtons(inputId = "hx_gentamicins", label = "Gentamicin", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
           radioButtons(inputId = "hx_meropenem", label = "Meropenem", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
           radioButtons(inputId = "hx_nitrofurantoin", label = "Nitrofurantoin", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
-          radioButtons(inputId = "hx_piperacillin", label = "Piperacillin-Tazobactam Combination", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
-          radioButtons(inputId = "hx_trimethoprim", label = "Trimethoprim-Sulfamethoxazole Combination", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
+          radioButtons(inputId = "hx_piperacillin", label = "Piperacillin-Tazobactam", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
+          radioButtons(inputId = "hx_trimethoprim", label = "Trimethoprim-Sulfamethoxazole", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE),
           radioButtons(inputId = "hx_vancomycin", label = "Vancomycin", choices = c(Yes = "Y", No = "N", Unknown = "DQ"), selected = "DQ", inline = TRUE)
+        ),
+        
+        # Urinalysis results
+        tabPanel(
+          title = "Urinalysis Results",
+          HTML("<br>"),
+          
+          # Add the urinalysis measures
+          selectInput(inputId = "urinalysis_ph", label = "pH level", choices = modeling_dataset_metadata$Urinalysis_Results_pH),
+          selectInput(inputId = "urinalysis_bacteria_hpf", label = "Bacteria (hpf)", choices = modeling_dataset_metadata$Urinalysis_Results_Bacteria_hpf),
+          selectInput(inputId = "urinalysis_color", label = "Color", choices = modeling_dataset_metadata$Urinalysis_Results_Color),
+          selectInput(inputId = "urinalysis_blood", label = "Blood", choices = modeling_dataset_metadata$Urinalysis_Results_Blood),
+          selectInput(inputId = "urinalysis_protein", label = "Protein", choices = modeling_dataset_metadata$Urinalysis_Results_Protein),
+          selectInput(inputId = "urinalysis_specific_gravity", label = "Specific Gravity", choices = modeling_dataset_metadata$Urinalysis_Results_Specific_Gravity),
+          selectInput(inputId = "urinalysis_rbc_hpf", label = "RBC (hpf)", choices = modeling_dataset_metadata$Urinalysis_Results_RBC_hpf),
+          selectInput(inputId = "urinalysis_nitrite", label = "Nitrite", choices = modeling_dataset_metadata$Urinalysis_Results_Nitrite)
         )
       )
     ),
