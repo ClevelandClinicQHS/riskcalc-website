@@ -25,7 +25,6 @@ shinyServer(function(input, output, session){
         validate(need(!is.na(input$age) & input$age >= 18, "Please enter an age 18 years or older."))
         
         # Make a data frame
-        p <- 
         cbind(
           data.frame(
             AnyOrganism_DaysSincePreviousResistance = as.factor(input$days_since_resistance),
@@ -59,8 +58,7 @@ shinyServer(function(input, output, session){
           ),
           indicate_organisms(input$culture_results)
         )
-        print(p |> purrr::map_chr(class))
-        p 
+         
       }
     )
   

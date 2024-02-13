@@ -100,7 +100,7 @@ indicate_organisms <-
     in_set <- ifelse(organisms %in% org_list, "Y", "N")
     
     # Make a transposed data frame
-    temp <- data.frame(organisms, in_set) |> t()
+    temp <- t(data.frame(organisms, in_set))
     
     # Set the column names
     colnames(temp) <- temp[1,]
