@@ -111,19 +111,20 @@ fluidPage(
               multiple = TRUE,
               choices = 
                 c(
-                  "Escherichia_Coli_Positive", 
-                  "Klebsiella_Pneumoniae_Positive", 
-                  "Enterococcus_Faecalis_Positive", 
-                  "Pseudomonas_Aeruginosa_Positive", 
-                  "Proteus_Mirabilis_Positive", 
-                  "Enterobacter_spp_Positive", 
-                  "Coagulase_Negative_Staphylococcus_Positive", 
-                  "Group_B_Streptococcus_Positive", 
-                  "Acinetobacter_spp_Positive", 
-                  "Citrobacter_spp_Positive", 
-                  "Staphylococcus_Aureus_Positive"
+                  `Escherichia coli` = "Escherichia_Coli_Positive", 
+                  `Klebsiella pneumoniae` = "Klebsiella_Pneumoniae_Positive", 
+                  `Enterococcus faecalis` = "Enterococcus_Faecalis_Positive", 
+                  `Pseudomonas aeruginosa` = "Pseudomonas_Aeruginosa_Positive", 
+                  `Proteus mirabilis` = "Proteus_Mirabilis_Positive", 
+                  `Enterobacter spp` = "Enterobacter_spp_Positive", 
+                  `Coagulase-negative staphylococcus (Staphylococcus saprophyticus, Staphylococcus epidermidis)` = "Coagulase_Negative_Staphylococcus_Positive", 
+                  `group B Streptococcus (GBS) (Streptococcus agalactiae)` = "Group_B_Streptococcus_Positive", 
+                  `Acinetobacter spp` = "Acinetobacter_spp_Positive", 
+                  `Citrobacter spp` = "Citrobacter_spp_Positive", 
+                  `Staphylococcus aureus` = "Staphylococcus_Aureus_Positive"
                 )
-            )
+            ),
+            HTML('<p style="font-size:65%;"><em>The absence of an organism in selected list indicates it was not identified.</em></p>')
           )
         ),
         
