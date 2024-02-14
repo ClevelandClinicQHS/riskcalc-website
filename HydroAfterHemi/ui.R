@@ -1,11 +1,7 @@
-# Created: 2023-01-04
+# Created: 2024-01-04
 # Author: Alex Zajichek
 # Project: Predicting hydrocephalus after hemispherectomy
 # Description: Contains the user interface
-
-# Load packages
-library(shiny)
-library(shinythemes)
 
 # Build the user interface
 fluidPage(
@@ -28,13 +24,64 @@ fluidPage(
       
       ## The inputs objects
       
+      # Sex
+      selectInput(
+        inputId = "sex",
+        label = "Sex",
+        choices = c("Male", "Female")
+      ),
+      
+      # Age (current)
+      numericInput(
+        inputId = "age",
+        label = "Current age (years)",
+        value = NA_real_,
+        min = 0,
+        max = 21
+      ),
+      
+      # Date of surgery
+      dateInput(
+        inputId = "surgery_date",
+        label = "Date of hemispherectomy",
+        value = Sys.Date()
+      ),
+      
+      # Show age at surgery
+      textOutput(outputId = "surgery_age"),
+      
       # Age of seizure onset
       numericInput(
         inputId = "onset_age",
         label = "Age at seizure onset (years)",
         value = NA_real_,
         min = 0,
-        max = 18
+        max = 21
+      ),
+      
+      ## Brain volumes
+      h4("Brain volume"),
+      fluidRow(
+        
+        # Pre-op
+        column(
+          width = 6,
+          numericInput(
+            inputId = "brain_volume_pre",
+            label = "Pre-op",
+            value = NA_real_
+          )
+        ),
+        
+        # Post-op
+        column(
+          width = 6,
+          numericInput(
+            inputId = "brain_volume_post",
+            label = "Post-op",
+            value = NA_real_
+          )
+        )
       )
       
     ),
