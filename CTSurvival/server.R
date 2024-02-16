@@ -16,17 +16,34 @@ shinyServer(function(input, output, session){
     eventReactive(
       input$goButton, 
       {
-        # Make the input data frame
-        data.frame(
-          L1BMDmultiHU = input$L1BMDmultiHU,
-          AbdominalAgatston = input$AbdominalAgatston,
-          L3SATArea = input$L3SATArea,
-          L3VATMedianHU = input$L3VATMedianHU,
-          L3VATSATRatio = input$L3VATSATRatio,
-          KidneyVolume = input$KidneyVolume,
-          L3MuscleArea = input$L3MuscleArea,
-          L3MuscleMeanHU = input$L3MuscleMeanHU
+        
+        # Make the data frame
+        input_dat <- 
+          data.frame(
+            L1BMDmultiHU = as.numeric(input$L1BMDmultiHU),
+            AbdominalAgatston = as.numeric(input$AbdominalAgatston),
+            L3SATArea = as.numeric(input$L3SATArea),
+            L3VATMedianHU = as.numeric(input$L3VATMedianHU),
+            L3VATSATRatio = as.numeric(input$L3VATSATRatio),
+            KidneyVolume = as.numeric(input$KidneyVolume),
+            L3MuscleArea = as.numeric(input$L3MuscleArea),
+            L3MuscleMeanHU = as.numeric(input$L3MuscleMeanHU)
+          )
+        
+        # Ensure inputs fall in the correct range
+        shiny::validate(
+          need(!is.na(input_dat$L1BMDmultiHU) & input_dat$L1BMDmultiHU >= -50 & input_dat$L1BMDmultiHU <= 1200, "L1BMDmultiHU must be between -50 and 1200."),
+          need(!is.na(input_dat$AbdominalAgatston) & input_dat$AbdominalAgatston >= 0 & input_dat$AbdominalAgatston <= 30000, "AbdominalAgatston must be between 0 and 30000."),
+          need(!is.na(input_dat$L3SATArea) & input_dat$L3SATArea >= 0.1 & input_dat$L3SATArea <= 1000, "L3SATArea must be between 0.1 and 1000."),
+          need(!is.na(input_dat$L3VATMedianHU) & input_dat$L3VATMedianHU >= -120 & input_dat$L3VATMedianHU <= -30, "L3VATMedianHU must be between -120 and -30."),
+          need(!is.na(input_dat$L3VATSATRatio) & input_dat$L3VATSATRatio >= -1 & input_dat$L3VATSATRatio <= 4.5, "L3VATSATRatio must be between -1 and 4.5."),
+          need(!is.na(input_dat$KidneyVolume), "Please enter a numeric value for KidneyVolume"),
+          need(!is.na(input_dat$L3MuscleArea) & input_dat$L3MuscleArea >= 25 & input_dat$L3MuscleArea <= 500, "L3MuscleArea must be between 25 and 500."),
+          need(!is.na(input_dat$L3MuscleMeanHU) & input_dat$L3MuscleMeanHU >= -50 & input_dat$L3MuscleMeanHU <= 200, "L3MuscleMeanHU must be between -50 and 200.")
         )
+        
+        # Return the data
+        input_dat
         
       }
     )

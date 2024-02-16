@@ -17,47 +17,53 @@ fluidPage(
       id = "sidebar",
       
       ## The inputs objects
-      numericInput(
+      textInput(
         inputId = "L1BMDmultiHU",
         label = "L1BMDmultiHU",
-        value = round(mean(x_dat$L1BMDmultiHU))
+        value = round(mean(x_dat$L1BMDmultiHU)),
+        placeholder = "-50 to 1200"
       ),
-      numericInput(
+      textInput(
         inputId = "AbdominalAgatston",
         label = "AbdominalAgatston",
-        value = round(mean(x_dat$AbdominalAgatston))
+        value = round(mean(x_dat$AbdominalAgatston)),
+        placeholder = "0 to 30000"
       ),
-      numericInput(
+      textInput(
         inputId = "L3SATArea",
         label = "L3SATArea",
-        value = round(mean(x_dat$L3SATArea))
+        value = round(mean(x_dat$L3SATArea)),
+        placeholder = "0.1 to 1000"
       ),
-      numericInput(
+      textInput(
         inputId = "L3VATMedianHU",
         label = "L3VATMedianHU",
-        value = round(mean(x_dat$L3VATMedianHU))
+        value = round(mean(x_dat$L3VATMedianHU)),
+        placeholder = "-120 to -30"
       ),
-      numericInput(
+      textInput(
         inputId = "L3VATSATRatio",
         label = "L3VATSATRatio",
-        value = round(mean(x_dat$L3VATSATRatio))
+        value = round(mean(x_dat$L3VATSATRatio)),
+        placeholder = "-1 to 4.5"
       ),
-      numericInput(
+      textInput(
         inputId = "KidneyVolume",
         label = "KidneyVolume",
         value = round(mean(x_dat$KidneyVolume))
       ),
-      numericInput(
+      textInput(
         inputId = "L3MuscleArea",
         label = "L3MuscleArea",
-        value = round(mean(x_dat$L3MuscleArea))
+        value = round(mean(x_dat$L3MuscleArea)),
+        placeholder = "25 to 500"
       ),
-      numericInput(
+      textInput(
         inputId = "L3MuscleMeanHU",
         label = "L3MuscleMeanHU",
-        value = round(mean(x_dat$L3MuscleMeanHU))
+        value = round(mean(x_dat$L3MuscleMeanHU)),
+        placeholder = "-50 to 200"
       )
-      
       
     ),
     
