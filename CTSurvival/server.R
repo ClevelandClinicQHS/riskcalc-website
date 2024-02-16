@@ -39,8 +39,8 @@ shinyServer(function(input, output, session){
       risk <- 1 - exp(-base_haz10 *  exp(predict(ct.fit2, newdata = data())))
       
       data.frame(
-        Result = "10-year risk",
-        Value = paste0(round(risk * 100, 2), "%")
+        Result = "10-year risk of death",
+        Value = paste0(round(risk * 100, 1), "%")
       )
     },
     options = 
