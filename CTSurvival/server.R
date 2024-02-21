@@ -2,7 +2,7 @@ shinyServer(function(input, output, session){
   
   # Clear results when inputs change
   observeEvent(
-    {list(input$age, input$sex, input$surgery_date, input$onset_age, input$brain_volume_pre, input$brain_volume_post)},
+    {list(input$contrast, input$L1BMDmultiHU, input$AbdominalAgatston, input$L3SATArea, input$L3VATMedianHU, input$L3VATSATRatio, input$KidneyVolume, input$L3MuscleArea, input$L3MuscleMeanHU)},
     {
       shinyjs::hide("result_panel")
     }
@@ -41,6 +41,20 @@ shinyServer(function(input, output, session){
           need(!is.na(input_dat$L3MuscleArea) & input_dat$L3MuscleArea >= 25 & input_dat$L3MuscleArea <= 500, "L3MuscleArea must be between 25 and 500."),
           need(!is.na(input_dat$L3MuscleMeanHU) & input_dat$L3MuscleMeanHU >= -50 & input_dat$L3MuscleMeanHU <= 200, "L3MuscleMeanHU must be between -50 and 200.")
         )
+        
+        # If there is IV contrast, transform to "pre" values
+        if(input$contrast == "Yes") {
+          
+          input_dat$L1BMDmultiHU <- 0.9610 * input_dat$L1BMDmultiHU - 7.8619
+          input_dat$AbdominalAgatston <- 1.1542 * input_dat$AbdominalAgatston
+          input_dat$L3SATArea <- 0.9972 * input_dat$L3SATArea
+          input_dat$L3VATMedianHU <- 0.9550 * input_dat$L3VATMedianHU - 9.1659
+          input_dat$L3VATSATRatio <- 1.0650 * input_dat$L3VATSATRatio
+          input_dat$KidneyVolume <- 1.0383 * input_dat$KidneyVolume
+          input_dat$L3MuscleArea <- 0.9993 * input_dat$L3MuscleArea
+          input_dat$L3MuscleMeanHU <- 0.9930 * input_dat$L3MuscleMeanHU - 7.5291
+          
+        }
         
         # Return the data
         input_dat

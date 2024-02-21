@@ -16,51 +16,58 @@ fluidPage(
     sidebarPanel(
       id = "sidebar",
       
+      # Determines pre/post input calculation
+      selectInput(
+        inputId = "contrast",
+        label = "IV Contrast Used?",
+        choices = c("No", "Yes")
+      ),
+      
       ## The inputs objects
       textInput(
         inputId = "L1BMDmultiHU",
-        label = "L1BMDmultiHU",
+        label = "BMD multi-slice",
         value = round(mean(x_dat$L1BMDmultiHU)),
         placeholder = "-50 to 1200"
       ),
       textInput(
         inputId = "AbdominalAgatston",
-        label = "AbdominalAgatston",
+        label = "Abdominal aortic agatston",
         value = round(mean(x_dat$AbdominalAgatston)),
         placeholder = "0 to 30000"
       ),
       textInput(
         inputId = "L3SATArea",
-        label = "L3SATArea",
+        label = "Subcutaneous fat area",
         value = round(mean(x_dat$L3SATArea)),
         placeholder = "0.1 to 1000"
       ),
       textInput(
         inputId = "L3VATMedianHU",
-        label = "L3VATMedianHU",
+        label = "Viceral fat density",
         value = round(mean(x_dat$L3VATMedianHU)),
         placeholder = "-120 to -30"
       ),
       textInput(
         inputId = "L3VATSATRatio",
-        label = "L3VATSATRatio",
+        label = "VSR",
         value = round(mean(x_dat$L3VATSATRatio)),
         placeholder = "-1 to 4.5"
       ),
       textInput(
         inputId = "KidneyVolume",
-        label = "KidneyVolume",
+        label = "Kidney volume",
         value = round(mean(x_dat$KidneyVolume))
       ),
       textInput(
         inputId = "L3MuscleArea",
-        label = "L3MuscleArea",
+        label = "Muscle area",
         value = round(mean(x_dat$L3MuscleArea)),
         placeholder = "25 to 500"
       ),
       textInput(
         inputId = "L3MuscleMeanHU",
-        label = "L3MuscleMeanHU",
+        label = "Muscle density",
         value = round(mean(x_dat$L3MuscleMeanHU)),
         placeholder = "-50 to 200"
       )
