@@ -1,7 +1,7 @@
 require(knitr)
 library(shinyBS)
 
-source("messages.r", encoding="UTF-8")
+source("messages.R", encoding="UTF-8")
 
 encode <- function(x){
   Encoding(x) <- "UTF-8"
