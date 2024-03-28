@@ -5,7 +5,7 @@ fluidPage(
     h3("Awaiting External Validation", style = "text-align: center; background-color: tomato; color: black"),  
   
     # Link to switch language between English and German
-    actionLink("lang", langSwitch("Switch to English","Switch to German"),
+    actionLink("lang", langSwitch("Switch to German", "Switch to English"),
                #"primary","primary",
                icon = icon("world")),
     
@@ -20,8 +20,8 @@ fluidPage(
         conditionalPanel(
             condition="true",
             navbarPage(title = "TUM Risk Calculator (beta)",inverse = T,
-                       footer = langSwitch(HTML("<br><footer>Here, <b>clinically significant prostate cancer (csPCa)</b> is defined as ISUP>2.</footer><br><footer>Copyright © 2023 TUM</footer>"),
-                                           HTML("<br><footer>Die Definition von <b>klinisches signifikantes Prostatakarzinom (csPCa)</b> lautet in diesem Fall: ISUP>2.</footer><br><footer>Copyright © 2023 TUM</footer>")),
+                       footer = langSwitch(HTML("<br><footer>Here, <b>clinically significant prostate cancer (csPCa)</b> is defined as ISUP>2.<br><br>Clinically significant prostate cancer requiring active treatment may also be present in the case of ISUP 2 prostate cancer.</footer><br><footer>Copyright © 2023 TUM</footer>"),
+                                           HTML("<br><footer>Die Definition von <b>klinisches signifikantes Prostatakarzinom (csPCa)</b> lautet in diesem Fall: ISUP>2.<br><br>Auch beim ISUP-2-Prostatakrebs kann ein klinisch bedeutsamer Prostatakrebs vorliegen, der einer aktiven Behandlung bedarf.</footer><br><footer>Copyright © 2023 TUM</footer>")),
                        tabPanel(langSwitch("Home","Home"),
                                 sidebarLayout(
                                     sidebarPanel(
