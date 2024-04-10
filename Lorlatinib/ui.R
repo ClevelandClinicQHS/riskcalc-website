@@ -73,7 +73,7 @@ fluidPage(
         choices = c("0", "1 or 2")
       ),
       
-      textOutput("temp")
+      tableOutput("temp")
       
     ),
     
