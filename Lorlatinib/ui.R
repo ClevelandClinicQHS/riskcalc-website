@@ -71,7 +71,9 @@ fluidPage(
         inputId = "ecog",
         label = "ECOG Baseline",
         choices = c("0", "1 or 2")
-      )
+      ),
+      
+      textOutput("temp")
       
     ),
     

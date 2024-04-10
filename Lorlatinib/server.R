@@ -38,7 +38,19 @@ shinyServer(function(input, output, session){
         
       }
     )
-  
+  output$temp <- renderText({
+    pred_set <- data()
+    paste(
+      with(pred_set, f_progression(age, sex, race, ethnicity, metastasis, smoking, ecog)),
+      with(pred_set, f_cns(age, sex, race, ethnicity, metastasis, smoking, ecog)),
+      with(pred_set, f_hyperlipidemia(age, sex, race, ethnicity, metastasis, smoking, ecog)),
+      with(pred_set, f_weight(age, sex, race, ethnicity, metastasis, smoking, ecog)),
+      with(pred_set, f_edema(age, sex, race, ethnicity, metastasis, smoking, ecog)),
+      with(pred_set, f_peripheral(age, sex, race, ethnicity, metastasis, smoking, ecog)),
+      with(pred_set, f_g3g4(age, sex, race, ethnicity, metastasis, smoking, ecog)),
+      sep = "\n"
+    )
+    })
   # Make result table
   output$result <-
     DT::renderDataTable({
