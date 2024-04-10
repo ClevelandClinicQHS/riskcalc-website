@@ -14,30 +14,30 @@ library(shinythemes)
 # Progression (5-year)
 f_progression <- 
   function(
-      age,
-      sex,
-      race,
-      ethnicity,
-      metastasis,
-      smoking,
-      ecog
-    ) {
+    age,
+    sex,
+    race,
+    ethnicity,
+    metastasis,
+    smoking,
+    ecog
+  ) {
     
     # Linear predictor
-    lp <- 
-      0.0277 * age +
-      0.0465 * sex +
-      0.2153 * race +
-      0.2507 * ethnicity +
-      0.1034 * metastasis +
-      0.1112 * smoking +
-      0.4822 * ecog
+    lp <-
+      0.02769738 * age + 
+      0.046519389 * sex +
+      0.21534249 * race + 
+      0.25066223 * ethnicity + 
+      0.10339145 * metastasis + 
+      0.111154 * smoking + 
+      0.48221815 * ecog
     
     # Set the baseline hazard
-    bh <- .5
+    bh <- 0.06214834
     
-    # Risk of event
-    1 - exp(-bh * exp(lp))
+    # Survival probability
+    exp(-bh * exp(lp))
     
   }
 
@@ -55,17 +55,19 @@ f_cns <-
     
     # Linear predictor
     lp <-
-      -0.0093 * age +
-      0.0041 * max(age - 50, 0)**3 +
-      -0.4902 * sex + 
-      -0.1677 * race + 
-      0.1679 * ethnicity + 
-      -0.0147 * metastasis + 
-      0.4235 * smoking + 
-      -0.4168 * ecog
+      -0.0093463464 * age + 
+      3.7117113e-06 * max(age - 40, 0)**3 + 
+      -1.0100723e-05 * max(age - 61, 0)**3 + 
+      6.3890113e-06 * max(age - 73.2, 0)**3 + 
+      -0.49016314 * sex + 
+      -0.16773575 * race + 
+      0.16788119 * ethnicity + 
+      -0.014728896 * metastasis + 
+      0.4234505 * smoking + 
+      -0.41680141 * ecog
     
     # Set the baseline hazard
-    bh <- .5
+    bh <- 1.306852
     
     # Risk of event
     1 - exp(-bh * exp(lp))
@@ -86,17 +88,19 @@ f_hyperlipidemia <-
     
     # Linear predictor
     lp <-
-      -0.0256 * age +
-      0.016 * max(age - 50, 0)**3 +
-      -0.3185 * sex +
-      0.4374 * race +
-      0.7066 * ethnicity +
-      -0.2514 * metastasis +
-      -0.1218 * smoking +
-      -0.5318 * ecog
+      -0.025575253 * age + 
+      1.4529833e-05 * max(age - 40, 0)**3 + 
+      -3.9540201e-05 * max(age - 61, 0)**3 + 
+      2.5010368e-05 * max(age - 73.2, 0)**3 + 
+      -0.31854392 * sex + 
+      0.43738733 * race + 
+      0.70659194 * ethnicity + 
+      -0.251373 * metastasis + 
+      -0.12175779 * smoking + 
+      -0.53180406 * ecog
     
     # Set the baseline hazard
-    bh <- .5
+    bh <- 8.809191
     
     # Risk of event
     1 - exp(-bh * exp(lp))
@@ -117,17 +121,19 @@ f_weight <-
     
     # Linear predictor
     lp <-
-      -0.0102 * age +
-      -0.0265 * max(age - 50, 0)**3 +
-      -0.1161 * sex +
-      -0.0252 * race +
-      0.7539 * ethnicity + 
-      -0.0889 * metastasis +
-      0.3363 * smoking + 
-      0.2879 * ecog
+      -0.010155196 * age + 
+      -2.40357e-05 * max(age - 40, 0)**3 + 
+      6.5408625e-05 * max(age - 61, 0)**3 + 
+      -4.1372925e-05 * max(age - 73.2, 0)**3 + 
+      -0.11610836 * sex +
+      -0.0251625 * race + 
+      0.75390202 * ethnicity +
+      -0.08885298 * metastasis + 
+      0.33632951 * smoking + 
+      0.28792515 * ecog
     
     # Set the baseline hazard
-    bh <- .5
+    bh <- 1.005674
     
     # Risk of event
     1 - exp(-bh * exp(lp))
@@ -148,18 +154,19 @@ f_edema <-
     
     # Linear predictor
     lp <-
-      0.0455 * age + 
-      -0.0248 * max(age - 50, 0)**3 +
-      -0.6204 * sex + 
-      -0.4434 * race +
-      0.0402 * ethnicity +
-      -0.224 * metastasis +
-      0.2145 * smoking + 
-      0.1256 * ecog
-    
+      0.045518845 * age +
+      -2.2513831e-05 * max(age - 40, 0)**3 + 
+      6.1267148e-05 * max(age - 61, 0)**3 +
+      -3.8753316e-05 * max(age - 73.2, 0)**3 +
+      -0.62035233 * sex +
+      -0.44344806 * race + 
+      0.040175353 * ethnicity +
+      -0.22403732 * metastasis + 
+      0.21447126 * smoking + 
+      0.1256404 * ecog
     
     # Set the baseline hazard
-    bh <- .5
+    bh <- 0.1105714
     
     # Risk of event
     1 - exp(-bh * exp(lp))
@@ -180,17 +187,19 @@ f_peripheral <-
     
     # Linear predictor
     lp <-
-      0.0309 * age +
-      -0.0476 * max(age - 50, 0)**3 +
-      -0.3125 * sex + 
-      -0.0536 * race + 
-      0.4129 * ethnicity +
-      -1.0496 * metastasis +
-      -0.0837 * smoking + 
-      -0.1438 * ecog
+      0.030870855 * age + 
+      -4.3204299e-05 * max(age - 40, 0)**3 + 
+      0.00011757235 * max(age - 61, 0)**3 +
+      -7.4368056e-05 * max(age - 73.2, 0)**3 +
+      -0.31250556 * sex + 
+      -0.053560863 * race + 
+      0.4128901 * ethnicity +
+      -1.0495525 * metastasis +
+      -0.083692145 * smoking +
+      -0.14383037 * ecog
     
     # Set the baseline hazard
-    bh <- .5
+    bh <- 0.3087803
     
     # Risk of event
     1 - exp(-bh * exp(lp))
@@ -211,16 +220,16 @@ f_g3g4 <-
     
     # Linear predictor
     lp <-
-      0.0086 * age + 
-      0.2279 * sex +
-      0.2064 * race + 
-      0.2486 * ethnicity +
-      0.0152 * metastasis +
-      0.323 * smoking +
-      -0.1172 * ecog
+      0.0085633215 * age + 
+      0.22785173 * sex + 
+      0.20643154 * race + 
+      0.24860545 * ethnicity + 
+      0.015177977 * metastasis + 
+      0.32301552 * smoking +
+      -0.11723563 * ecog
     
     # Set the baseline hazard
-    bh <- .5
+    bh <- 2.122848
     
     # Risk of event
     1 - exp(-bh * exp(lp))

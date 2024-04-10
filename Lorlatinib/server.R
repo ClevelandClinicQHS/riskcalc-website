@@ -23,16 +23,16 @@ shinyServer(function(input, output, session){
       {
         
         # Validate the age input
-        validate(need(!is.na(input$age) & as.numeric(input$age) >= 0 & as.numeric(input$age) <= 100, "Please input a valid age."))
+        validate(need(!is.na(input$age) & as.numeric(input$age) >= 18 & as.numeric(input$age) <= 100, "Please input a valid age."))
         
         # Make the input data frame
         data.frame(
           age = as.numeric(input$age),
-          sex = input$sex == "Female",
-          race = input$race == "White",
-          ethnicity = input$ethnicity == "Not Hispanic or Latino",
-          metastasis = input$metastasis == "No",
-          smoking = input$smoking == "Never",
+          sex = input$sex == "Male",
+          race = input$race == "Asian",
+          ethnicity = input$ethnicity == "Other Ethnicity",
+          metastasis = input$metastasis == "Yes",
+          smoking = input$smoking == "Current/Former",
           ecog = input$ecog == "1 or 2"
         )
         
@@ -51,15 +51,15 @@ shinyServer(function(input, output, session){
         data.frame(
           Outcome = 
             c(
-              "Progression",
-              "CNS",
-              "Hyperlipidemia",
-              "Weight Gain",
-              "Edema",
-              "Peripheral Neuropathy",
-              "Any G3/G4 Event"
+              HTML("<p>Progression-free survival<sup>a</sup></p>"),
+              HTML("<p>Central Nervous System (CNS) Effects<sup>b+</sup></p>"),
+              HTML("<p>Hyperlipidemia<sup>c</sup></p>"),
+              HTML("<p>Weight Gain<sup>b</sup></p>"),
+              HTML("<p>Edema<sup>b</sup></p>"),
+              HTML("<p>Peripheral Neuropathy<sup>b</sup></p>"),
+              HTML("<p>Any G3/G4 Event<sup>b</sup></p>")
             ),
-          Risk = 
+          Estimate = 
             c(
               with(pred_set, f_progression(age, sex, race, ethnicity, metastasis, smoking, ecog)),
               with(pred_set, f_cns(age, sex, race, ethnicity, metastasis, smoking, ecog)),
@@ -71,27 +71,33 @@ shinyServer(function(input, output, session){
             )
         )
       
+      # Make conditional output
+      temp_results$Estimate <- with(temp_results, ifelse(Estimate > .999, ">99.9%", ifelse(Estimate < 0.001, "<0.1%", paste0(sprintf("%.1f", 100*Estimate), "%"))))
+      
       # Format the table
-      DT::formatPercentage(
-        DT::datatable(
-          temp_results,
-          options = 
-            list(
-              pageLength = 10,
-              lengthMenu = 0,
-              searching = 0,
-              processing = 0,
-              info = 0,
-              paging = 0,
-              initComplete = DT::JS(
-                "function(settings, json) {
+      DT::datatable(
+        temp_results,
+        caption =
+          tags$caption(
+            style="caption-side: bottom; text-align: left; margin: 8px 0; font-size: 14px",
+            HTML("<p>5-year survival<sup>a</sup>,&nbsp&nbsp5-year risk<sup>b</sup>,&nbsp&nbsp1-year risk<sup>c</sup>;&nbsp&nbsp CNS effects include speech, psychotic, cognitive, and mood<sup>+</sup></p>")
+          ),
+        options = 
+          list(
+            pageLength = 10,
+            lengthMenu = 0,
+            searching = 0,
+            processing = 0,
+            info = 0,
+            paging = 0,
+            initComplete = DT::JS(
+              "function(settings, json) {
                     $(this.api().table().header()).css({'background-color': '#606060', 'color': '#fff'});
-            }")
-            ),
-          rownames = FALSE
-        ), 
-        columns = "Risk", 
-        digits = 2
+            }"),
+            columnDefs = list(list(className = 'dt-center', targets = 1))
+          ),
+        rownames = FALSE,
+        escape= FALSE
       )
     }
     )

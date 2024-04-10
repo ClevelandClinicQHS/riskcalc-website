@@ -28,7 +28,7 @@ fluidPage(
       textInput(
         inputId = "age",
         label = "Age (years)",
-        placeholder = "0 - 100"
+        placeholder = "18 - 100"
       ),
       
       # Sex
