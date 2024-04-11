@@ -38,9 +38,7 @@ shinyServer(function(input, output, session){
         
       }
     )
-  output$temp <- renderTable({
-    data()
-    })
+
   # Make result table
   output$result <-
     DT::renderDataTable({
