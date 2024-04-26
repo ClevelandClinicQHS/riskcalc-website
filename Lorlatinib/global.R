@@ -229,7 +229,7 @@ f_g3g4 <-
       -0.11723563 * ecog
     
     # Set the baseline hazard
-    bh <- 2.122848
+    bh <- 0.9856296
     
     # Risk of event
     1 - exp(-bh * exp(lp))
