@@ -5,6 +5,10 @@ library(shinyjs)
 library(shinyWidgets)
 
 fluidPage(
+  
+  # Google Analytics
+  tags$head(includeHTML("../google-analytics.html")),
+  
   shinyjs::useShinyjs(), 
   theme = shinytheme("flatly"),
   

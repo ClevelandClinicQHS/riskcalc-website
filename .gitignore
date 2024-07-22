@@ -1,5 +1,6 @@
 *.*
 !index.html
+!google-analytics.html
 !*.R
 !README.md
 !.git*
