@@ -56,11 +56,13 @@ shinyServer(function(input, output, session){
       
       # Output as image
       temp_image <- tempfile(fileext = ".png")
-      ggsave(temp_image, temp_plot, device = "png", width = 800, height = 600, units = "px")
+      png(temp_image, width = 800, height = 600, units = "px")
+      plot(temp_plot)
+      dev.off()
       
       # Crop the image
       temp_image_edit <- image_read(temp_image)
-      temp_image_edit <- image_crop(magick::image_crop(temp_image_edit, "715x0+50+150"), "0x0+0-165")
+      temp_image_edit <- image_crop(magick::image_crop(temp_image_edit, "760x0+25+150"), "0x0+0-165")
       temp_image2 <- tempfile(fileext = ".png")
       image_write(temp_image_edit, temp_image2, format = "png")
       
