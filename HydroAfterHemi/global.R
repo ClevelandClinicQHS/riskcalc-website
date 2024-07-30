@@ -13,3 +13,6 @@ load(file = "prod_model.RData")
 
 # Set the baseline hazard
 base_haz1 <- prod_model$BaselineHazard
+
+# Set the model
+model <- prod_model$Model

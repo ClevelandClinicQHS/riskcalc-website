@@ -93,7 +93,7 @@ shinyServer(function(input, output, session){
     DT::renderDataTable({
       
       # Compute the risk
-      risk <- 1 - exp(-base_haz1 * exp(predict(prod_model$Model, newdata = data())))
+      risk <- 1 - exp(-base_haz1 * exp(predict(model, newdata = data())))
       
       data.frame(
         Result = "Risk of hydrocephalus within 1-year of surgery",
