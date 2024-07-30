@@ -12,27 +12,28 @@ shinyServer(function(input, output, session){
       # Compute the number of men for each color
       death_ps <- round(100 * input$rod_prostate)
       death_other <- round(100 * input$rod_other)
+      death_trt <- round(100 * input$rod_trt)
       no_death <- 100 - death_ps - death_other
       
-      list(death_ps = death_ps, death_other = death_other, no_death = no_death)
+      list(death_ps = death_ps, death_other = death_other, no_death = no_death, death_trt = death_trt)
       
     })
   
   # Make the text output3
-  output$label_no_death <- renderUI({HTML(paste0("<p><strong><span style = 'font-size:24px; color: #7f7f7f'>", risk_set()$no_death,"%<br></span><span style='font-size:14px; color: #7f7f7f'>men would have lived</span></strong></p>"))})
-  output$label_death_ps <- renderUI({HTML(paste0("<p><strong><span style = 'font-size:24px; color: #c00000'>", risk_set()$death_ps,"%<br></span><span style='font-size:14px; color: #c00000'>men would have died of untreated prostate cancer</span></strong></p>"))})
-  output$label_death_other <- renderUI({HTML(paste0("<p><strong><span style = 'font-size:24px; color: #215f9a'>", risk_set()$death_other,"%<br></span><span style='font-size:14px; color: #215f9a'>men would have died of other causes</span></strong></p>"))})
+  output$label_no_death <- renderUI({HTML(paste0("<p><strong><span style = 'font-size:24px; color: #7f7f7f'>", risk_set()$no_death,"%<br></span></strong><span style='font-size:14px; color: #7f7f7f'>men would have lived</span></p>"))})
+  output$label_death_ps <- renderUI({HTML(paste0("<p><strong><span style = 'font-size:24px; color: #c00000'>", risk_set()$death_ps,"%<br></span></strong><span style='font-size:14px; color: #7f7f7f'>men would have died of untreated prostate cancer</span><br><strong><span style='font-size:14px; color: #c00000'>", risk_set()$death_trt, "% men would have lived with getting the treatments</span></strong></p>"))})
+  output$label_death_other <- renderUI({HTML(paste0("<p><strong><span style = 'font-size:24px; color: #215f9a'>", risk_set()$death_other,"%<br></span></strong><span style='font-size:14px; color: #7f7f7f'>men would have died of other causes</span></p>"))})
 
   # Make the people plot
   output$people <-
-    renderImage({
+    renderPlot({
       
       # Data set
       temp_dat <-
         data.frame(
           row = c(rep(1, 25), rep(2, 25), rep(3, 25), rep(4, 25)),
           col = rep(1:25, 4),
-          image = c(rep("man_alive.png", risk_set()$no_death), rep("man_dead_ps.png", risk_set()$death_ps), rep("man_dead_other.png", risk_set()$death_other))
+          image = c(rep("www/man_alive.png", risk_set()$no_death), rep("www/man_dead_ps.png", risk_set()$death_ps - risk_set()$death_trt), rep("www/man_dead_ps_trt.png", risk_set()$death_trt), rep("www/man_dead_other.png", risk_set()$death_other))
         )
       
       # Make the plot
@@ -44,30 +45,19 @@ shinyServer(function(input, output, session){
             y = 5 - row,
             image = image
           ),
-          size = .05
+          size = .03
         ) +
         theme(
           panel.background = element_blank(),
           axis.title = element_blank(),
           axis.text = element_blank(),
-          axis.ticks = element_blank()
+          axis.ticks = element_blank(),
+          plot.margin = unit(c(-10, 0, -3, 0), "cm")
         ) +
-        coord_cartesian(ylim = c(-1.5, 6.5)) 
+        coord_cartesian(ylim = c(-3, 8)) 
       
-      # Output as image
-      temp_image <- tempfile(fileext = ".png")
-      png(temp_image, width = 800, height = 600, units = "px")
-      plot(temp_plot)
-      dev.off()
+      temp_plot
       
-      # Crop the image
-      temp_image_edit <- image_read(temp_image)
-      temp_image_edit <- image_crop(magick::image_crop(temp_image_edit, "760x0+25+150"), "0x0+0-165")
-      temp_image2 <- tempfile(fileext = ".png")
-      image_write(temp_image_edit, temp_image2, format = "png")
-      
-     list(src = temp_image2)
-      
-    }, deleteFile = TRUE)
+    }, height = 600, width = 800)
   
 })

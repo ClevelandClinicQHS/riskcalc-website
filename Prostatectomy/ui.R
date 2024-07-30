@@ -16,7 +16,6 @@ fluidPage(
   theme = shinytheme("flatly"),
   tags$head(tags$link(rel="shortcut icon", href="../assets/icons/favicon.ico", type="image/x-icon")),
   tags$head(tags$link(rel="apple-touch-icon", href="../assets/icons/apple-touch-icon.png", type="image/x-icon")),
-  titlePanel("LIFE EXPECTANCY PREDICTIONS"),
   
   # Set the layout
   sidebarLayout(
@@ -29,12 +28,17 @@ fluidPage(
       numericInput(
         inputId = "rod_prostate",
         label = "Risk of death from prostate cancer",
-        value = .10
+        value = .05
       ),
       numericInput(
         inputId = "rod_other",
-        label = "Risk of death from prostate cancer",
-        value = .50
+        label = "Risk of death from other causes",
+        value = .69
+      ),
+      numericInput(
+        inputId = "rod_trt",
+        label = "Would have lived if treated",
+        value = .03
       )
       
     ),
@@ -43,6 +47,9 @@ fluidPage(
     mainPanel(
       
       tags$head(tags$style(type = "text/css", "tfoot {display:none;}")),
+      
+      # Header
+      h1("Life Expectancy Predictions"),
       
       # Descriptive text
       p("Imagine there were 100 men like you, the same age and overall health, and the same prostate cancer in terms of stage, grade, and PSA. This is what we would expect to happen:"),
@@ -67,7 +74,7 @@ fluidPage(
       ),
       
       # Plot of people
-      imageOutput(outputId = "people", inline = TRUE),
+      plotOutput(outputId = "people"),
       br(),
       
       # Descriptive text
