@@ -7,7 +7,7 @@ shinyServer(function(input, output, session){
   
   # Clear results when inputs change
   observeEvent(
-    {list(input$age, input$sex, input$surgery_date, input$onset_age, input$brain_volume_pre, input$brain_volume_post)},
+    {list(input$age, input$sex, input$surgery_date, input$onset_age, input$brain_volume_pre, input$brain_volume_post, input$technique, input$previous_surgery, input$sagittal, input$complications, input$blood_loss, input$infection, input$aseptic_meningitis, input$evd)},
     {
       shinyjs::hide("result_panel")
     }
@@ -74,7 +74,15 @@ shinyServer(function(input, output, session){
           Age = age_at_surgery(),
           PercentOfLifeWithEpilepsy = life_with_epilepsy(),
           PreOpBrainVolume = input$brain_volume_pre,
-          PercentOfBrainResected = brain_resected()
+          PercentOfBrainResected = brain_resected(),
+          Technique = input$technique,
+          PreviousSurgery = ifelse(input$previous_surgery, "Yes", "No"),
+          SagittalSinusDisruption = ifelse(input$sagittal, "Yes", "No"),
+          SurgicalComplications = ifelse(input$complications, "Yes", "No"),
+          BloodLoss = ifelse(input$blood_loss, "Yes", "No"),
+          Infection = ifelse(input$infection, "Yes", "No"),
+          AsepticMeningitis = ifelse(input$aseptic_meningitis, "Yes", "No"),
+          EVD = ifelse(input$evd, "Yes", "No")
         )
         
       }
@@ -85,7 +93,7 @@ shinyServer(function(input, output, session){
     DT::renderDataTable({
       
       # Compute the risk
-      risk <- 1 - exp(-base_haz1 * exp(predict(prod_model, newdata = data())))
+      risk <- 1 - exp(-base_haz1 * exp(predict(prod_model$Model, newdata = data())))
       
       data.frame(
         Result = "Risk of hydrocephalus within 1-year of surgery",

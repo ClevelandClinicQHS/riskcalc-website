@@ -12,4 +12,4 @@ library(survival)
 load(file = "prod_model.RData")
 
 # Set the baseline hazard
-base_haz1 <- 0.04598885 
+base_haz1 <- prod_model$BaselineHazard
