@@ -10,18 +10,15 @@ library(ggplot2)
 library(ggimage)
 library(shinyWidgets)
 library(shinycssloaders)
-library(readxl)
 library(dplyr)
 library(stringr)
-library(tibble)
 
 ## Import lookup tables
 
 # Age
 age_lookup <-
-  read_excel(
-    path = "MLE Model Coefficients + Lookup Values.xlsx",
-    sheet = "Age"
+  read.csv(
+    file = "age_lookup.csv"
   ) %>%
   mutate(
     Age = as.numeric(str_remove(str_remove(Name, pattern = "^Age_"), pattern = "_15$"))
@@ -29,9 +26,8 @@ age_lookup <-
 
 # Comorbidity
 comorbidity_lookup <-
-  read_excel(
-    path = "MLE Model Coefficients + Lookup Values.xlsx",
-    sheet = "Comorbidity"
+  read.csv(
+    file = "comorbidity_lookup.csv"
   )
 
 # Utility function to get the OR value
@@ -39,9 +35,8 @@ get_OR <- function(string) comorbidity_lookup$Value[comorbidity_lookup$Alias == 
 
 # Untreated PCA
 untreated_pca_lookup <- 
-  read_excel(
-    path = "MLE Model Coefficients + Lookup Values.xlsx",
-    sheet = "Untreated PCa"
+  read.csv(
+    file = "untreated_pca_lookup.csv"
   ) %>%
   
   # Parse the numeric value
@@ -52,7 +47,7 @@ untreated_pca_lookup <-
 untreated_pca_lookup <-
   
   # Make the full lookup range
-  tibble(
+  data.frame(
     PreOpBCR = seq(0, 100)
   ) %>%
   
@@ -80,9 +75,8 @@ untreated_pca_lookup <-
 
 # Treated PCA
 treated_pca_lookup <- 
-  read_excel(
-    path = "MLE Model Coefficients + Lookup Values.xlsx",
-    sheet = "Treated PCa"
+  read.csv(
+    file = "treated_pca_lookup.csv"
   ) %>%
   
   # Parse the numeric value
@@ -93,7 +87,7 @@ treated_pca_lookup <-
 treated_pca_lookup <-
   
   # Make the full lookup range
-  tibble(
+  data.frame(
     PreOpBCR = seq(0, 100)
   ) %>%
   

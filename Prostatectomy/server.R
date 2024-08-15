@@ -897,8 +897,12 @@ shinyServer(function(input, output, session){
       death_trt <- round(100 * increated_survival())
       no_death <- round(100 * current_survival())
       
-      if((no_death + death_ps + death_other) < 100)
+      if((no_death + death_ps + death_other) < 100) {
         no_death <- no_death + (100 - (no_death + death_ps + death_other))
+      } else if((no_death + death_ps + death_other) > 100) {
+        no_death <- no_death - ((no_death + death_ps + death_other) - 100)
+      }
+        
       
       list(death_ps = death_ps, death_other = death_other, no_death = no_death, death_trt = death_trt)
       
