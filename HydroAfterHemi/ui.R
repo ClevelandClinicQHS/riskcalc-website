@@ -93,9 +93,7 @@ fluidPage(
       
       # Complications
       checkboxInput(inputId = "previous_surgery", label = "Previous Surgery?"),
-      checkboxInput(inputId = "sagittal", label = "Sagittal Sinus Disruption?"),
       checkboxInput(inputId = "complications", label = "Surgical Complications?"),
-      checkboxInput(inputId = "blood_loss", label = "Blood Loss?"),
       checkboxInput(inputId = "infection", label = "Infection?"),
       checkboxInput(inputId = "aseptic_meningitis", label = "Aseptic Meningitis?"),
       checkboxInput(inputId = "evd", label = "EVD Usage?")
