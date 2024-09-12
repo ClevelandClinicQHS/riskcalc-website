@@ -3,7 +3,7 @@
 # Project: Risk of dying from prostate cancer
 # Description: Contains the app server
 
-shinyServer(function(input, output, session){
+shinyServer(function(input, output, session) {
   
   ## Site navigation with buttons
   
@@ -832,8 +832,8 @@ shinyServer(function(input, output, session){
       
     })
   
-  # Comorbidity mortality (adjusted)
-  comorbidity_mortality_adjusted <- 
+  # Comorbidity mortality untreated (adjusted)
+  comorbidity_mortality_adjusted_untreated <- 
     reactive({
       
       # Compute the lambdas
@@ -858,6 +858,19 @@ shinyServer(function(input, output, session){
       
     })
   
+  # Comorbidity mortality treated (adjusted)
+  comorbidity_mortality_adjusted_treated <- 
+    reactive({
+      
+      # Compute the lambdas
+      lambda_oc <- -log(1 - other_cause()) / 15
+      lambda_trt <- -log(1 - treated_pca_mortality_unadjusted()) / 15
+      
+      # Risk
+      lambda_oc / (lambda_trt + lambda_oc) * (1 - exp(-(lambda_trt + lambda_oc) * 15))
+      
+    })
+  
   # Treated PS mortality (adjusted)
   treated_pca_mortality_adjusted <- 
     reactive({
@@ -871,31 +884,39 @@ shinyServer(function(input, output, session){
       
     })
   
-  # Current survival
-  current_survival <- 
+  # Current survival untreated
+  current_survival_untreated <- 
     reactive({
       
-      1 - (comorbidity_mortality_adjusted() + untreated_pca_mortality_adjusted())
+      1 - (comorbidity_mortality_adjusted_untreated() + untreated_pca_mortality_adjusted())
       
     })
   
-  # Increated survival due to PS treatment
-  increated_survival <-
+  # Current survival treated
+  current_survival_treated <- 
     reactive({
       
-      untreated_pca_mortality_adjusted() - treated_pca_mortality_adjusted()
+      1 - (comorbidity_mortality_adjusted_treated() + treated_pca_mortality_adjusted())
+      
+    })
+  
+  # Increased survival due to PS treatment
+  increased_survival <-
+    reactive({
+      
+      current_survival_treated() - current_survival_untreated()
       
     })
   
   # Get the current risk set
   risk_set <-
     reactive({
-      
+
       # Compute the number of men for each color
       death_ps <- round(100 * untreated_pca_mortality_adjusted())
-      death_other <- round(100 * comorbidity_mortality_adjusted())
-      death_trt <- round(100 * increated_survival())
-      no_death <- round(100 * current_survival())
+      death_other <- round(100 * comorbidity_mortality_adjusted_untreated())
+      death_trt <- round(100 * increased_survival())
+      no_death <- round(100 * current_survival_untreated())
       
       if((no_death + death_ps + death_other) < 100) {
         no_death <- no_death + (100 - (no_death + death_ps + death_other))
@@ -916,7 +937,22 @@ shinyServer(function(input, output, session){
   # Make the people plot
   output$people <-
     renderPlot({
-      
+      print(
+        tibble(
+          `Pre-op BCR` = preop_bcr(),
+          `Comorbidity Mortality (Raw)` = other_cause(),
+          `Untreated prostate cancer mortality (Raw)` = untreated_pca_mortality_unadjusted(),
+          `Treated prostate cancer mortality (Raw)` = treated_pca_mortality_unadjusted(),
+          `Comorbidity mortality with untreated prostate cancer (adj)` = comorbidity_mortality_adjusted_untreated(),
+          `Untreated prostate cancer mortality (adj)` = untreated_pca_mortality_adjusted(),
+          `Comorbidity mortality with treated prostate cancer (adj)` = comorbidity_mortality_adjusted_treated(),
+          `Treated prostate cancer mortality (adj)` = treated_pca_mortality_adjusted(),
+          `Current survival without treatment` = current_survival_untreated(),
+          `Current survival with treatment` = current_survival_treated(),
+          `Increased survival due to prostate cancer treatment` = increased_survival()
+        ) |>
+          tidyr::pivot_longer(cols = everything(), names_to = "Calculation", values_to = "Value")
+      )
       # Data set
       temp_dat <-
         data.frame(

@@ -15,6 +15,9 @@ fluidPage(
   tags$head(tags$link(rel="apple-touch-icon", href="../assets/icons/apple-touch-icon.png", type="image/x-icon")),
   titlePanel("Predict the probability of hydrocephalus after hemispherectomy in pediatric epilepsy"),
 
+  # Google Analytics
+  tags$head(includeHTML("../google-analytics.html")),
+  
   # Set the layout
   sidebarLayout(
     
@@ -57,31 +60,6 @@ fluidPage(
         value = NA_real_,
         min = 0,
         max = 21
-      ),
-      
-      ## Brain volumes
-      h4("Brain volume"),
-      fluidRow(
-        
-        # Pre-op
-        column(
-          width = 6,
-          numericInput(
-            inputId = "brain_volume_pre",
-            label = "Pre-op",
-            value = NA_real_
-          )
-        ),
-        
-        # Post-op
-        column(
-          width = 6,
-          numericInput(
-            inputId = "brain_volume_post",
-            label = "Post-op",
-            value = NA_real_
-          )
-        )
       ),
       
       # Surgical technique
