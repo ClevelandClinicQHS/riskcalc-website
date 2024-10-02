@@ -164,18 +164,6 @@ ui <- fluidPage(
                                           
                                           div(style="vertical-align:top;display:inline-block;width:130px;
                                           text-align:left;margin-right:30px;",
-                                              numericInput("donorage_simple",
-                                                           HTML("Donor age"),
-                                                           value=default_donor_age,
-                                                           min=min_donor_age,
-                                                           max=max_donor_age,
-                                                           width="80%"),
-                                              bsTooltip(id="donorage_simple",
-                                                        title=paste0("Age of transplant donor in years at transplant time"),
-                                                        placement = "bottom", trigger = "hover")),
-                                          
-                                          div(style="vertical-align:top;display:inline-block;width:130px;
-                                          text-align:left;margin-right:30px;",
                                               numericInput("recipientage_simple",
                                                            HTML("Recipient age"),
                                                            value=default_recipient_age,
@@ -196,6 +184,18 @@ ui <- fluidPage(
                                                            width="80%"),
                                               bsTooltip(id="recipientbmi_simple",
                                                         title=paste0("BMI of recipient at transplant time"),
+                                                        placement = "bottom", trigger = "hover")),
+                                          
+                                          div(style="vertical-align:top;display:inline-block;width:130px;
+                                          text-align:left;margin-right:30px;",
+                                              numericInput("donorage_simple",
+                                                           HTML("Donor age"),
+                                                           value=default_donor_age,
+                                                           min=min_donor_age,
+                                                           max=max_donor_age,
+                                                           width="80%"),
+                                              bsTooltip(id="donorage_simple",
+                                                        title=paste0("Age of transplant donor in years at transplant time"),
                                                         placement = "bottom", trigger = "hover")),
                                           
                                           div(style="vertical-align:top;display:inline-block;width:130px;
@@ -248,15 +248,6 @@ ui <- fluidPage(
                       tags$br()
                )
              ), 
-             
-             fluidRow(
-               column(12, align="center", offset=1, 
-                      shinydashboard::box(width=10, title="Overview of your last calculations",
-                                          withSpinner(DT::dataTableOutput("predict_table", width="100%")),
-                                          # tableOutput("predict_table"),
-                                          br()
-                      ))
-             ),
              disclaimer_str
     ),
     
@@ -302,9 +293,10 @@ ui <- fluidPage(
                                           HTML("<p align='justify'>
                                                                 <b>Reference</b>
                                                                 <br>
-                                                                Miller G, Ankerst DP, Kattan MW, Hüser N, Stocker F, Vogelaar S, van Bruchem M, Assfalg V. <i>Pancreas Transplantation 
-                                                                Outcome Predictions-PTOP: A Risk Prediction Tool for Pancreas and Pancreas-Kidney Transplants Based on a European Cohort.</i> 
-                                                                Transplant Direct. 2024 May 15;10(6):e1632. doi: 10.1097/TXD.0000000000001632. PMID: 38757051; PMCID: PMC11098189.
+                                                                G. Miller, et al. 
+                                                                <i>Pancreas Transplantation Outcome Predictions (PTOP): 
+                                                                A Risk Prediction Tool for Pancreas Transplants from Deceased Donors 
+                                                                Based on a Large European Cohort</i>, in submission.
                                                             </p><br>"), 
                                           HTML("<p align='justify'>
                                                                 <b>Affiliations</b>
@@ -423,65 +415,6 @@ server <- function(input, output) {
     result_dt_simple
     
   })
-  
-  
-  #################################################################################
-  # Create output table
-  latest_predictions <- reactiveValues(df = data.frame(Kidney=character(), Other_organs=character(), previous_ki_transplants=character(), 
-                                                       Rescue_allocation=character(), Recipient.age=numeric(), Donor.age=numeric(), 
-                                                       waiting_time_years=numeric(), Recipient.BMI=numeric(), Kidney_recipient_age=numeric(), 
-                                                       Recipient_bmi_kidney_previous=numeric(), prediction_horizon=numeric(),
-                                                       surv=numeric(), 
-                                                       surv_lower=numeric(), 
-                                                       surv_upper=numeric(), 
-                                                       pa=numeric(), 
-                                                       pa_lower=numeric(), 
-                                                       pa_upper=numeric(), 
-                                                       ki=numeric(), 
-                                                       ki_lower=numeric(), 
-                                                       ki_upper=numeric()))
-  
-  
-  newEntry <- observeEvent(input$calculate_simple,{
-    latest_predictions$df <- rbind(predict_dt_simple(), latest_predictions$df)
-    if(nrow(latest_predictions$df)>10) latest_predictions$df <- latest_predictions$df[1:10,]
-  })
-  
-  
-  output$predict_table <- DT::renderDataTable(
-    DT::datatable({
-      latest_predictions$df %>%
-        mutate(prediction_horizon = round(prediction_horizon/365.25),
-               surv = round(100*surv),
-               pa = round(100*pa),
-               ki = round(100*ki)) %>%
-        select(`Time [yrs]` = `prediction_horizon`,
-               `Kidney` = Kidney,
-               `Other organs` = `Other_organs`,
-               `Previous kidney` = `previous_ki_transplants`,
-               `Rescue` = `Rescue_allocation`,
-               `Recipient age` = `Recipient.age`,
-               `Donor age` = `Donor.age`,
-               `Waiting time [yrs]` = `waiting_time_years`,
-               `Recipient BMI` = `Recipient.BMI`,
-               `Patient survival [%]`=`surv`,
-               `Pancreas survival [%]`=`pa`,
-               `Kidney survival [%]`=`ki`)
-    },
-    # extensions = "Buttons",
-    options = list(
-      paging = F,
-      searching = F,
-      fixedColumns = TRUE,
-      autoWidth = TRUE,
-      ordering = TRUE,
-      dom="tB"
-    ),
-
-    # selection=list(mode="single", selected=1, target="row"),
-    rownames=FALSE,
-    class = "display")
-  )
   
   
   
