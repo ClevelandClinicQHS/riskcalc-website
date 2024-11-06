@@ -1,3 +1,4 @@
+# old version
 #CT Age, this file is run one time when app is launched, load global objects
 
 ## source the script
