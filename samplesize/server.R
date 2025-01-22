@@ -352,7 +352,7 @@ function(input, output, session) {
             if (input$radiobar3=="ccproportion") {
                 res = cc(p0=input$unmatched_p0, p1=input$unmatched_p1, r=input$r_unmatched, alpha=input$alpha_unmatched, power=input$beta_unmatched, two.side=twoside, design = "unmatched")
                 output_data = data.frame(
-                    V1 = c(ifelse(twoside, "2-side significance level", "1-side significance level"), "Power (1-beta)", "Ratio of sample size, control/case", "Probability of event in the case group", "Probability of event in the control group", "Result", "", "Sample Size - Case", "Sample Size - Control", "Total sample size"),
+                    V1 = c(ifelse(twoside, "2-side significance level", "1-side significance level"), "Power (1-beta)", "Ratio of sample size, control/case", "Probability of event in the control group", "Probability of event in the case group", "Result", "", "Sample Size - Case", "Sample Size - Control", "Total sample size"),
                     V2 = c(rep("", 6), "Fleiss", res$fless.case, res$fless.control, res$fless.case+ res$fless.control),
                     V3 = c(input$alpha_unmatched, input$beta_unmatched, input$r_unmatched, input$unmatched_p0, input$unmatched_p1, "", "Fleiss with correction for continuity", res$flesscc.case, res$flesscc.control, res$flesscc.case+res$flesscc.control)
                 ) %>% 
@@ -368,7 +368,7 @@ function(input, output, session) {
                 output_data = data.frame(
                     V1 = c(ifelse(twoside, "2-side significance level", "1-side significance level"), "Power (1-beta)", "Ratio of sample size, control/case", "OR", "Result","", "Sample Size - Case", "Sample Size - Control", "Total sample size"),
                     V2 = c(rep("", 5), "Fleiss", res$fless.case, res$fless.control, res$fless.case+ res$fless.control),
-                    V3 = c(1-input$alpha_unmatched, input$beta_unmatched, input$r_unmatched, input$unmatched_or, "", "Fleiss with correction for continuity", res$flesscc.case, res$flesscc.control, res$flesscc.case+res$flesscc.control)
+                    V3 = c(input$alpha_unmatched, input$beta_unmatched, input$r_unmatched, input$unmatched_or, "", "Fleiss with correction for continuity", res$flesscc.case, res$flesscc.control, res$flesscc.case+res$flesscc.control)
                 ) %>% 
                     knitr::kable("html", escape = F, align=c("l", "c", "c")) %>% 
                     kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
@@ -381,17 +381,31 @@ function(input, output, session) {
         }
         if (design() == "CaseControl" & input$ccDesign=="matched") {
             twoside = ifelse(is.null(input$checkbox2), F, T)
-            res = cc(p0=input$matched_p0, p1=input$matched_p1, r=input$r_matched, alpha=input$alpha_matched, power=input$beta_matched, two.side=twoside, design = "matched") 
-            output_data = data.frame(
-                V1 = c(ifelse(twoside, "2-side significance level", "1-side significance level"), "Power (1-beta)", "Ratio of sample size, control/case", "Probability of event in the case group", "Probability of event in the control group", "Result", "Sample Size - Case", "Sample Size - Control", "Total sample size"),
-                V2 = c(input$alpha_matched, input$beta_matched, input$r_matched, input$matched_p0, input$matched_p1, "", res$n.case, res$n.control, res$n.case+res$n.control)
+            if (input$radiobar7=="ccmproportion") {
+              res = cc(p0=input$matched_p0, p1=input$matched_p1, r=input$r_matched, rho = input$matched_rho, alpha=input$alpha_matched, power=input$beta_matched, two.side=twoside, design = "matched") 
+              output_data = data.frame(
+                V1 = c(ifelse(twoside, "2-side significance level", "1-side significance level"), "Power (1-beta)", "Ratio of sample size, control/case", "rho", "Probability of event in the control group", "Probability of event in the case group", "Result", "Sample Size - Case", "Sample Size - Control", "Total sample size"),
+                V2 = c(input$alpha_matched, input$beta_matched, input$r_matched, input$matched_rho, input$matched_p0, input$matched_p1, "", res$n.case, res$n.control, res$n.case+res$n.control)
             ) %>% 
+                knitr::kable("html", escape = F, align=c("l", "c", "c")) %>% 
+                kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
+                row_spec(7, bold = T, background = "#EEF5DB") %>% 
+                add_header_above(c("Sample size"=2), background = "#666666", color = "#ffffff")
+            output_data = gsub("</th></tr>.*</thead>","</thead>", output_data)
+            v$res = output_data
+            } else {
+              res = cc(OR =input$matched_or, r=input$r_matched, p0 = input$matched_p2, rho = input$matched_rho, alpha=input$alpha_matched, power=input$beta_matched, two.side=twoside, design = "matched") 
+              output_data = data.frame(
+                V1 = c(ifelse(twoside, "2-side significance level", "1-side significance level"), "Power (1-beta)", "Ratio of sample size, control/case", "rho", "OR", "Result", "Sample Size - Case", "Sample Size - Control", "Total sample size"),
+                V2 = c(input$alpha_matched, input$beta_matched, input$r_matched, input$matched_rho, input$matched_or, "", res$n.case, res$n.control, res$n.case+res$n.control)
+              ) %>% 
                 knitr::kable("html", escape = F, align=c("l", "c", "c")) %>% 
                 kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
                 row_spec(6, bold = T, background = "#EEF5DB") %>% 
                 add_header_above(c("Sample size"=2), background = "#666666", color = "#ffffff")
-            output_data = gsub("</th></tr>.*</thead>","</thead>", output_data)
-            v$res = output_data
+              output_data = gsub("</th></tr>.*</thead>","</thead>", output_data)
+              v$res = output_data
+            }
         }
         if (design() == "Cohort" & input$cohortDesign=="independent" & input$independentDesign=="independentProportional") {
             twoside = ifelse(is.null(input$checkbox3), F, T)
