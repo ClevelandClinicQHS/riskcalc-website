@@ -24,10 +24,10 @@ fluidPage(
         sidebarPanel(id = "sidebar",
                      selectInput('surgdomrec', 'Surgical dominance', choices = c('Non-Dominant', "Dominant", "Undetermined")),
                      selectInput('orsite', 'Surgical extent', choices = c('Temporal', "Multilobar")),
-                     numericInput("stdel1ss", "Preoperative stories delayed memory score", 0, min = 0, max = 19),
-                     numericInput("fsiqcomb1", "Preoperative FSIQ", 40, min = 40, max = 160),
-                     numericInput("wpld1ss", "Preoperative Word Pair Long Delay Score", 0, min = 0, max = 19),
-                     numericInput("facde1ss", "Preoperative Faces Delayed Score", 0, min = 0, max = 19),
+                     numericInput("stdel1ss", "Preoperative Stories Delayed scaled score", 0, min = 0, max = 19),
+                     numericInput("fsiqcomb1", "Preoperative FSIQ standard score", 40, min = 40, max = 160),
+                     numericInput("wpld1ss", "Preoperative Word Pairs Long Delayed scaled score", 0, min = 0, max = 19),
+                     numericInput("facde1ss", "Preoperative Faces Delayed scaled score", 0, min = 0, max = 19),
 
                      
                      # tip message
@@ -47,7 +47,8 @@ fluidPage(
             ),
             DT::dataTableOutput('result'),
             br(),
-            # wellPanel(h3('Reference'),p("Doherty, C., Nowacki, A., McAndrews, M.P., Bandari, P., McDonald, C.R., Reyes, A., Kim, M., Hamberger, M., Najm, I.M., Bingaman, W., Jehi, L., & Busch, R.M. (2021). ",a('Predicting mood decline following temporal lobe epilepsy surgery in adults.', href='https://onlinelibrary.wiley.com/doi/abs/10.1111/epi.16800?af=R')," Epilepsia, 62(2): 450-459. PMID: 33464568.")),
+            wellPanel(h3('Click Below for Calculator and Author Contact Information'),
+                      p("Kaur, N., Nowacki, A.S., Lachhwani, D., Berl, M.M., Hamberger, M.J., Klaas, P., Bingaman, W. & Busch, R.M. (2023). ",a('Characterization and prediction of short-term outcomes in memory after temporal lobe resection in children with epilepsy.', href='https://pubmed.ncbi.nlm.nih.gov/36927884/')," Neurology, 100(18):e1878-1886.")),
             wellPanel(h3('Disclaimer'),
                       p("No Medical Advice. ALTHOUGH SOME CONTENT MAY BE PROVIDED BY INDIVIDUALS IN THE MEDICAL PROFESSION, YOU ACKNOWLEDGE THAT PROVISION OF SUCH CONTENT DOES NOT CREATE A MEDICAL PROFESSIONAL-PATIENT RELATIONSHIP AND DOES NOT CONSTITUTE AN OPINION, MEDICAL ADVICE, PROFESSIONAL DIAGNOSIS, SERVICE OR TREATMENT OF ANY CONDITION. Access to general information is provided for educational purposes only, through this site and links to other sites. Content is not recommended or endorsed by any doctor or healthcare provider. The information and Content provided are not substitutes for medical or professional care, and you should not use the information in place of a visit, call, consultation or the advice of your physician or other healthcare provider. You are liable or responsible for any advice, course of treatment, diagnosis or any other information, services or product obtained through this site.")),
             p(a("Homepage",
@@ -60,6 +61,11 @@ fluidPage(
                   #href = "mailto:rcalcsupport@ccf.org",
                   style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;
                       font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"
+              ),
+              " | ",
+              a("Source Code", 
+                href = "https://github.com/ClevelandClinicQHS/riskcalc-website/tree/main/MemoryAfterPediatricEpilepsySurgery", 
+                style = "font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;font-size: 15px;color: #2c3e50;font-weight: bold;text-align: center;text-decoration: underline;"
               ),
               style = "text-align: center;"
             ),
