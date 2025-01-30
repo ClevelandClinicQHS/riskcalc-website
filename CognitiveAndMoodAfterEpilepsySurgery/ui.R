@@ -12,9 +12,13 @@ tooltip_mcd = "MCD includes focal cortical dysplasia, gray matter heterotopia, p
 
 
 fluidPage(shinyjs::useShinyjs(), theme = shinytheme("flatly"),
+
+  # Google Analytics
+  tags$head(includeHTML("../google-analytics.html")),
+
           tags$head(tags$link(rel="shortcut icon", href="../assets/icons/favicon.ico", type="image/x-icon")),
           tags$head(tags$link(rel="apple-touch-icon", href="../assets/icons/apple-touch-icon.png", type="image/x-icon")),
-          titlePanel('Predicts the probabilities of postoperative declines in naming, verbal memory, and mood'),
+          titlePanel('Predicts the probabilities of postoperative naming, verbal memory, and mood decline following temporal lobe resection in older adolescents and adults (≥16 years)'),
           sidebarLayout(
               sidebarPanel(id = "sidebar",
                            numericInput("age1", "Age at seizure onset (in years)", NA, min = 0.0, max = 60.0),

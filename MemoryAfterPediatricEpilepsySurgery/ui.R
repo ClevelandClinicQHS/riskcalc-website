@@ -19,7 +19,7 @@ fluidPage(
 }'
     )),
     theme = shinytheme("flatly"),
-    titlePanel('Predicts the probabilities of postoperative verbal and visual memory decline'),
+    titlePanel('Predicts the probabilities of postoperative verbal and visual memory decline following temporal lobe resection in children (ages 6-16)'),
     sidebarLayout(
         sidebarPanel(id = "sidebar",
                      selectInput('surgdomrec', 'Surgical dominance', choices = c('Non-Dominant', "Dominant", "Undetermined")),
