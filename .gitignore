@@ -1,5 +1,6 @@
 *.*
 !index.html
+!indextest.html
 !google-analytics.html
 !*.R
 !README.md
