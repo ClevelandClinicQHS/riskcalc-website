@@ -104,7 +104,7 @@
                     <a class="dropdown-item" href="#Epilepsy">Epilepsy</a>
                     <a class="dropdown-item" href="#FemaleReconstructiveSurgery">Female Pelvic Medicine and
                         Reconstructive Surgery</a>
-                    <a class="dropdown-item" href="#FemalePregnancy">Pregnancy</a>
+                    <a class="dropdown-item" href="#Pregnancy">Pregnancy</a>
                     <a class="dropdown-item" href="#GastricCancer">Gastric Cancer</a>
                     <a class="dropdown-item" href="#HeartDisease">Heart Disease</a>
                     <a class="dropdown-item" href="#ICU">Intensive Care Unit</a>
@@ -136,573 +136,861 @@
             <a href="#" class="back-to-top">Back to Top</a>
 
             <div id="accordion">
+
+
                 <div class="card">
-                  <div class="card-header" id="headingOne">
-                    <h5 class="mb-0">
-                      <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Collapsible Group Item #1
-                      </button>
-                    </h5>
-                  </div>
-              
-                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body">
-                      
-                        <div id="ProstaticHyperplasia">
-                            <div class="well">
-                                <h3>BENIGN PROSTATIC HYPERPLASIA</h3>
-                                <hr />
-                                <h4><a class="calc-link" href="\BenignProstaticHyperplasia" target="_blank">For Patients Receiving
-                                        Dutasteride Therapy</a></h4>
-                                <p>Predicts probability of acute urinary retention or surgical intervention within 2 years.</p>
-                            </div>
-                        </div>
-                        <div id="BladderCancer">
-                            <div class="well">
-                                <h3>BLADDER CANCER</h3>
-                                <hr />
-                                <h4><a class="calc-link" href="\bladderCancer" target="_blank">For Patients Immediately Following
-                                        Radical Cystectomy</a></h4>
-                                <p>Predicts 5-year progression-free probability.</p>
-                            </div>
-                        </div>
-
+                    <div class="card-header" id="heading_cancer">
+                        <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#cancer" aria-expanded="true" aria-controls="cancer">
+                            Cancer
+                        </button>
+                        </h5>
                     </div>
-                  </div>
-                </div>
-            </div>
+                    <div id="cancer" class="collapse show" aria-labelledby="heading_cancer" data-parent="#accordion">
+                        <div class="card-body">
+                        
+                            <div id="BladderCancer">
+                                <div class="well">
+                                    <h3>Bladder</h3>
+                                    <hr />
 
-            <div id="BrainCancer">
-                <div class="well">
-                    <h3>BRAIN CANCER</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\BrainCancer" target="_blank">For Patients Diagnosed with Brain
-                            Metastasis</a></h4>
-                    <p>Predicts 6-month, 12-month and median survival.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="http://cancer4.case.edu/rCalculator/rCalculator.html"
-                            target="_blank">For
-                            Patients with Newly Diagnosed Glioblastoma</a></h4>
-                    <p>Predicts 6-, 12- and 24-month survival probability.</p>
+                                    <h4><a class="calc-link" href="\bladderCancer" target="_blank">For Patients Immediately Following
+                                            Radical Cystectomy</a></h4>
+                                    <p>Predicts 5-year progression-free probability.</p>
+                                    
+                                </div>
+                            </div>
+
+                            <div id="BrainCancer">
+                                <div class="well">
+                                    <h3>Brain</h3>
+                                    <hr />
+
+                                    <h4><a class="calc-link" href="\BrainCancer" target="_blank">For Patients Diagnosed with Brain
+                                            Metastasis</a></h4>
+                                    <p>Predicts 6-month, 12-month and median survival.</p>
+
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+
+                                    <h4><a class="calc-link" href="http://cancer4.case.edu/rCalculator/rCalculator.html"
+                                            target="_blank">For
+                                            Patients with Newly Diagnosed Glioblastoma</a></h4>
+                                    <p>Predicts 6-, 12- and 24-month survival probability.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="BreastCancer">
+                                <div class="well">
+                                    <h3>Breast</h3>
+                                    <hr />
+
+                                    <h4><a class="calc-link" href="\BreastCancerSpecificDeath" target="_blank">For Women with Breast
+                                            Cancer Who Do Not Receive Adjuvant Therapy</a></h4>
+                                    <p>Predicts 15-year risk of breast cancer specific death.</p>
+
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+
+                                    <h4><a class="calc-link" href="\BreastCancerPosNonSentinelLymphNode" target="_blank">For Women with
+                                            Positive Sentinel Node Biopsy</a></h4>
+                                    <p>Predicts risk of additional node metastasis following complete axillary lymph node dissection.</p>
+
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+
+                                    <h4><a class="calc-link" href="\BreastCancerArmLymphedema" target="_blank">For Women Considering or
+                                            Undergoing Axillary Lymph Node Dissection</a></h4>
+                                    <p>Predicts 5-year risk of arm lymphedema.</p>
+
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+
+                                    <h4><a class="calc-link" href="\BreastPMRT" target="_blank">For Women Considering or Undergoing
+                                            Mastectomy with N1 Breast Cancer</a></h4>
+                                    <p>Predicts risk of recurrence and mortality.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="ColorectalCancer">
+                                <div class="well">
+                                    <h3>Colorectal</h3>
+                                    <hr />
+
+                                    <h4><a class="calc-link" href="\ColorectalCancer96MonthSurvivalafterHepaticResection"
+                                            target="_blank">For Patients After Liver Resection For Stage IV Colorectal Cancer</a></h4>
+                                    <p>Predicts 96-month disease-specific survival.</p>
+
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+
+                                    <h4><a class="calc-link" href="\ColorectalCancer5and10YrRecurrenceFreeSurvival" target="_blank">For
+                                            Patients Immediately Following Surgery</a></h4>
+                                    <p>Predicts the 5- and 10-year recurrence-free survival percentage.</p>
+
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+
+                                    <h4><a class="calc-link" href="\ColorectalCancer" target="_blank">For Patients Without History of
+                                        Colorectal Cancer, Inflammatory Bowel Disease, Familial Adenomatous Polyposis, Lynch
+                                        Syndrome, or Adenomatous Polyps</a></h4>
+                                    <p>Predicts 10-year colorectal cancer risk.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="GastricCancer">
+                                <div class="well">
+                                    <h3>Gastric</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\GastricCancer" target="_blank">For Patients Considering R0 Resection
+                                            for Gastric Carcinoma</a></h4>
+                                    <p>Predicts 5- and 9-year disease-specific survival.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\GastricCancerOutcome" target="_blank">For Pre-treatment Gastric
+                                            Patients</a></h4>
+                                    <p>Predicts 1-, 3-, and 5-year overall survival and disease-specific mortality.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="KidneyCancer">
+                                <div class="well">
+                                    <h3>Kidney</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\KidneyCancer" target="_blank">For Patients Immediately Following
+                                            Partial or Radical Nephrectomy</a></h4>
+                                    <p>Predicts 5- and 7-year freedom from recurrence and 7-year renal insufficiency.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\ProgressionFreeWithCarcinoma" target="_blank">For Patients With
+                                            Metastatic Renal Cell Carcinoma</a></h4>
+                                    <p>Predicts 12-month progression-free survival with sunitinib or pazopanib.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\SuspectedKidneyCancer" target="_blank">For Patients with Small Renal
+                                            Masses</a></h4>
+                                    <p>Predicts the probability of malignant pathology for small renal masses.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="Melanoma">
+                                <div class="well">
+                                    <h3>Melanoma</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\MelanomaPercentChanceofPosSentinelLymphNodes" target="_blank">For
+                                            Patients Immediately Prior to Sentinel Lymph Nodes Biopsy</a></h4>
+                                    <p>Predicts the probability of positive sentinel nodes.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\SCMprediction" target="_blank">For patients with small choroidal
+                                            melanocytic lesions</a></h4>
+                                    <p>Predicts probability of small choroidal melanoma.</p>
+
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+
+                                    <h4><a class="calc-link" href="\IrisMel" target="_blank">For Patients with Iris Melanocytic Tumors</a></h4>
+                                    <p>Predicts probability of iris melanoma.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="OralCancer">
+                                <div class="well">
+                                    <h3>Oral</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\OralCancerOralCavitySquamousCellCarcinoma" target="_blank">For
+                                            Patients after Surgery Oral Cavity Squamous Cell Carcinoma</a></h4>
+                                    <p>Predicts 5-year percentage of recurrence-free survival to assist in determining the need for
+                                        adjuvant treatment.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="OvarianCancer">
+                                <div class="well">
+                                    <h3>Ovarian</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\OvarianCancerPredictSurvivalAfterSurgforBulkyStageIIICCarc"
+                                            target="_blank">For Patients after Primary Surgery for Bulky Stage IIIC Carcinoma</a></h4>
+                                    <p>Predicts 5-year probability of survival.</p>
+
+                                </div>
+                            </div>
+                            
+                            <div id="PancreaticCancer">
+                                <div class="well">
+                                    <h3>Pancreatic</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\PancreaticCancer1YrSurvivalAfterResectionforAdenocarcinoma"
+                                            target="_blank">For Patients after Resection for Adenocarcinoma of the Pancreas</a></h4>
+                                    <p>Predicts 12-, 24- and 36-month survival.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="PenileCancer">
+                                <div class="well">
+                                    <h3>Penile</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\PenileCancer5YearSurvivalandLymphNodeInvolvement"
+                                            target="_blank">For
+                                            Patients Having Undergone Surgery for Squamous Cell Carcinoma of the
+                                            Penis</a></h4>
+                                    <p>Predict 5-year cancer specific survival and lymph node involvement.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="ProstateCancer">
+                                <div class="well">
+                                    <h3>Prostate Cancer 1: Risk Prior to Diagnosis</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\ProstateCancerPredictHGPCAfterInitialBiopsy" target="_blank">For
+                                            Patients Prior to Initial Biopsy</a></h4>
+                                    <p>Predicts percentage chance of having prostate cancer and of having high grade prostate cancer to
+                                        help determine treatment options.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\ProstateCancerConsideringDutasteride" target="_blank">For Patients
+                                            with a Prior Negative 6- to 12-Core Biopsy in the past 6 months</a></h4>
+                                    <p>Determines 4-year probability of outcomes with or without dutasteride.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\ProstateCancerPredictCancerRiskFollowingRepeatedBiopsy"
+                                            target="_blank">For Patients with Prior Negative Biopsy</a></h4>
+                                    <p>Predicts percentage of having prostate cancer with repeated prostate biopsy.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\PCPTRC" target="_blank">Prostate Cancer Prevention Trial Biopsy Risk
+                                            Calculator (Deprecated, use PBCG below)</a></h4>
+                                    <p>For patients who are undergoing prostate cancer screening with PSA and DRE.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\PBCG" target="_blank">Prostate Biopsy Collaborative Group Biopsy
+                                            Risk Calculator</a></h4>
+                                    <p>For patients who are undergoing prostate cancer screening with PSA and DRE.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\ExtendedPBCG" target="_blank">Extended Prostate Biopsy Collaborative
+                                            Group Biopsy Risk Calculator</a></h4>
+                                    <p>For patients who are undergoing prostate cancer screening with PSA and DRE.</p>
+
+                                </div>
+
+                                <div class="well">
+                                    <h3>Prostate Cancer 2: Pre-Treatment</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\Prostate" target="_blank">For Patients Immediately Prior to
+                                            Surgery</a></h4>
+                                    <p>Predicts the probability of upgrading the Gleason score in patients with low- and
+                                        intermediate-grade prostate cancer on biopsy to help identify patients who may benefit from more
+                                        aggressive or novel therapy.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\ProstateCancerPredictingIndolentReoccuranceMetastasisSurvival"
+                                            target="_blank">For Patients Recently Diagnosed with Clinically Localized Prostate
+                                            Cancer</a></h4>
+                                    <p>Predicts 5- and 10-year probabilities for radical prostatectomy, watchful waiting, and
+                                        3-dimensional conformal radiation therapy of survival, indolent cancer, freedom from recurrence,
+                                        metastasis and trifecta.</p>
+
+                                </div>
+
+                                <div class="well">
+                                    <h3>Prostate Cancer 3: Post-Treatment</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\ProstateCancerPredictingPostRadicalProstatectomy"
+                                            target="_blank">For
+                                            Patients Immediately Following Radical Prostatectomy</a></h4>
+                                    <p>Predicts 7-, 9- and 10-year post-treatment freedom from recurrence, and 10- and 15-year
+                                        cancer-specific mortality.</p>
+
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\ProstateCancerPredictingPostBrachytherapy" target="_blank">For
+                                            Patients Immediately Following Brachytherapy</a></h4>
+                                    <p>Predicts 7- and 9-year post-treatment freedom from recurrence.</p>
+
+                                </div>
+
+                                <div class="well">
+                                    <h3>Prostate Cancer 4: PSA Recurrence Following Radical Prostatectomy</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\ProstateCancerAfterRadicalProstatectomyNew" target="_blank">For
+                                            Patients with Biochemical Recurrence Following Radical Prostatectomy</a></h4>
+                                    <p>Predicts the probability of freedom from biochemical failure at 5- and 10-year and cumulative
+                                        incidence of metastasis at 5- and 10-year for men receiving salvage radiation therapy.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\ProstateMortalityWithBiochemicalRecurrenceAfterProstatectomy"
+                                            target="_blank">For Patients with Biochemical Recurrence Following Radical Prostatectomy</a>
+                                    </h4>
+                                    <p>Predicts 5-, 10- and 15-year prostate cancer-specific mortality.</p>
+
+                                </div>
+
+                                <div class="well">
+                                    <h3>Prostate Cancer 5: Metastatic Disease</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\MetastaticProstateCancerOverallSurvivalAfterCastration"
+                                            target="_blank">For Men with Progressive Metastatic Disease</a></h4>
+                                    <p>Predicts 1- and 2-year overall survival.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="Sarcoma">
+                                <div class="well">
+                                    <h3>Sarcoma</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\SarcomaPredictingPostOp12YearDiseaseSpecificMortality"
+                                            target="_blank">For Patients Considering Treatment for Primary Soft Tissue Sarcoma</a></h4>
+                                    <p>Predicts postoperative rates of 12-year sarcoma-specific mortality.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\SarcomaPredictingDiseaseSpecificDeathAfterLocalRecurrence"
+                                            target="_blank">For Patients with Sarcoma</a></h4>
+                                    <p>Predicts 1-, 2- and 3-year risk of sarcoma-specific death following local recurrence.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="ThyroidCancer">
+                                <div class="well">
+                                    <h3>Thyroid</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\ThyroidCancer" target="_blank">For Patients with Thyroid Nodules</a>
+                                    </h4>
+                                    <p>Predicts probability of thyroid cancer in thyroid nodules.</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div id="BreastCancer">
-                <div class="well">
-                    <h3>BREAST CANCER</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\BreastCancerSpecificDeath" target="_blank">For Women with Breast
-                            Cancer Who Do Not Receive Adjuvant Therapy</a></h4>
-                    <p>Predicts 15-year risk of breast cancer specific death.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\BreastCancerPosNonSentinelLymphNode" target="_blank">For Women with
-                            Positive Sentinel Node Biopsy</a></h4>
-                    <p>Predicts risk of additional node metastasis following complete axillary lymph node dissection.
-                    </p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\BreastCancerArmLymphedema" target="_blank">For Women Considering or
-                            Undergoing Axillary Lymph Node Dissection</a></h4>
-                    <p>Predicts 5-year risk of arm lymphedema.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\BreastPMRT" target="_blank">For Women Considering or Undergoing
-                            Mastectomy with N1 Breast Cancer</a></h4>
-                    <p>Predicts risk of recurrence and mortality.</p>
+
+
+                <div class="card">
+                    <div class="card-header" id="heading_diabetes_obesity">
+                        <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#diabetes_obesity" aria-expanded="true" aria-controls="diabetes_obesity">
+                            Diabetes & Obesity
+                        </button>
+                        </h5>
+                    </div>
+                    <div id="diabetes_obesity" class="collapse show" aria-labelledby="heading_diabetes_obesity" data-parent="#accordion">
+                        <div class="card-body">
+
+                            <div id="Obesity">
+                                <div class="well">
+                                    <h3>Obesity</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\RiskOfPostDischargeVenousThromboembolismAfterBariatricSurgery"
+                                            target="_blank">For Patients Immediately Following Bariatric Surgery</a></h4>
+                                    <p>Predicts 30-day probability of venous thromboembolisms(VTEs) post discharge.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\SleeveGastrectomyRiskCalculator" target="_blank">For Patients
+                                            Immediately Following Laparoscopic Sleeve Gastrectomy</a></h4>
+                                    <p>Estimates the probability of presence of a serious adverse events.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\Metabolic_Surgery_Score" target="_blank">For Patients with Type 2
+                                            Diabetes and Obesity</a></h4>
+                                    <p>Individualized Metabolic Surgery Score for Bariatric Procedure Selection.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\BariatricSurgeryComplications" target="_blank">For Patients with
+                                            Type 2 Diabetes and Obesity</a></h4>
+                                    <p>Predicts the 10-year risk of major adverse cardiovascular events with and without undergoing
+                                        weight loss surgery.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\BariatricSurgeryDiabetesRelapse1" target="_blank">For Patients with
+                                            Type 2 Diabetes before Gastric Bypass and Sleeve Gastrectomy</a></h4>
+                                    <p>Predicts late relapse of diabetes following early postoperative diabetes remission</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\BariatricSurgeryDiabetesRelapse2" target="_blank">For Patients with
+                                            Early Postoperative Diabetes Remission after Gastric Bypass and Sleeve Gastrectomy</a></h4>
+                                    <p>Predicts late relapse of type 2 diabetes.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="Type2Diabetes">
+                                <div class="well">
+                                    <h3>Type 2 Diabetes</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\Type2Diabetes" target="_blank">For Patients with Type 2 Diabetes</a>
+                                    </h4>
+                                    <p>Predicts 6-year mortality.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\Type2DiabetesMorbidityAndMortality" target="_blank">For Patients
+                                            with Type 2 Diabetes</a></h4>
+                                    <p>Predicts 5-year risk of morbidity and mortality.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\Type2DiabetesSecondTherapy" target="_blank">For Patients with Type 2
+                                            Diabetes Already on Metformin</a></h4>
+                                    <p>Predicts 5-Year Outcomes for Second-Line Therapies.</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div id="ColorectalCancer">
-                <div class="well">
-                    <h3>COLORECTAL CANCER</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\ColorectalCancer96MonthSurvivalafterHepaticResection"
-                            target="_blank">For Patients After Liver Resection For Stage IV Colorectal Cancer</a></h4>
-                    <p>Predicts 96-month disease-specific survival.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\ColorectalCancer5and10YrRecurrenceFreeSurvival" target="_blank">For
-                            Patients Immediately Following Surgery</a></h4>
-                    <p>Predicts the 5- and 10-year recurrence-free survival percentage.</p>
+
+
+                <div class="card">
+                    <div class="card-header" id="heading_fertility_reproduction">
+                        <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#fertility_reproduction" aria-expanded="true" aria-controls="fertility_reproduction">
+                            Fertility & Reproduction
+                        </button>
+                        </h5>
+                    </div>
+                    <div id="fertility_reproduction" class="collapse show" aria-labelledby="heading_fertility_reproduction" data-parent="#accordion">
+                        <div class="card-body">
+                        
+                            <div id="FemaleReconstructiveSurgery">
+                                <div class="well">
+                                    <h3>Female Pelvic Medicine and Reconstructive Surgery</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\RiskUIAfterMidurethralSling" target="_blank">For Women with Urinary
+                                            Incontinence Considering Midurethral Sling Surgery</a></h4>
+                                    <p>Predicts risk of any adverse event, bothersome stress, urge incontinence or positive stress test
+                                        with 12 months of surgery.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\FemalePelvicMedicineandReconstructiveSurgery" target="_blank">For
+                                            Women Considering Surgery for Pelvic Organ Prolapse</a></h4>
+                                    <p>Predicts risk of urinary incontinence to help identify patients who may benefit from more
+                                        aggressive management.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\FemalePelvicMedandReconSurgUrinaryandFecalIncontinence"
+                                            target="_blank">For Women about to Deliver Their First Baby and Immediately Following
+                                            Delivery</a></h4>
+                                    <p>Predicts postpartum urinary and fecal incontinence.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\TransfusionAfterGynecologicSurgery" target="_blank">For Women
+                                            Considering Gynecologic Surgery</a></h4>
+                                    <p>Predicts 30-day transfusion probability.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\PRECISE_Models" target="_blank">For Women Considering Pelvic Organ
+                                            Prolapse Surgery</a></h4>
+                                    <p>Predicts recurrent pelvic organ prolapse, surgical complications, and change in health status 12
+                                        months.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="Infertility">
+                                <div class="well">
+                                    <h3>Infertility</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\Infertility" target="_blank">For Infertile Men about to Undergo
+                                            Varicocele Repair</a></h4>
+                                    <p>Predicts changes in semen parameters.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="Pregnancy">
+                                <div class="well">
+                                    <h3>Pregnancy</h3>
+                                    
+                                    <h4><a class="calc-link" href="\UR_CHOICE" target="_blank">For Pregnant Women</a></h4>
+                                    <p>Predicts 12 and 20 year risk of pelvic floor disorders.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\OB_Infection_Model" target="_blank">For Pregnant Women Considering
+                                            Cesarean Delivery</a></h4>
+                                    <p>Predicts 30-day probability of infection after Cesarean Delivery.</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div id="SuspectedColorectalCancer">
-                <div class="well">
-                    <h3>SUSPECTED COLORECTAL CANCER</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\ColorectalCancer" target="_blank">For Patients Without History of
-                            Colorectal Cancer, Inflammatory Bowel Disease, Familial Adenomatous Polyposis, Lynch
-                            Syndrome, or Adenomatous Polyps</a></h4>
-                    <p>Predicts 10-year colorectal cancer risk.</p>
+                
+
+                <div class="card">
+                    <div class="card-header" id="heading_gastroenterology">
+                        <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#gastroenterology" aria-expanded="true" aria-controls="gastroenterology">
+                            Gastroenterology
+                        </button>
+                        </h5>
+                    </div>
+                    <div id="gastroenterology" class="collapse show" aria-labelledby="heading_gastroenterology" data-parent="#accordion">
+                        <div class="card-body">
+
+                            <div id="SmallBowelDisease">
+                                <div class="well">
+                                    <h3>Small Bowel Disease</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\ComplexColorectalSurgery30DayRiskofInfection" target="_blank">For
+                                            Patients Considering Organ Space Surgical Site Infection</a></h4>
+                                    <p>Predicts 30-day infection risk of organ space surgical site infection.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="UlcerativeColitis">
+                                <div class="well">
+                                    <h3>Ulcerative Colitis</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\ColorectalCancerPatientsUndergoneIPAA" target="_blank">For Patients
+                                            Immediately Following Restorative Proctocolectomy and Ileal Pouch Anal Anastomosis
+                                            (IPAA)</a></h4>
+                                    <p>Predicts 7-year pouch retention probability.</p>
+
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div id="COVID19">
-                <div class="well">
-                    <h3>COVID-19</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\COVID19" target="_blank">For Patients Recommended by a Physician to
-                            be Tested for COVID-19</a></h4>
-                    <p>Predicts the probability of a positive test result.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\COVID19Hospitalization" target="_blank">For Patients Recently
-                            Testing Positive for COVID-19</a></h4>
-                    <p>Predicts the probability of hospitalization.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\SevereCOVID19" target="_blank">For Patients Recently Testing
-                            Positive for COVID-19</a></h4>
-                    <p>Predicts the probability of ICU admission or death from COVID-19.</p>
+
+
+                <div class="card">
+                    <div class="card-header" id="heading_major_organ_disease">
+                        <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#major_organ_disease" aria-expanded="true" aria-controls="major_organ_disease">
+                            Major Organ Diseases
+                        </button>
+                        </h5>
+                    </div>
+                    <div id="major_organ_disease" class="collapse show" aria-labelledby="heading_major_organ_disease" data-parent="#accordion">
+                        <div class="card-body">
+
+                            <div id="HeartDisease">
+                                <div class="well">
+                                    <h3>Heart Disease</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\ACS" target="_blank">For Acute Coronary Syndrome Patients Recently
+                                            Discharged</a></h4>
+                                    <p>Predicts 30-day and 1-year risks of mortality, myocardial infarction, or revascularization.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\VTVF" target="_blank">For Heart Failure with Reduced Ejection Fraction Patients about to Undergo ICD or CRT-D Implantation for Primary Prevention of Sudden Cardiac Death</a></h4>
+                                    <p>Predicts 3-year probability of monomorphic ventricular tachycardia and polymorphic ventricular tachycardia / ventricular fibrillation.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\PredictingTheLikelihoodOfCerebrovascularAccidents"
+                                            target="_blank">For
+                                            Patients Hospitalized with ACS Receiving PCI Treatment</a></h4>
+                                    <p>Predicts the probability of cerebrovascular accidents using patient demographics and clinical
+                                        characteristics.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\MortalityAfterPacemakerAndDefibrillator" target="_blank">For
+                                            Patients about to Undergo Transvenous Lead Extraction</a></h4>
+                                    <p>Predicts 30-day all-cause mortality.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\SuspectedCoronaryArteryDiseaseLongTermSurvivalwNormalEKG"
+                                            target="_blank">For Patients with Suspected Coronary Artery Disease and a Normal
+                                            Electrocardiogram</a></h4>
+                                    <p>Predicts 3-, 5- and 10-year survival after exercise treadmill testing.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="KidneyDisease">
+                                <div class="well">
+                                    <h3>Kidney Disease</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\AKIpostCardiacSurgery" target="_blank">For Patients Considering
+                                            Considering Cardiac Surgery</a></h4>
+                                    <p>Predicts moderate to severe acute kidney injury.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+
+                                    <h4><a class="calc-link" href="\ChronicKidneyDiseaseGFRat1yrwo6monthInfo" target="_blank">For
+                                            Patients Considering Living Donor Renal Transplant</a></h4>
+                                    <p>Predicts the 5-year graft survival and 1-year eGFR value.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\ktop" target="_blank">KTOP - Kidney Transplant Outcome
+                                            Prediction</a></h4>
+                                    <p>Prediction of certain outcomes after deceased-donor kidney transplantations.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+
+                                    <h4><a class="calc-link" href="\KidneyUpstaging" target="_blank">For Patients with a Stage 1 Localized Kidney Tumor without Metastasis</a></h4>
+                                    <p>Predicts Kidney Cancer Upstaging Risk.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="LiverDisease">
+                                <div class="well">
+                                    <h3>Liver Disease</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\PredictingTheDischargeStatusAfterLiverTransplantation"
+                                            target="_blank">For Patients Prior to Orthotopic Liver Transplantation</a></h4>
+                                    <p>Predicts the need of a patient to attend an extended care facility (ECF).</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\LiverDiseasePediatricNAFLDHistologyScoreProbofhavingNASH"
+                                            target="_blank">For Children with Non-Alcoholic Fatty Liver Disease</a></h4>
+                                    <p>Predicts NAFLD histological score.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="Pancreas">
+                                <div class="well">
+                                    <h3>Pancreas</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\ptop"
+                                            target="_blank">For Patients after Pancreas Transplantation from a Deceased Donor</a></h4>
+                                    <p>Predicts 5 and 10-year risk of death, pancreas graft loss, and kidney graft loss.</p>
+
+                                </div>
+                            </div>
+                        
+                            <div id="ProstaticHyperplasia">
+                                <div class="well">
+                                    <h3>Prostate</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\BenignProstaticHyperplasia" target="_blank">For Patients Receiving
+                                            Dutasteride Therapy</a></h4>
+                                    <p>Predicts probability of acute urinary retention or surgical intervention within 2 years.</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div id="Epilepsy">
-                <div class="well">
-                    <h3>EPILEPSY</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\FreedomFromSeizureRecurrenceAfterSurgery" target="_blank">For
-                            Patients Eligible For Epilepsy Surgery</a></h4>
-                    <p>Predicts 2-year based on clinical criteria alone or based on clinical criteria and EEG
-                        characteristics.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\CognitiveAndMoodAfterEpilepsySurgery" target="_blank">For Adults
-                            Eligible For Temporal Lobe Resection For Epilepsy</a></h4>
-                    <p>Predicts the probabilities of postoperative naming, verbal memory, and mood decline following temporal lobe resection in older adolescents and adults (≥16 years)</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\SparingHippocampus" target="_blank">For Patients With a Normal
-                            Appearing Hippocampus (HC) on MRI</a></h4>
-                    <p>Predicts the 1-year risk of recurrent seizure after temporal lobe epilepsy (TLE) surgery.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\MemoryAfterPediatricEpilepsySurgery" target="_blank">For Children Eligible 
-                        for Resective Epilepsy Surgeries that Include the Temporal Lobe</a></h4>
-                    <p>Predicts the probabilities of postoperative verbal and visual memory decline following temporal lobe resection in children (ages 6-16)</p>
+
+
+                <div class="card">
+                    <div class="card-header" id="heading_neurological">
+                        <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#neurological" aria-expanded="true" aria-controls="neurological">
+                            Neurological
+                        </button>
+                        </h5>
+                    </div>
+                    <div id="neurological" class="collapse show" aria-labelledby="heading_neurological" data-parent="#accordion">
+                        <div class="card-body">
+
+                            <div id="Epilepsy">
+                                <div class="well">
+                                    <h3>Epilepsy</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\FreedomFromSeizureRecurrenceAfterSurgery" target="_blank">For
+                                            Patients Eligible For Epilepsy Surgery</a></h4>
+                                    <p>Predicts 2-year based on clinical criteria alone or based on clinical criteria and EEG
+                                        characteristics.</p>
+
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\CognitiveAndMoodAfterEpilepsySurgery" target="_blank">For Adults
+                                            Eligible For Temporal Lobe Resection For Epilepsy</a></h4>
+                                    <p>Predicts the probabilities of postoperative naming, verbal memory, and mood decline following temporal lobe resection in older adolescents and adults (≥16 years)</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\SparingHippocampus" target="_blank">For Patients With a Normal
+                                            Appearing Hippocampus (HC) on MRI</a></h4>
+                                    <p>Predicts the 1-year risk of recurrent seizure after temporal lobe epilepsy (TLE) surgery.</p>
+                                    
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+                                    
+                                    <h4><a class="calc-link" href="\MemoryAfterPediatricEpilepsySurgery" target="_blank">For Children Eligible 
+                                        for Resective Epilepsy Surgeries that Include the Temporal Lobe</a></h4>
+                                    <p>Predicts the probabilities of postoperative verbal and visual memory decline following temporal lobe resection in children (ages 6-16)</p>
+
+                                </div>
+                            </div>
+
+                            <div id="Psychosis">
+                                <div class="well">
+                                    <h3>Psychosis</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\napls" target="_blank">For Youth at High Risk</a></h4>
+                                    <p>Predicts the conversion to psychosis for youth who are at high risk due to symptoms, genetic
+                                        risk, and recent decline in functioning based on a variety of tests and psychometric dimensions.
+                                    </p>
+
+                                </div>
+                            </div>
+
+                            <div id="SpineSurgery">
+                                <div class="well">
+                                    <h3>Spine Surgery</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\PatientsEligibleforCervicalSpineSurgery" target="_blank">For
+                                            Patients Eligible for Cervical Spine Surgery</a></h4>
+                                    <p>Predicts probability of emergency department visit within 30 days, readmission within 30 days and
+                                        reoperation for infection within 90 days. Predicts change in EQ-5D, PHQ-9 and PDQ
+                                        quality-of-life metrics.</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div id="FemaleReconstructiveSurgery">
-                <div class="well">
-                    <h3>FEMALE PELVIC MEDICINE AND RECONSTRUCTIVE SURGERY</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\RiskUIAfterMidurethralSling" target="_blank">For Women with Urinary
-                            Incontinence Considering Midurethral Sling Surgery</a></h4>
-                    <p>Predicts risk of any adverse event, bothersome stress, urge incontinence or positive stress test
-                        with 12 months of surgery.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\FemalePelvicMedicineandReconstructiveSurgery" target="_blank">For
-                            Women Considering Surgery for Pelvic Organ Prolapse</a></h4>
-                    <p>Predicts risk of urinary incontinence to help identify patients who may benefit from more
-                        aggressive management.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\FemalePelvicMedandReconSurgUrinaryandFecalIncontinence"
-                            target="_blank">For Women about to Deliver Their First Baby and Immediately Following
-                            Delivery</a></h4>
-                    <p>Predicts postpartum urinary and fecal incontinence.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\TransfusionAfterGynecologicSurgery" target="_blank">For Women
-                            Considering Gynecologic Surgery</a></h4>
-                    <p>Predicts 30-day transfusion probability.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\PRECISE_Models" target="_blank">For Women Considering Pelvic Organ
-                            Prolapse Surgery</a></h4>
-                    <p>Predicts recurrent pelvic organ prolapse, surgical complications, and change in health status 12
-                        months.</p>
+
+
+                <div class="card">
+                    <div class="card-header" id="heading_orthopedics">
+                        <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#orthopedics" aria-expanded="true" aria-controls="orthopedics">
+                            Orthopedics
+                        </button>
+                        </h5>
+                    </div>
+                    <div id="orthopedics" class="collapse show" aria-labelledby="heading_orthopedics" data-parent="#accordion">
+                        <div class="card-body">
+
+                            <div id="TotalJointDeterioration">
+                                <div class="well">
+                                    <h3>Total Joint Deterioration</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\TotalJointReplacementPredictPatientDischargeDisposition"
+                                            target="_blank">For Patients Immediately after Total Joint Arthroplasty</a></h4>
+                                    <p>Predicts length of stay and chance of NOT returning home.</p>
+
+                                </div>
+                            </div>
+ 
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div id="FemalePregnancy">
-                <div class="well">
-                    <h3>PREGNANCY</h3>
-                    <h4><a class="calc-link" href="\UR_CHOICE" target="_blank">For Pregnant Women</a></h4>
-                    <p>Predicts 12 and 20 year risk of pelvic floor disorders.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\OB_Infection_Model" target="_blank">For Pregnant Women Considering
-                            Cesarean Delivery</a></h4>
-                    <p>Predicts 30-day probability of infection after Cesarean Delivery.</p>
-                </div>
-            </div>
-            <div id="GastricCancer">
-                <div class="well">
-                    <h3>GASTRIC CANCER</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\GastricCancer" target="_blank">For Patients Considering R0 Resection
-                            for Gastric Carcinoma</a></h4>
-                    <p>Predicts 5- and 9-year disease-specific survival.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\GastricCancerOutcome" target="_blank">For Pre-treatment Gastric
-                            Patients</a></h4>
-                    <p>Predicts 1-, 3-, and 5-year overall survival and disease-specific mortality.</p>
-                </div>
-            </div>
-            <div id="HeartDisease">
-                <div class="well">
-                    <h3>HEART DISEASE</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\ACS" target="_blank">For Acute Coronary Syndrome Patients Recently
-                            Discharged</a></h4>
-                    <p>Predicts 30-day and 1-year risks of mortality, myocardial infarction, or revascularization.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-					<h4><a class="calc-link" href="\VTVF" target="_blank">For Heart Failure with Reduced Ejection Fraction Patients about to Undergo ICD or CRT-D Implantation for Primary Prevention of Sudden Cardiac Death</a></h4>
-                    <p>Predicts 3-year probability of monomorphic ventricular tachycardia and polymorphic ventricular tachycardia / ventricular fibrillation.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\PredictingTheLikelihoodOfCerebrovascularAccidents"
-                            target="_blank">For
-                            Patients Hospitalized with ACS Receiving PCI Treatment</a></h4>
-                    <p>Predicts the probability of cerebrovascular accidents using patient demographics and clinical
-                        characteristics.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\MortalityAfterPacemakerAndDefibrillator" target="_blank">For
-                            Patients about to Undergo Transvenous Lead Extraction</a></h4>
-                    <p>Predicts 30-day all-cause mortality.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\SuspectedCoronaryArteryDiseaseLongTermSurvivalwNormalEKG"
-                            target="_blank">For Patients with Suspected Coronary Artery Disease and a Normal
-                            Electrocardiogram</a></h4>
-                    <p>Predicts 3-, 5- and 10-year survival after exercise treadmill testing.</p>
-                </div>
-            </div>
-            <div id="ICU">
-                <div class="well">
-                    <h3>INTENSIVE CARE UNIT</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\LTACHafterICU" target="_blank">For Patients Admitted to Intensive
-                            Care Unit</a></h4>
-                    <p>Predicts discharge to a long-term acute care hospital.</p>
-                </div>
-            </div>
-            <div id="Infertility">
-                <div class="well">
-                    <h3>INFERTILITY</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\Infertility" target="_blank">For Infertile Men about to Undergo
-                            Varicocele Repair</a></h4>
-                    <p>Predicts changes in semen parameters.</p>
-                </div>
-            </div>
-			
-			<div id="IrisMelanoma">
-                <div class="well">
-                    <h3>IRIS MELANOMA</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\IrisMel" target="_blank">For Patients with Iris Melanocytic Tumors</a></h4>
-                    <p>Predicts probability of iris melanoma.</p>
-                </div>
-            </div>
-			
-            <div id="KidneyDisease">
-                <div class="well">
-                    <h3>ACUTE KIDNEY DISEASE</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\AKIpostCardiacSurgery" target="_blank">For Patients Considering
-                            Considering Cardiac Surgery</a></h4>
-                    <p>Predicts moderate to severe acute kidney injury.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h3>CHRONIC KIDNEY DISEASE</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\ChronicKidneyDiseaseGFRat1yrwo6monthInfo" target="_blank">For
-                            Patients Considering Living Donor Renal Transplant</a></h4>
-                    <p>Predicts the 5-year graft survival and 1-year eGFR value.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\ktop" target="_blank">KTOP - Kidney Transplant Outcome
-                            Prediction</a></h4>
-                    <p>Prediction of certain outcomes after deceased-donor kidney transplantations.</p>
-                </div>
-            </div>
-            <div id="KidneyCancer">
-                <div class="well">
-                    <h3>KIDNEY CANCER</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\KidneyCancer" target="_blank">For Patients Immediately Following
-                            Partial or Radical Nephrectomy</a></h4>
-                    <p>Predicts 5- and 7-year freedom from recurrence and 7-year renal insufficiency.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\ProgressionFreeWithCarcinoma" target="_blank">For Patients With
-                            Metastatic Renal Cell Carcinoma</a></h4>
-                    <p>Predicts 12-month progression-free survival with sunitinib or pazopanib.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\SuspectedKidneyCancer" target="_blank">For Patients with Small Renal
-                            Masses</a></h4>
-                    <p>Predicts the probability of malignant pathology for small renal masses.</p>
-                </div>
-            </div>
-			
-			<div id="KidneyUpstaging">
-                <div class="well">
-                    <h3>KIDNEY UPSTAGING</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\KidneyUpstaging" target="_blank">For Patients with a Stage 1 Localized Kidney Tumor without Metastasis</a></h4>
-                    <p>Predicts Kidney Cancer Upstaging Risk.</p>
-                </div>
-            </div>
-			
-			
-            <div id="LiverDisease">
-                <div class="well">
-                    <h3>LIVER DISEASE</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\PredictingTheDischargeStatusAfterLiverTransplantation"
-                            target="_blank">For Patients Prior to Orthotopic Liver Transplantation</a></h4>
-                    <p>Predicts the need of a patient to attend an extended care facility (ECF).</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\LiverDiseasePediatricNAFLDHistologyScoreProbofhavingNASH"
-                            target="_blank">For Children with Non-Alcoholic Fatty Liver Disease</a></h4>
-                    <p>Predicts NAFLD histological score.</p>
-                </div>
-            </div>
-            <div id="Melanoma">
-                <div class="well">
-                    <h3>MELANOMA</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\MelanomaPercentChanceofPosSentinelLymphNodes" target="_blank">For
-                            Patients Immediately Prior to Sentinel Lymph Nodes Biopsy</a></h4>
-                    <p>Predicts the probability of positive sentinel nodes.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\SCMprediction" target="_blank">For patients with small choroidal
-                            melanocytic lesions</a></h4>
-                    <p>Predicts probability of small choroidal melanoma.</p>
-                </div>
-            </div>
-            <div id="MedicalEducation">
-                <div class="well">
-                    <h3>MEDICAL EDUCATION</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\ABIM" target="_blank">For Residents after Completing Training in
-                            Internal Medicine</a></h4>
-                    <p>Predicts the probability of passing the American Board of Internal Medicine examination.</p>
-                </div>
-            </div>
-            <div id="Obesity">
-                <div class="well">
-                    <h3>OBESITY</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\RiskOfPostDischargeVenousThromboembolismAfterBariatricSurgery"
-                            target="_blank">For Patients Immediately Following Bariatric Surgery</a></h4>
-                    <p>Predicts 30-day probability of venous thromboembolisms(VTEs) post discharge.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\SleeveGastrectomyRiskCalculator" target="_blank">For Patients
-                            Immediately Following Laparoscopic Sleeve Gastrectomy</a></h4>
-                    <p>Estimates the probability of presence of a serious adverse events.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\Metabolic_Surgery_Score" target="_blank">For Patients with Type 2
-                            Diabetes and Obesity</a></h4>
-                    <p>Individualized Metabolic Surgery Score for Bariatric Procedure Selection.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\BariatricSurgeryComplications" target="_blank">For Patients with
-                            Type 2 Diabetes and Obesity</a></h4>
-                    <p>Predicts the 10-year risk of major adverse cardiovascular events with and without undergoing
-                        weight loss surgery.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\BariatricSurgeryDiabetesRelapse1" target="_blank">For Patients with
-                            Type 2 Diabetes before Gastric Bypass and Sleeve Gastrectomy</a></h4>
-                    <p>Predicts late relapse of diabetes following early postoperative diabetes remission</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\BariatricSurgeryDiabetesRelapse2" target="_blank">For Patients with
-                            Early Postoperative Diabetes Remission after Gastric Bypass and Sleeve Gastrectomy</a></h4>
-                    <p>Predicts late relapse of type 2 diabetes.</p>
-                </div>
-            </div>
-            <div id="OralCancer">
-                <div class="well">
-                    <h3>ORAL CANCER</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\OralCancerOralCavitySquamousCellCarcinoma" target="_blank">For
-                            Patients after Surgery Oral Cavity Squamous Cell Carcinoma</a></h4>
-                    <p>Predicts 5-year percentage of recurrence-free survival to assist in determining the need for
-                        adjuvant treatment.</p>
-                </div>
-            </div>
-            <div id="OvarianCancer">
-                <div class="well">
-                    <h3>OVARIAN CANCER</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\OvarianCancerPredictSurvivalAfterSurgforBulkyStageIIICCarc"
-                            target="_blank">For Patients after Primary Surgery for Bulky Stage IIIC Carcinoma</a></h4>
-                    <p>Predicts 5-year probability of survival.</p>
-                </div>
-            </div>
-            <div id="Pancreas">
-                <div class="well">
-                    <h3>PANCREAS</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\ptop"
-                            target="_blank">For Patients after Pancreas Transplantation from a Deceased Donor</a></h4>
-                    <p>Predicts 5 and 10-year risk of death, pancreas graft loss, and kidney graft loss.</p>
-                </div>
-            </div>
-            <div id="PancreaticCancer">
-                <div class="well">
-                    <h3>PANCREATIC CANCER</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\PancreaticCancer1YrSurvivalAfterResectionforAdenocarcinoma"
-                            target="_blank">For Patients after Resection for Adenocarcinoma of the Pancreas</a></h4>
-                    <p>Predicts 12-, 24- and 36-month survival.</p>
-                </div>
-            </div>
-            <div id="PenileCancer">
-                <div class="well">
-                    <h3>PENILE CANCER</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\PenileCancer5YearSurvivalandLymphNodeInvolvement"
-                            target="_blank">For
-                            Patients Having Undergone Surgery for Squamous Cell Carcinoma of the
-                            Penis</a></h4>
-                    <p>Predict 5-year cancer specific survival and lymph node involvement.</p>
-                </div>
-            </div>
-            <div id="ProstateCancer">
-                <div class="well">
-                    <h3>PROSTATE CANCER 1, RISK PRIOR TO DIAGNOSIS</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\ProstateCancerPredictHGPCAfterInitialBiopsy" target="_blank">For
-                            Patients Prior to Initial Biopsy</a></h4>
-                    <p>Predicts percentage chance of having prostate cancer and of having high grade prostate cancer to
-                        help determine treatment options.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\ProstateCancerConsideringDutasteride" target="_blank">For Patients
-                            with a Prior Negative 6- to 12-Core Biopsy in the past 6 months</a></h4>
-                    <p>Determines 4-year probability of outcomes with or without dutasteride.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\ProstateCancerPredictCancerRiskFollowingRepeatedBiopsy"
-                            target="_blank">For Patients with Prior Negative Biopsy</a></h4>
-                    <p>Predicts percentage of having prostate cancer with repeated prostate biopsy.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\PCPTRC" target="_blank">Prostate Cancer Prevention Trial Biopsy Risk
-                            Calculator (Deprecated, use PBCG below)</a></h4>
-                    <p>For patients who are undergoing prostate cancer screening with PSA and DRE.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\PBCG" target="_blank">Prostate Biopsy Collaborative Group Biopsy
-                            Risk Calculator</a></h4>
-                    <p>For patients who are undergoing prostate cancer screening with PSA and DRE.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\ExtendedPBCG" target="_blank">Extended Prostate Biopsy Collaborative
-                            Group Biopsy Risk Calculator</a></h4>
-                    <p>For patients who are undergoing prostate cancer screening with PSA and DRE.</p>
-                </div>
-                <div class="well">
-                    <h3>PROSTATE CANCER 2, PRE-TREATMENT</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\Prostate" target="_blank">For Patients Immediately Prior to
-                            Surgery</a></h4>
-                    <p>Predicts the probability of upgrading the Gleason score in patients with low- and
-                        intermediate-grade prostate cancer on biopsy to help identify patients who may benefit from more
-                        aggressive or novel therapy.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\ProstateCancerPredictingIndolentReoccuranceMetastasisSurvival"
-                            target="_blank">For Patients Recently Diagnosed with Clinically Localized Prostate
-                            Cancer</a></h4>
-                    <p>Predicts 5- and 10-year probabilities for radical prostatectomy, watchful waiting, and
-                        3-dimensional conformal radiation therapy of survival, indolent cancer, freedom from recurrence,
-                        metastasis and trifecta.</p>
-                </div>
-                <div class="well">
-                    <h3>PROSTATE CANCER 3, POST-TREATMENT</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\ProstateCancerPredictingPostRadicalProstatectomy"
-                            target="_blank">For
-                            Patients Immediately Following Radical Prostatectomy</a></h4>
-                    <p>Predicts 7-, 9- and 10-year post-treatment freedom from recurrence, and 10- and 15-year
-                        cancer-specific mortality.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\ProstateCancerPredictingPostBrachytherapy" target="_blank">For
-                            Patients Immediately Following Brachytherapy</a></h4>
-                    <p>Predicts 7- and 9-year post-treatment freedom from recurrence.</p>
-                </div>
-                <div class="well">
-                    <h3>PROSTATE CANCER 4, PSA RECURRENCE FOLLOWING RADICAL PROSTATECTOMY</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\ProstateCancerAfterRadicalProstatectomyNew" target="_blank">For
-                            Patients with Biochemical Recurrence Following Radical Prostatectomy</a></h4>
-                    <p>Predicts the probability of freedom from biochemical failure at 5- and 10-year and cumulative
-                        incidence of metastasis at 5- and 10-year for men receiving salvage radiation therapy.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\ProstateMortalityWithBiochemicalRecurrenceAfterProstatectomy"
-                            target="_blank">For Patients with Biochemical Recurrence Following Radical Prostatectomy</a>
-                    </h4>
-                    <p>Predicts 5-, 10- and 15-year prostate cancer-specific mortality.</p>
-                </div>
-                <div class="well">
-                    <h3>PROSTATE CANCER 5, METASTATIC DISEASE</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\MetastaticProstateCancerOverallSurvivalAfterCastration"
-                            target="_blank">For Men with Progressive Metastatic Disease</a></h4>
-                    <p>Predicts 1- and 2-year overall survival.</p>
-                </div>
-            </div>
-            <div id="Psychosis">
-                <div class="well">
-                    <h3>PSYCHOSIS</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\napls" target="_blank">For Youth at High Risk</a></h4>
-                    <p>Predicts the conversion to psychosis for youth who are at high risk due to symptoms, genetic
-                        risk, and recent decline in functioning based on a variety of tests and psychometric dimensions.
-                    </p>
-                </div>
-            </div>
-            <div id="Sarcoma">
-                <div class="well">
-                    <h3>SARCOMA</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\SarcomaPredictingPostOp12YearDiseaseSpecificMortality"
-                            target="_blank">For Patients Considering Treatment for Primary Soft Tissue Sarcoma</a></h4>
-                    <p>Predicts postoperative rates of 12-year sarcoma-specific mortality.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\SarcomaPredictingDiseaseSpecificDeathAfterLocalRecurrence"
-                            target="_blank">For Patients with Sarcoma</a></h4>
-                    <p>Predicts 1-, 2- and 3-year risk of sarcoma-specific death following local recurrence.</p>
-                </div>
-            </div>
-            <div id="SmallBowelDisease">
-                <div class="well">
-                    <h3>SMALL BOWEL DISEASE</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\ComplexColorectalSurgery30DayRiskofInfection" target="_blank">For
-                            Patients Considering Organ Space Surgical Site Infection</a></h4>
-                    <p>Predicts 30-day infection risk of organ space surgical site infection.</p>
-                </div>
-            </div>
-            <div id="SpineSurgery">
-                <div class="well">
-                    <h3>SPINE SURGERY</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\PatientsEligibleforCervicalSpineSurgery" target="_blank">For
-                            Patients Eligible for Cervical Spine Surgery</a></h4>
-                    <p>Predicts probability of emergency department visit within 30 days, readmission within 30 days and
-                        reoperation for infection within 90 days. Predicts change in EQ-5D, PHQ-9 and PDQ
-                        quality-of-life metrics.</p>
-                </div>
-            </div>
-            <div id="ThyroidCancer">
-                <div class="well">
-                    <h3>THYROID CANCER</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\ThyroidCancer" target="_blank">For Patients with Thyroid Nodules</a>
-                    </h4>
-                    <p>Predicts probability of thyroid cancer in thyroid nodules.</p>
-                </div>
-            </div>
-            <div id="TotalJointDeterioration">
-                <div class="well">
-                    <h3>TOTAL JOINT DETERIORATION</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\TotalJointReplacementPredictPatientDischargeDisposition"
-                            target="_blank">For Patients Immediately after Total Joint Arthroplasty</a></h4>
-                    <p>Predicts length of stay and chance of NOT returning home.</p>
-                </div>
-            </div>
-            <div id="Type2Diabetes">
-                <div class="well">
-                    <h3>TYPE 2 DIABETES</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\Type2Diabetes" target="_blank">For Patients with Type 2 Diabetes</a>
-                    </h4>
-                    <p>Predicts 6-year mortality.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\Type2DiabetesMorbidityAndMortality" target="_blank">For Patients
-                            with Type 2 Diabetes</a></h4>
-                    <p>Predicts 5-year risk of morbidity and mortality.</p>
-                    <hr style="border-top: 1px dashed #D3D3D3;" />
-                    <h4><a class="calc-link" href="\Type2DiabetesSecondTherapy" target="_blank">For Patients with Type 2
-                            Diabetes Already on Metformin</a></h4>
-                    <p>Predicts 5-Year Outcomes for Second-Line Therapies.</p>
-                </div>
-            </div>
-            <div id="UlcerativeColitis">
-                <div class="well">
-                    <h3>ULCERATIVE COLITIS</h3>
-                    <hr />
-                    <h4><a class="calc-link" href="\ColorectalCancerPatientsUndergoneIPAA" target="_blank">For Patients
-                            Immediately Following Restorative Proctocolectomy and Ileal Pouch Anal Anastomosis
-                            (IPAA)</a></h4>
-                    <p>Predicts 7-year pouch retention probability.</p>
+
+
+                <div class="card">
+                    <div class="card-header" id="heading_miscellaneous">
+                        <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#miscellaneous" aria-expanded="true" aria-controls="miscellaneous">
+                            Miscellaneous
+                        </button>
+                        </h5>
+                    </div>
+                    <div id="miscellaneous" class="collapse show" aria-labelledby="heading_miscellaneous" data-parent="#accordion">
+                        <div class="card-body">
+
+                            <div id="COVID19">
+                                <div class="well">
+                                    <h3>Covid-19</h3>
+                                    <hr />
+
+                                    <h4><a class="calc-link" href="\COVID19" target="_blank">For Patients Recommended by a Physician to
+                                            be Tested for COVID-19</a></h4>
+                                    <p>Predicts the probability of a positive test result.</p>
+
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+
+                                    <h4><a class="calc-link" href="\COVID19Hospitalization" target="_blank">For Patients Recently
+                                            Testing Positive for COVID-19</a></h4>
+                                    <p>Predicts the probability of hospitalization.</p>
+
+                                    <hr style="border-top: 1px dashed #D3D3D3;" />
+
+                                    <h4><a class="calc-link" href="\SevereCOVID19" target="_blank">For Patients Recently Testing
+                                            Positive for COVID-19</a></h4>
+                                    <p>Predicts the probability of ICU admission or death from COVID-19.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="ICU">
+                                <div class="well">
+                                    <h3>Intensive Care Unit</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\LTACHafterICU" target="_blank">For Patients Admitted to Intensive
+                                            Care Unit</a></h4>
+                                    <p>Predicts discharge to a long-term acute care hospital.</p>
+
+                                </div>
+                            </div>
+
+                            <div id="MedicalEducation">
+                                <div class="well">
+                                    <h3>Medical Education</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\ABIM" target="_blank">For Residents after Completing Training in
+                                            Internal Medicine</a></h4>
+                                    <p>Predicts the probability of passing the American Board of Internal Medicine examination.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
