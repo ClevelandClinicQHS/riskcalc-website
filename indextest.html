@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Risk</title>
+    <title>CCF Risk Calculator Library</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="blocks, bootstrap" />
     <meta name="description" content="My new website" />
@@ -88,64 +88,44 @@
     </section>
     <section id="calc-list">
         <div class="container">
-            <div class="dropdown">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                    aria-expanded="false">
-                    SELECT A CONDITION
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#ProstaticHyperplasia">Benign Prostatic Hyperplasia</a>
-                    <a class="dropdown-item" href="#BladderCancer">Bladder Cancer</a>
-                    <a class="dropdown-item" href="#BrainCancer">Brain Cancer</a>
-                    <a class="dropdown-item" href="#BreastCancer">Breast Cancer</a>
-                    <a class="dropdown-item" href="#ColorectalCancer">Colorectal Cancer</a>
-                    <a class="dropdown-item" href="#COVID19">COVID-19</a>
-                    <a class="dropdown-item" href="#SuspectedColorectalCancer">Suspected Colorectal Cancer</a>
-                    <a class="dropdown-item" href="#Epilepsy">Epilepsy</a>
-                    <a class="dropdown-item" href="#FemaleReconstructiveSurgery">Female Pelvic Medicine and
-                        Reconstructive Surgery</a>
-                    <a class="dropdown-item" href="#Pregnancy">Pregnancy</a>
-                    <a class="dropdown-item" href="#GastricCancer">Gastric Cancer</a>
-                    <a class="dropdown-item" href="#HeartDisease">Heart Disease</a>
-                    <a class="dropdown-item" href="#ICU">Intensive Care Unit</a>
-                    <a class="dropdown-item" href="#Infertility">Infertility</a>
-					<a class="dropdown-item" href="#IrisMelanoma">Iris Melanoma</a>
-                    <a class="dropdown-item" href="#KidneyDisease">Chronic Kidney Disease</a>
-                    <a class="dropdown-item" href="#KidneyCancer">Kidney Cancer</a>
-					<a class="dropdown-item" href="#KidneyUpstaging">Kidney Upstaging</a>
-                    <a class="dropdown-item" href="#LiverDisease">Liver Disease</a>
-                    <a class="dropdown-item" href="#Melanoma">Melanoma</a>
-                    <a class="dropdown-item" href="#MedicalEducation">Medical Education</a>
-                    <a class="dropdown-item" href="#Obesity">Obesity</a>
-                    <a class="dropdown-item" href="#OralCancer">Oral Cancer</a>
-                    <a class="dropdown-item" href="#OvarianCancer">Ovarian Cancer</a>
-                    <a class="dropdown-item" href="#Pancreas">Pancreas</a>
-                    <a class="dropdown-item" href="#PancreaticCancer">Pancreatic Cancer</a>
-                    <a class="dropdown-item" href="#PenileCancer">Penile Cancer</a>
-                    <a class="dropdown-item" href="#ProstateCancer">Prostate Cancer</a>
-                    <a class="dropdown-item" href="#Psychosis">Psychosis</a>
-                    <a class="dropdown-item" href="#Sarcoma">Sarcoma</a>
-                    <a class="dropdown-item" href="#SmallBowelDisease">Small Bowel Disease</a>
-                    <a class="dropdown-item" href="#SpineSurgery">Spine Surgery</a>
-                    <a class="dropdown-item" href="#ThyroidCancer">Thyroid Cancer</a>
-                    <a class="dropdown-item" href="#TotalJointDeterioration">Total Joint Deterioration</a>
-                    <a class="dropdown-item" href="#Type2Diabetes">Type 2 Diabetes</a>
-                    <a class="dropdown-item" href="#UlcerativeColitis">Ulcerative Colitis</a>
-                </div>
-            </div>
+
             <a href="#" class="back-to-top">Back to Top</a>
 
             <div id="accordion">
                 <div class="card">
                     <div class="card-header" id="heading_cancer">
                         <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#cancer" aria-expanded="false" aria-controls="cancer" style="color: #515157; font-size: larger;">
-                                Cancer
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#cancer" aria-expanded="false" aria-controls="cancer" style="color: #515157; font-size: larger;">
+                                Cancer  <i class="fa fa-chevron-down ms-2"></i>
                             </button>
                         </h5>
                     </div>
                     <div id="cancer" class="collapse" aria-labelledby="heading_cancer" data-parent="#accordion">
                         <div class="card-body">
+
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Cancer Type
+                                </button>
+
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#BladderCancer">Bladder</a>
+                                    <a class="dropdown-item" href="#BrainCancer">Brain</a>
+                                    <a class="dropdown-item" href="#BreastCancer">Breast</a>
+                                    <a class="dropdown-item" href="#ColorectalCancer">Colorectal</a>
+                                    <a class="dropdown-item" href="#GastricCancer">Gastric</a>
+                                    <a class="dropdown-item" href="#KidneyCancer">Kidney</a>
+                                    <a class="dropdown-item" href="#Melanoma">Melanoma</a>
+                                    <a class="dropdown-item" href="#OralCancer">Oral</a>
+                                    <a class="dropdown-item" href="#OvarianCancer">Ovarian</a>
+                                    <a class="dropdown-item" href="#PancreaticCancer">Pancreatic</a>
+                                    <a class="dropdown-item" href="#PenileCancer">Penile</a>
+                                    <a class="dropdown-item" href="#ProstateCancer">Prostate</a>
+                                    <a class="dropdown-item" href="#Sarcoma">Sarcoma</a>
+                                    <a class="dropdown-item" href="#ThyroidCancer">Thyroid</a>
+                                </div>
+                            </div>
                         
                             <div id="BladderCancer">
                                 <div class="well">
@@ -497,13 +477,24 @@
                 <div class="card">
                     <div class="card-header" id="heading_diabetes_obesity">
                         <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#diabetes_obesity" aria-expanded="false" aria-controls="diabetes_obesity" style="color: #515157; font-size: larger;">
-                            Diabetes & Obesity
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#diabetes_obesity" aria-expanded="false" aria-controls="diabetes_obesity" style="color: #515157; font-size: larger;">
+                            Diabetes & Obesity <i class="fa fa-chevron-down ms-2"></i>
                         </button>
                         </h5>
                     </div>
                     <div id="diabetes_obesity" class="collapse" aria-labelledby="heading_diabetes_obesity" data-parent="#accordion">
                         <div class="card-body">
+
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Condition
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#Obesity">Obesity</a>
+                                    <a class="dropdown-item" href="#Type2Diabetes">Type 2 Diabetes</a>
+                                </div>
+                            </div>
 
                             <div id="Obesity">
                                 <div class="well">
@@ -580,13 +571,26 @@
                 <div class="card">
                     <div class="card-header" id="heading_fertility_reproduction">
                         <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#fertility_reproduction" aria-expanded="false" aria-controls="fertility_reproduction" style="color: #515157; font-size: larger;">
-                            Fertility & Reproduction
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#fertility_reproduction" aria-expanded="false" aria-controls="fertility_reproduction" style="color: #515157; font-size: larger;">
+                            Fertility & Reproduction <i class="fa fa-chevron-down ms-2"></i>
                         </button>
                         </h5>
                     </div>
                     <div id="fertility_reproduction" class="collapse" aria-labelledby="heading_fertility_reproduction" data-parent="#accordion">
                         <div class="card-body">
+
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Condition
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#FemaleReconstructiveSurgery">Female Pelvic Medicine and
+                                        Reconstructive Surgery</a>
+                                    <a class="dropdown-item" href="#Infertility">Infertility</a>
+                                    <a class="dropdown-item" href="#Pregnancy">Pregnancy</a>
+                                </div>
+                            </div>
                         
                             <div id="FemaleReconstructiveSurgery">
                                 <div class="well">
@@ -664,13 +668,24 @@
                 <div class="card">
                     <div class="card-header" id="heading_gastroenterology">
                         <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#gastroenterology" aria-expanded="false" aria-controls="gastroenterology" style="color: #515157; font-size: larger;">
-                            Gastroenterology
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#gastroenterology" aria-expanded="false" aria-controls="gastroenterology" style="color: #515157; font-size: larger;">
+                            Gastroenterology <i class="fa fa-chevron-down ms-2"></i>
                         </button>
                         </h5>
                     </div>
                     <div id="gastroenterology" class="collapse" aria-labelledby="heading_gastroenterology" data-parent="#accordion">
                         <div class="card-body">
+
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Condition
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#SmallBowelDisease">Small Bowel Disease</a>
+                                    <a class="dropdown-item" href="#UlcerativeColitis">Ulcerative Colitis</a>
+                                </div>
+                            </div>
 
                             <div id="SmallBowelDisease">
                                 <div class="well">
@@ -705,13 +720,27 @@
                 <div class="card">
                     <div class="card-header" id="heading_major_organ_disease">
                         <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#major_organ_disease" aria-expanded="false" aria-controls="major_organ_disease" style="color: #515157; font-size: larger;">
-                            Major Organ Diseases
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#major_organ_disease" aria-expanded="false" aria-controls="major_organ_disease" style="color: #515157; font-size: larger;">
+                            Major Organ Diseases <i class="fa fa-chevron-down ms-2"></i>
                         </button>
                         </h5>
                     </div>
                     <div id="major_organ_disease" class="collapse" aria-labelledby="heading_major_organ_disease" data-parent="#accordion">
                         <div class="card-body">
+
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Organ
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#HeartDisease">Heart</a>
+                                    <a class="dropdown-item" href="#KidneyDisease">Kidney</a>
+                                    <a class="dropdown-item" href="#LiverDisease">Liver</a>
+                                    <a class="dropdown-item" href="#Pancreas">Pancreas</a>
+                                    <a class="dropdown-item" href="#ProstaticHyperplasia">Prostate</a>
+                                </div>
+                            </div>
 
                             <div id="HeartDisease">
                                 <div class="well">
@@ -830,13 +859,25 @@
                 <div class="card">
                     <div class="card-header" id="heading_neurological">
                         <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#neurological" aria-expanded="false" aria-controls="neurological" style="color: #515157; font-size: larger;">
-                            Neurological
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#neurological" aria-expanded="false" aria-controls="neurological" style="color: #515157; font-size: larger;">
+                            Neurological <i class="fa fa-chevron-down ms-2"></i>
                         </button>
                         </h5>
                     </div>
                     <div id="neurological" class="collapse" aria-labelledby="heading_neurological" data-parent="#accordion">
                         <div class="card-body">
+
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Condition
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#Epilepsy">Epilepsy</a>
+                                    <a class="dropdown-item" href="#Psychosis">Psychosis</a>
+                                    <a class="dropdown-item" href="#SpineSurgery">Spine Surgery</a>
+                                </div>
+                            </div>
 
                             <div id="Epilepsy">
                                 <div class="well">
@@ -904,13 +945,23 @@
                 <div class="card">
                     <div class="card-header" id="heading_orthopedics">
                         <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#orthopedics" aria-expanded="false" aria-controls="orthopedics" style="color: #515157; font-size: larger;">
-                            Orthopedics
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#orthopedics" aria-expanded="false" aria-controls="orthopedics" style="color: #515157; font-size: larger;">
+                            Orthopedics <i class="fa fa-chevron-down ms-2"></i>
                         </button>
                         </h5>
                     </div>
                     <div id="orthopedics" class="collapse" aria-labelledby="heading_orthopedics" data-parent="#accordion">
                         <div class="card-body">
+
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Condition
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#TotalJointDeterioration">Total Joint Deterioration</a>
+                                </div>
+                            </div>
 
                             <div id="TotalJointDeterioration">
                                 <div class="well">
@@ -932,13 +983,25 @@
                 <div class="card">
                     <div class="card-header" id="heading_miscellaneous">
                         <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#miscellaneous" aria-expanded="false" aria-controls="miscellaneous" style="color: #515157; font-size: larger;">
-                            Miscellaneous
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#miscellaneous" aria-expanded="false" aria-controls="miscellaneous" style="color: #515157; font-size: larger;">
+                            Miscellaneous <i class="fa fa-chevron-down ms-2"></i>
                         </button>
                         </h5>
                     </div>
                     <div id="miscellaneous" class="collapse" aria-labelledby="heading_miscellaneous" data-parent="#accordion">
                         <div class="card-body">
+
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Category
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#COVID19">COVID-19</a>
+                                    <a class="dropdown-item" href="#ICU">Intensive Care Unit</a>
+                                    <a class="dropdown-item" href="#MedicalEducation">Medical Education</a>
+                                </div>
+                            </div>
 
                             <div id="COVID19">
                                 <div class="well">
@@ -996,7 +1059,7 @@
     <br>
     <div class="copyright-bar bg-black">
         <div class="container">
-            <p>© 2016-2023 Cleveland Clinic Lerner Research Institute</p>
+            <p>© 2016-2025 Cleveland Clinic Lerner Research Institute</p>
         </div>
     </div>
     <script type="text/javascript" src="css\jquery-1.11.1.min.js"></script>
