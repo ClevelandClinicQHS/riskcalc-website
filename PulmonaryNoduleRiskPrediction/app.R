@@ -41,7 +41,7 @@ ui <- fluidPage(
                     tags$head(
                       tags$style(type="text/css", "tfoot {display:none;}")
                     ),
-                    dataTableOutput('result'),
+                    DT::DTOutput('result'),
                     br(),
                    
                       plotOutput("BarplotMalignant")  ,
@@ -272,7 +272,7 @@ server <- shinyServer(function(input, output){
                        )
     data})
   
-  output$result <- renderDataTable({data = data()
+  output$result <- DT::renderDT({data = data()
   
   
   if(data$Model == 'M1' ){
