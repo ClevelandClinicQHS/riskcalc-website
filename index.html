@@ -119,8 +119,14 @@
 
                 <div class="col"><p style="text-align:center"><a href="#prostatic_button" onclick="triggerToggle(event, 'prostatic_button')"><img src="css\prostate.png" width="20%"></a><br><strong>Prostate Health</strong></p></div>
                 <div class="col"><p style="text-align:center"><a href="#fertility_button" onclick="triggerToggle(event, 'fertility_button')"><img src="css\prenatal-care.png" width="20%"></a><br><strong>Reproductive Health & Fertility</strong></p></div>
+                <div class="col"><p style="text-align:center"><a href="#respiratory_button" onclick="triggerToggle(event, 'respiratory_button')"><img src="css\lungs.png" width="20%"></a><br><strong>Respiratory & Critical Care Medicine</strong></p></div>
+
+                <div class="w-100"></div>
+
                 <div class="col"><p style="text-align:center"><a href="#miscellaneous_button" onclick="triggerToggle(event, 'miscellaneous_button')"><img src="css\vital-signs.png" width="20%"></a><br><strong>Other Calculators</strong></p></div>
-              </div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
 
             <br>
             <br>
@@ -1056,6 +1062,32 @@
                 </div>
 
                 <div class="card">
+                    <div class="card-header" id="heading_respiratory">
+                        <h5 class="mb-0">
+                        <button id = "respiratory_button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#respiratory" aria-expanded="false" aria-controls="respiratory" style="color: #515157; font-size: larger;">
+                            Respiratory & Critical Care Medicine <i class="fa fa-chevron-down ms-2"></i>
+                        </button>
+                        </h5>
+                    </div>
+                    <div id="respiratory" class="collapse" aria-labelledby="heading_respiratory" data-parent="#accordion">
+                        <div class="card-body">
+
+                            <div id="PulmonaryNodules">
+                                <div class="well">
+                                    <h3>Pulmonary Nodules</h3>
+                                    <hr />
+                                    
+                                    <h4><a class="calc-link" href="\pulmonary-nodule-risk-prediction" target="_blank">For Patients Considering Biopsy or Resection</a></h4>
+                                    <p>Predicts the probability of malignancy of pulmonary nodules clinically deemed at high enough risk to consider biopsy or resection.</p>
+
+                                </div>
+                            </div>
+ 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
                     <div class="card-header" id="heading_miscellaneous">
                         <h5 class="mb-0">
                         <button id = "miscellaneous_button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#miscellaneous" aria-expanded="false" aria-controls="miscellaneous" style="color: #515157; font-size: larger;">
@@ -1162,7 +1194,7 @@
             <div class="row">
                 <div class="col"><p>© 2016-2025 Cleveland Clinic Lerner Research Institute</p></div>
                 <div class="w-100"></div>
-                <div class="col"><p><a href="https://www.flaticon.com/free-icons/tumor" title="tumor icons">Icons created by Freepik - Flaticon</a></p></div>
+                <div class="col"><p><a href="https://www.flaticon.com/icons" title="icons">Icons created by Freepik - Flaticon</a></p></div>
             </div>
         </div>
     </div>
