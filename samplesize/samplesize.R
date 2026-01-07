@@ -1,123 +1,140 @@
-rct_continuous = function(treat, control, diff, delta, sd, r=1, power, alpha, drop_rate, design = c("Equivalence", "NonInferiority", "Superiority")) {
-    design = match.arg(design, c("Equivalence", "NonInferiority", "Superiority"))
-    beta = 1 - power
-    z.alpha = qnorm(1 - alpha, mean = 0, sd = 1)
-    
-    if (delta < 0) {
-        stop("difference margin must be non-negative")
-    }
-
-    if (design == "NonInferiority") {
-        z.beta = qnorm(1 - beta, mean = 0, sd = 1)
-        n_c = (1 + 1/r) * (sd * (z.alpha + z.beta) / (diff + delta)) ^ 2
-    } else if (design == "Equivalence") {
-        z.beta = qnorm(1 - beta/2, mean = 0, sd = 1)
-        n_c = (1 + 1/r) * (sd * (z.alpha + z.beta) / (abs(diff) - delta)) ^ 2
-    } else if (design == "Superiority") {
-        z.beta = qnorm(1 - beta, mean = 0, sd = 1)
-        n_c = (1 + 1/r) * (sd * (z.alpha + z.beta) / (diff - delta)) ^ 2
-    } 
-    
-    # r = n_t/n_c
-    n_c = ceiling(n_c/(1-drop_rate))
-    n_t = ceiling(n_c * r)
-    
-    return(list(n_treat = n_t, n_control = n_c, n_total = n_t + n_c))
+rct_continuous = function(treat, control, diff=0, delta, sd, r=1, power, alpha, drop_rate, design = c("Equivalence", "NonInferiority", "Superiority")) {
+  design = match.arg(design, c("Equivalence", "NonInferiority", "Superiority", "Equality"))
+  beta = 1 - power
+  z.alpha = qnorm(1 - alpha, mean = 0, sd = 1)
+  z.beta = qnorm(1 - beta, mean = 0, sd = 1)
+  if (design != "Equality") {
+    if (delta < 0) {stop("difference margin must be non-negative")}
+  }
+  
+  if (design == "NonInferiority") {
+    n_c = (1 + 1/r) * (sd * (z.alpha + z.beta) / (diff + delta)) ^ 2
+  } else if (design == "Equivalence") {
+    z.beta = qnorm(1 - beta/2, mean = 0, sd = 1)
+    n_c = (1 + 1/r) * (sd * (z.alpha + z.beta) / (abs(diff) - delta)) ^ 2
+  } else if (design == "Superiority") {
+    n_c = (1 + 1/r) * (sd * (z.alpha + z.beta) / (diff - delta)) ^ 2
+  } else if (design == "Equality") {
+    z.alpha = qnorm(1 - alpha/2, mean = 0, sd = 1)
+    n_c = (1 + 1/r) * (sd * (z.alpha + z.beta) / (diff)) ^ 2
+  } 
+  
+  # r = n_t/n_c
+  n_c = ceiling(n_c/(1-drop_rate))
+  n_t = ceiling(n_c * r)
+  
+  return(list(n_treat = n_t, n_control = n_c, n_total = n_t + n_c))
 }
 
 rct_proportion = function(treat, control, OR, delta, r=1, power, alpha, drop_rate, design = c("Equivalence", "NonInferiority", "Superiority")) {
-    if (!missing(treat)) {useP=TRUE}
-    else {useP=FALSE}
-    design = match.arg(design, c("Equivalence", "NonInferiority", "Superiority"))
-    beta = 1 - power
-    z.alpha = qnorm(1 - alpha, mean = 0, sd = 1)
-
-    
-    # if (!is.na(delta) & delta < 0) {
-    #     stop("difference margin must be non-negative")
-    # }
-    # if (!is.na(delta_exp) & delta_exp < 0) {
-    #     stop("difference margin in exp scale must be non-negative")
-    # }
-    # if (!is.na(OR) & (is.na(treat) | is.na(control))) {
-    #     if (is.na(treat) & is.na(control)) {
-    #         control = 0.5
-    #         treat = OR / (1+OR)
-    #     } else if (is.na(treat)) {
-    #         treat = control * OR / (1 - control + control * OR)
-    #     } else if (is.na(control)) {
-    #         control = treat / (OR - OR * treat + treat)
-    #     }
-    # }
-    # if (!is.na(delta_exp) & is.na(delta)) {
-    #     delta = abs(log(delta_exp))
-    # }
-    if (useP) {
-        if (design == "NonInferiority") {
-            z.beta = qnorm(1 - beta, mean = 0, sd = 1)
-            n_c = (treat * (1 - treat) / r + control * (1 - control)) * ((z.alpha + z.beta) / (treat - control + delta)) ^ 2
-        } else if (design == "Equivalence") {
-            z.beta = qnorm(1 - beta, mean = 0, sd = 1)
-            n_c = (treat * (1 - treat) / r + control * (1 - control)) * ((z.alpha + z.beta) / (abs(treat - control) - delta)) ^ 2
-        } else if (design == "Superiority") {
-            z.beta = qnorm(1 - beta, mean = 0, sd = 1)
-            n_c = (treat * (1 - treat) / r + control * (1 - control)) * ((z.alpha + z.beta) / (treat - control - delta)) ^ 2
-        } 
-    } else {
-        treat = control*OR / (1 - control + control * OR)
-        if (design == "NonInferiority") {
-            z.beta = qnorm(1 - beta, mean = 0, sd = 1)
-            n_c = ((z.alpha + z.beta) / (log(OR) + delta))^2 * (1/(r*treat*(1-treat)) + 1/(control*(1-control)))
-        } else if (design == "Equivalence") {
-            z.beta = qnorm(1 - beta/2, mean = 0, sd = 1)
-            n_c = ((z.alpha + z.beta) / (delta - abs(log(OR))))^2 * (1/(r*treat*(1-treat)) + 1/(control*(1-control)))
-        } else if (design == "Superiority") {
-            z.beta = qnorm(1 - beta, mean = 0, sd = 1)
-            n_c = ((z.alpha + z.beta) / (log(OR) - delta))^2 * (1/(r*treat*(1-treat)) + 1/(control*(1-control)))
-        } 
-    }
-    
-    
-    # r = n_t/n_c
-    n_c = ceiling(n_c/(1-drop_rate))
-    n_t = ceiling(n_c * r)
-    
-    return(list(n_treat = n_t, n_control = n_c, n_total = n_t + n_c))
+  if (!missing(treat)) {useP=TRUE}
+  else {useP=FALSE}
+  design = match.arg(design, c("Equivalence", "NonInferiority", "Superiority", "Equality"))
+  beta = 1 - power
+  z.alpha = qnorm(1 - alpha, mean = 0, sd = 1)
+  z.beta = qnorm(1 - beta, mean = 0, sd = 1)
+  
+  # if (!is.na(delta) & delta < 0) {
+  #     stop("difference margin must be non-negative")
+  # }
+  # if (!is.na(delta_exp) & delta_exp < 0) {
+  #     stop("difference margin in exp scale must be non-negative")
+  # }
+  # if (!is.na(OR) & (is.na(treat) | is.na(control))) {
+  #     if (is.na(treat) & is.na(control)) {
+  #         control = 0.5
+  #         treat = OR / (1+OR)
+  #     } else if (is.na(treat)) {
+  #         treat = control * OR / (1 - control + control * OR)
+  #     } else if (is.na(control)) {
+  #         control = treat / (OR - OR * treat + treat)
+  #     }
+  # }
+  # if (!is.na(delta_exp) & is.na(delta)) {
+  #     delta = abs(log(delta_exp))
+  # }
+  if (useP) {
+    if (design == "NonInferiority") {
+      n_c = (treat * (1 - treat) / r + control * (1 - control)) * ((z.alpha + z.beta) / (treat - control + delta)) ^ 2
+    } else if (design == "Equivalence") {
+      z.beta = qnorm(1 - beta/2, mean = 0, sd = 1)
+      n_c = (treat * (1 - treat) / r + control * (1 - control)) * ((z.alpha + z.beta) / (abs(treat - control) - delta)) ^ 2
+    } else if (design == "Superiority") {
+      n_c = (treat * (1 - treat) / r + control * (1 - control)) * ((z.alpha + z.beta) / (treat - control - delta)) ^ 2
+    } else if (design == "Equality") {
+      z.alpha = qnorm(1 - alpha/2, mean = 0, sd = 1)
+      n_c = (treat * (1 - treat) / r + control * (1 - control)) * ((z.alpha + z.beta) / (treat - control)) ^ 2
+    } 
+  } else {
+    treat = control*OR / (1 - control + control * OR)
+    if (design == "NonInferiority") {
+      n_c = ((z.alpha + z.beta) / (log(OR) + delta))^2 * (1/(r*treat*(1-treat)) + 1/(control*(1-control)))
+    } else if (design == "Equivalence") {
+      z.beta = qnorm(1 - beta/2, mean = 0, sd = 1)
+      n_c = ((z.alpha + z.beta) / (delta - abs(log(OR))))^2 * (1/(r*treat*(1-treat)) + 1/(control*(1-control)))
+    } else if (design == "Superiority") {
+      n_c = ((z.alpha + z.beta) / (log(OR) - delta))^2 * (1/(r*treat*(1-treat)) + 1/(control*(1-control)))
+    } else if (design == "Equality") {
+      z.alpha = qnorm(1 - alpha/2, mean = 0, sd = 1)
+      n_c = ((z.alpha + z.beta) / log(OR))^2 * (1/(r*treat*(1-treat)) + 1/(control*(1-control)))
+    } 
+  }
+  
+  
+  # r = n_t/n_c
+  n_c = ceiling(n_c/(1-drop_rate))
+  n_t = ceiling(n_c * r)
+  
+  return(list(n_treat = n_t, n_control = n_c, n_total = n_t + n_c))
 }
 
-rct_survival = function(HR, delta, pi_treat, pi_control, ta, tb, lambda, r=1, power, alpha, design = c("Equivalence", "NonInferiority", "Superiority")) {
-    design = match.arg(design, c("Equivalence", "NonInferiority", "Superiority"))
-    beta = 1 - power
-    z.alpha = qnorm(1 - alpha, mean = 0, sd = 1)
-    
-    delta = abs(delta)
-    log_hr = log(HR)
-    
-    if (missing(pi_treat) & missing(pi_control)) {
-        pi_control = 1 - exp(-lambda*tb) *(1-exp(-lambda*ta)) / lambda*ta
-        pi_treat = 1 - exp(- lambda*HR * tb) *(1-exp(- lambda*HR * ta)) / (lambda*HR * ta)
-    }
-    p = (pi_control + pi_treat) /2
-    
-    if (design == "NonInferiority") {
-        z.alpha = qnorm(1 - alpha, mean = 0, sd = 1)
-        z.beta = qnorm(1 - beta, mean = 0, sd = 1)
-        n_c = ((r + 1) / (pi * r)) * ((z.alpha + z.beta) / (log_hr + delta)) ^ 2
-    } else if (design == "Equivalence") {
-        z.alpha = qnorm(1 - alpha, mean = 0, sd = 1)
-        z.beta = qnorm(1 - beta, mean = 0, sd = 1)
-        n_c = ((r + 1) / (pi * r))  / r * ((z.alpha + z.beta) / (delta - abs(log_hr))) ^ 2
-    } else if (design == "Superiority") {
-        z.alpha = qnorm(1 - alpha, mean = 0, sd = 1)
-        z.beta = qnorm(1 - beta, mean = 0, sd = 1)
-        n_c = ((r + 1) / (pi * r))  / r * ((z.alpha + z.beta) / (log_hr - delta)) ^ 2
-    } 
-    
-    # r = n_t/n_c
-    n_c = ceiling(n_c)
-    n_t = ceiling(r * n_c)
-    
-    return(list(n_treat = n_t, n_control = n_c, n_total = n_t + n_c, pi_control=pi_control, pi_treat=pi_treat))
+rct_survival = function(delta, ta, tb, k=1, power, alpha, 
+                            lambdaT, lambdaC, mC, mT,
+                            design = c("Equivalence", "NonInferiority", "Superiority", "Equality")) {
+  design = match.arg(design, c("Equivalence", "NonInferiority", "Superiority", "Equality"))
+  beta = 1 - power
+  z.alpha = qnorm(1 - alpha, mean = 0, sd = 1)
+  z.beta = qnorm(1 - beta, mean = 0, sd = 1)
+  if (design != "Equality") {delta = abs(delta)}
+  pcpt = k/((1+k)^2)
+  
+  if (missing(lambdaC) | missing(lambdaT)){
+    lambdaC = log(2) / mC
+    lambdaT = log(2) / mT
+    b = log(mT / mC)
+  } else {
+    mC = log(2) / lambdaC
+    mT = log(2) / lambdaT
+    b = log(lambdaC / lambdaT)
+  }
+  
+  # probability of events
+  Pr_control = 1 - (1/6)*(exp(-lambdaC * tb) + 4*exp(-lambdaC * (0.5*ta + tb)) + exp(-lambdaC * (ta + tb)))
+  Pr_treat = 1 - (1 - Pr_control)^(lambdaT/lambdaC)
+  Pr = (Pr_control + k * Pr_treat) / (1 + k)
+  
+  # calculate n total
+  if (design == "NonInferiority") {
+    n_total = ((z.alpha + z.beta)^2) / (((b + delta)^2) * pcpt * Pr)
+  } else if (design == "Equivalence") {
+    z.beta = qnorm(1 - beta/2, mean = 0, sd = 1)
+    n_total = ((z.alpha + z.beta)^2) / (((delta - abs(b))^2) * pcpt * Pr)
+  } else if (design == "Superiority") {
+    n_total = ((z.alpha + z.beta)^2) / (((b - delta)^2) * pcpt * Pr)
+  } else if (design == "Equality") {
+    z.alpha = qnorm(1 - alpha/2, mean = 0, sd = 1)
+    n_total = ((z.alpha + z.beta)^2) / ((b^2) * pcpt * Pr)
+  }
+  
+  # k = n_t/n_c with n_c = 1
+  n_c = ceiling((1/(1+k)) * n_total)
+  n_t = ceiling(k * n_c)
+  n_total = n_c + n_t
+  
+  return(list(n_treat = n_t, n_control = n_c, n_total = n_total, 
+              lambdaC = lambdaC, lambdaT = lambdaT, mC = mC, mT = mT,
+              Pr_control = Pr_control, Pr_treat = Pr_treat,
+              Pr = Pr))
 }
 
 cc = function(p0, p1, OR, r=1, rho=0.2, alpha, power, two.side=T, design = c("matched", "unmatched")) {
@@ -295,4 +312,44 @@ auc = function(beta, alpha, theta, theta0, prevalence) {
     ncase = ceiling(n * prevalence)
     ncontrol = ceiling(n * (1 - prevalence))
     return(list(ncase=ncase, ncontrol=ncontrol))
+}
+
+# === Archived functions === #
+rct_survival_archive = function(HR, delta, pi_treat, pi_control, ta, tb, lambda, r=1, power, alpha, design = c("Equivalence", "NonInferiority", "Superiority")) {
+  design = match.arg(design, c("Equivalence", "NonInferiority", "Superiority"))
+  beta = 1 - power
+  z.alpha = qnorm(1 - alpha, mean = 0, sd = 1)
+  
+  delta = abs(delta)
+  log_hr = log(HR)
+  
+  if (missing(pi_treat) & missing(pi_control)) {
+    pi_control = 1 - exp(-lambda*tb) *(1-exp(-lambda*ta)) / lambda*ta
+    pi_treat = 1 - exp(- lambda*HR * tb) *(1-exp(- lambda*HR * ta)) / (lambda*HR * ta)
+  }
+  pi = (pi_control + pi_treat) /2
+  
+  if (design == "NonInferiority") {
+    z.alpha = qnorm(1 - alpha, mean = 0, sd = 1)
+    z.beta = qnorm(1 - beta, mean = 0, sd = 1)
+    n_c = ((r + 1) / (pi * r)) * ((z.alpha + z.beta) / (log_hr + delta)) ^ 2
+  } else if (design == "Equivalence") {
+    z.alpha = qnorm(1 - alpha, mean = 0, sd = 1)
+    z.beta = qnorm(1 - beta, mean = 0, sd = 1)
+    n_c = ((r + 1) / (pi * r))  / r * ((z.alpha + z.beta) / (delta - abs(log_hr))) ^ 2
+  } else if (design == "Superiority") {
+    z.alpha = qnorm(1 - alpha, mean = 0, sd = 1)
+    z.beta = qnorm(1 - beta, mean = 0, sd = 1)
+    n_c = ((r + 1) / (pi * r))  / r * ((z.alpha + z.beta) / (log_hr - delta)) ^ 2
+  } else if (design == "Equality") {
+    z.alpha = qnorm(1 - alpha/2, mean = 0, sd = 1)
+    z.beta = qnorm(1 - beta, mean = 0, sd = 1)
+    n_c = ((r + 1) / (pi * r))  / r * ((z.alpha + z.beta) / (log_hr)) ^ 2
+  }
+  
+  # r = n_t/n_c
+  n_c = ceiling(n_c)
+  n_t = ceiling(r * n_c)
+  
+  return(list(n_treat = n_t, n_control = n_c, n_total = n_t + n_c, pi_control=pi_control, pi_treat=pi_treat))
 }
