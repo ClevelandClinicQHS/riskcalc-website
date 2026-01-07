@@ -1,7 +1,7 @@
 library(pmsampsize)
 function(input, output, session) {
     useShinyjs(html = TRUE)
-    
+  
     design <- reactiveVal("Introduction")
     
     observeEvent(input$design,{
@@ -15,7 +15,7 @@ function(input, output, session) {
             shinyjs::hide(id="outcome_pm")
             shinyjs::hide(id="outcome_auc")
         }
-        if (input$design %in% c("NonInferiority", "Superiority", "Equivalence")) {
+        if (input$design %in% c("NonInferiority", "Superiority", "Equivalence", "Equality")) {
             shinyjs::hide(id="introduction")
             shinyjs::show(id="outcome_rct")
             shinyjs::hide(id="outcome_cc")
@@ -100,11 +100,13 @@ function(input, output, session) {
     output$summary <- renderUI({
         d = design()
         if (d == "NonInferiority") {
-            h1("Non-inferiority Trial")
+            h1("Non-inferiority Trial (One-Sided)")
         } else if (d == "Superiority") {
-            h1("Superiority Trial")
+            h1("Superiority Trial (One-Sided)")
         } else if (d == "Equivalence") {
-            h1("Equivalence Trial")
+            h1("Equivalence Trial") 
+        } else if (d == "Equality") {
+              h1("Equality Trial")
         } else if (d=="CaseControl") {
             h1("Case-control Study")
         } else if (d=="Cohort") {
@@ -128,11 +130,14 @@ function(input, output, session) {
     output$example1 <- renderUI({
         d = design()
         if (d == "NonInferiority") {
-            withMathJax(p('Suppose that the pharmaceutical company is interested in establishing non-inferiority of the test drug as compared to the active control agent. We assume that the non-inferiority margin is chosen to be 5% (i.e., \\(\\delta = 0.05 \\)). Also, suppose the true difference in mean LDL between treatment groups is 0 (i.e., \\(d = 0\\)) and the standard deviation is 10% (i.e., \\(SD = 0.1\\)). For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 5% level of significance (i.e., \\(\\alpha = 0.05\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(50\\) and \\(50\\), respectively.'))
+            withMathJax(p('Suppose that the pharmaceutical company is interested in establishing non-inferiority of the test drug as compared to the active control agent. We assume that the non-inferiority margin is chosen to be 5% (i.e., \\(\\delta = 0.05 \\)). Also, suppose the true difference in mean LDL between treatment groups is 0 (i.e., \\(d = 0\\)) and the standard deviation is 10% (i.e., \\(SD = 0.1\\)). For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 5% level of significance (i.e., \\(\\alpha = 0.025\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(
+                          63\\) and \\(63\\), respectively.'))
         } else if (d == "Superiority") {
-            withMathJax(p('Suppose that the pharmaceutical company is interested in establishing superiority of the test drug as compared to the active control agent. We assume that the superiority margin is chosen to be 0.05 (i.e., \\( \\delta = 0.05 \\)). Also, suppose the true difference in mean LDL between treatment groups is 0.08 (i.e., \\(d = 0.08\\)) and the standard deviation is 10% (i.e., \\(SD = 0.1\\)). For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 5% level of significance (i.e., \\(\\alpha = 0.05\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(138\\) and \\(138\\), respectively.'))
+            withMathJax(p('Suppose that the pharmaceutical company is interested in establishing superiority of the test drug as compared to the active control agent. We assume that the superiority margin is chosen to be 0.05 (i.e., \\( \\delta = 0.05 \\)). Also, suppose the true difference in mean LDL between treatment groups is 0 (i.e., \\(d = 0\\)) and the standard deviation is 10% (i.e., \\(SD = 0.1\\)). For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 5% level of significance (i.e., \\(\\alpha = 0.025\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(63\\) and \\(63\\), respectively.'))
         } else if (d == "Equivalence") {
-            withMathJax(p('Suppose that the pharmaceutical company is interested in establishing equivalence of the test drug as compared to the active control agent. We assume that the equivalence margin is chosen to be 5% (i.e., \\(\\delta = 0.05 \\)). Also, suppose the true difference in mean LDL between treatment groups is 1% (i.e., \\(d = 0.01\\)) and the standard deviation is 10% (i.e., \\(SD = 0.1\\)). For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 5% level of significance (i.e., \\(\\alpha = 0.05\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(108\\) and \\(108\\), respectively.'))
+            withMathJax(p('Suppose that the pharmaceutical company is interested in establishing equivalence of the test drug as compared to the active control agent. We assume that the equivalence margin is chosen to be 5% (i.e., \\(\\delta = 0.05 \\)). Also, suppose the true difference in mean LDL between treatment groups is 0% (i.e., \\(d = 0\\)) and the standard deviation is 10% (i.e., \\(SD = 0.1\\)). For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 5% level of significance (i.e., \\(\\alpha = 0.05\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(69\\) and \\(69\\), respectively.'))
+        } else if (d == "Equality") {
+          withMathJax(p('Suppose that the pharmaceutical company is interested in establishing equality of the test drug as compared to the active control agent. We suppose that a diﬀerence of 5% (i.e., \\(d = 0.05 \\)) in percent change of LDL is considered of clinically meaningful diﬀerence and the standard deviation is 10% (i.e., \\(SD = 0.1\\)). For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 5% level of significance (i.e., \\(\\alpha = 0.05\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(63\\) and \\(63\\), respectively.'))
         }
     })
     
@@ -147,17 +152,22 @@ function(input, output, session) {
         } else if (d == "Equivalence") {
             withMathJax(p('Suppose it is of interest to establish equivalence of the test drugs compared to the active control agent. Assume the equivalence margin is 0% (i.e., \\( H_0: |p_T - p_C| >= 0, \\delta  = 0.0 \\)). Also, suppose the true mean cure rates of the treatment agents and the active control are 85% (i.e., \\(p_T  = 0.85\\)) and 65% (i.e., \\(p_C  = 0.65\\)) , respectively. For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 5% level of significance (i.e., \\(\\alpha = 0.05\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(55\\) and \\(55\\), respectively.'),
                         p('Suppose it is of interest to establish equivalence of the test compound and a standard therapy for prevention of relapse in subjects with schizophrenia and schizoaffective disorders. The estimated the odds ratio between the test compound and a standard therapy is 2 (i.e., \\( OR = 2 \\)). Based on the results from a previous study, 25% of subjects receiving the standard therapy experienced relapse after the treatment (i.e., \\(p_C = 0.25\\)). The hypotheses of interest is \\( H_0: OR = 1 \\), so the equivalence margin is 0%, (i.e., \\( \\delta = 0 \\)). For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 5% level of significance (i.e., \\(\\alpha = 0.05\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(170\\) and \\(170\\), respectively.'))
+        } else if (d == "Equality") {
+          withMathJax(p('Suppose it is of interest to establish equality of the test drugs compared to the active control agent. Suppose a diﬀerence of 20% (i.e., \\( H_0: |p_T - p_C| = 0.2 \\)) in clinical response of cure is considered of clinically meaningful diﬀerence between the two agents and the true mean cure rates of the treatment agents and the active control are 85% (i.e., \\(p_T  = 0.85\\)) and 65% (i.e., \\(p_C  = 0.65\\)) , respectively. For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 5% level of significance (i.e., \\(\\alpha = 0.05\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(70\\) and \\(70\\), respectively.'),
+                      p('Suppose it is of interest to establish equality of the test compound and a standard therapy for prevention of relapse in subjects with schizophrenia and schizoaffective disorders. Suppose the odds ratio between the test compound and a standard therapy is 2 (i.e., \\( OR = 2 \\)). Based on the results from a previous study, 25% of subjects receiving the standard therapy experienced relapse after the treatment (i.e., \\(p_C = 0.25\\)). For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 5% level of significance (i.e., \\(\\alpha = 0.05\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(156\\) and \\(156\\), respectively.'))
         }
     })
     
     output$example3 <- renderUI({
         d = design()
         if (d == "NonInferiority") {
-            withMathJax(p('Suppose that the pharmaceutical company is interested in establishing non-inferiority of the test drug as compared to the active control agent. The company conducts a study with 1 year accrual time period (period of time that patients are entering the study, \\(T_a = 1\\)) and 1 year follow-up time period (period of time after accrual has ended before the final analysis is conducted, \\(T_b=1\\)). Assume the hazard for the control group is a constant risk over time at 0.7 (i.e., \\(\\lambda_C = 0.7\\)) and the expected Hazard ratio of 1.2 (i.e., \\(HR = 1.2\\)). We assume that the non-inferiority margin is chosen to be 0.3 (i.e., \\( H_0: \\log (HR) \\leq -\\delta, \\delta = 0.3\\)). For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 5% level of significance (i.e., \\(\\alpha = 0.05\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(285\\) and \\(285\\), respectively.'))
+            withMathJax(p('Suppose that the pharmaceutical company is interested in establishing non-inferiority of the test drug as compared to the active control agent. The company conducts a study with 1 year accrual time period (period of time that patients are entering the study, \\(T_a = 1\\)) and 1 year follow-up time period (period of time after accrual has ended before the final analysis is conducted, \\(T_b=1\\)). Assume the hazard for the control group is a constant risk over time at 2 (i.e., \\(\\lambda_C = 2\\)) and the hazard for the treatment group is a constant risk over time at 1 (i.e., \\(\\lambda_T = 1\\)). We assume that the non-inferiority margin is chosen to be 0.3 (i.e., \\( H_0: \\log (HR) \\leq -\\delta, \\delta = 0.3\\)). For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 2.5% level of significance (i.e., \\(\\alpha = 0.025\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(19\\) and \\(19\\), respectively.'))
         } else if (d == "Superiority") {
-            withMathJax(p('Suppose that the pharmaceutical company is interested in establishing superiority of the test drug as compared to the active control agent. The company conducts a study with 1 year accrual time period (period of time that patients are entering the study, \\(T_a = 1\\)) and 1 year follow-up time period (period of time after accrual has ended before the final analysis is conducted, \\(T_b=1\\)). Assume the hazard for the control group is a constant risk over time at 0.7 (i.e., \\(\\lambda_C = 0.7\\)) and the expected Hazard ratio of 1.5 (i.e., \\(HR = 1.5\\)). We assume that the superiority margin is chosen to be 0.2 (i.e., \\( H_0: \\log (HR) \\leq \\delta, \\delta = 0.2\\)). For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 5% level of significance (i.e., \\(\\alpha = 0.05\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(94\\) and \\(94\\), respectively.'))
+            withMathJax(p('Suppose that the pharmaceutical company is interested in establishing superiority of the test drug as compared to the active control agent. The company conducts a study with 1 year accrual time period (period of time that patients are entering the study, \\(T_a = 1\\)) and 1 year follow-up time period (period of time after accrual has ended before the final analysis is conducted, \\(T_b=1\\)). Assume the hazard for the control group is a constant risk over time at 2 (i.e., \\(\\lambda_C = 2\\)) and the hazard for the treatment group is a constant risk over time at 1 (i.e., \\(\\lambda_T = 1\\)). We assume that the superiority margin is chosen to be 0.3 (i.e., \\( H_0: \\log (HR) \\leq \\delta, \\delta = 0.3\\)). For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 2.5% level of significance (i.e., \\(\\alpha = 0.025\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(120\\) and \\(120\\), respectively.'))
         } else if (d == "Equivalence") {
-            withMathJax(p('Suppose that the pharmaceutical company is interested in establishing equivalence of the test drug as compared to the active control agent. The company conducts a study with 1 year accrual time period (period of time that patients are entering the study, \\(T_a = 1\\)) and 1 year follow-up time period (period of time after accrual has ended before the final analysis is conducted, \\(T_b=1\\)). Assume the hazard for the control group is a constant risk over time at 0.7 (i.e., \\(\\lambda_C = 0.7\\)) and the expected Hazard ratio of 1.1 (i.e., \\(HR = 1.1\\)). The hypotheses of interest is \\( H_0: HR = 1 \\), so the equivalence margin is 0%, (i.e., \\( \\delta = 0 \\)). For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 5% level of significance (i.e., \\(\\alpha = 0.05\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(434\\) and \\(434\\), respectively.'))
+            withMathJax(p('Suppose that the pharmaceutical company is interested in establishing equivalence of the test drug as compared to the active control agent. The company conducts a study with 1 year accrual time period (period of time that patients are entering the study, \\(T_a = 1\\)) and 1 year follow-up time period (period of time after accrual has ended before the final analysis is conducted, \\(T_b=1\\)). Assume the hazard for the control group is a constant risk over time at 1 (i.e., \\(\\lambda_C = 1\\)) and the hazard for the treatment group is a constant risk over time at 1 (i.e., \\(\\lambda_T = 1\\)). The hypotheses of interest is \\( H_0: HR = 1.65 \\), so the equivalence margin is 50%, (i.e., \\( \\delta = 0.5 \\)). For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 5% level of significance (i.e., \\(\\alpha = 0.05\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(90\\) and \\(90\\), respectively.'))
+        } else if (d == "Equality") {
+          withMathJax(p('Suppose that the pharmaceutical company is interested in establishing equality of the test drug as compared to the active control agent. The company conducts a study with 1 year accrual time period (period of time that patients are entering the study, \\(T_a = 1\\)) and 1 year follow-up time period (period of time after accrual has ended before the final analysis is conducted, \\(T_b=1\\)). Assume the hazard for the control group is a constant risk over time at 2 (i.e., \\(\\lambda_C = 2\\)) and the hazard for the treatment group is a constant risk over time at 1 (i.e., \\(\\lambda_T = 1\\)). For achieving an 80% power (i.e., \\(1-\\beta = 0.8\\)) at the 5% level of significance (i.e., \\(\\alpha = 0.05\\)) with equal allocation (i.e., \\(k = 1\\)), the sample size for treatment agents and the active control are \\(39\\) and \\(39\\), respectively.'))
         }
     })
     
@@ -285,67 +295,183 @@ function(input, output, session) {
     v = reactiveValues(res = NULL)
     
     observeEvent(input$run,{
-        if (design() %in% c("NonInferiority", "Superiority", "Equivalence") & input$rctDesign=="continuous"){
+        if (design() %in% c("NonInferiority", "Superiority", "Equivalence", "Equality") & input$rctDesign=="continuous"){
+          if (design() %in% c("NonInferiority", "Superiority", "Equivalence")){
             res = rct_continuous(diff=input$rct_mean_diff, delta=input$rct_delta_c, sd=input$rct_sd, 
                                  r=input$r_rct_c, power=input$beta_rct_c, alpha=input$alpha_rct_c, drop_rate = input$dr_c/100, design=design())
-                output_data = data.frame(
-                    V1 = c("Significance level", "Power (1-beta)", "Ratio of sample size, treat/control", "Allowable difference", "SD", "Margin", "Drop rate (%)", "Result", "Sample Size - Treat", "Sample Size - Control", "Total sample size"),
-                    V2 = c(input$alpha_rct_c, input$beta_rct_c, input$r_rct_c, input$rct_mean_diff, input$rct_sd, input$rct_delta_c, input$dr_c, "", res$n_treat, res$n_control, res$n_total)
-                ) %>% 
-                    knitr::kable("html", escape = F, align=c("l", "c")) %>% 
-                    kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
-                    row_spec(8, bold = T, background = "#EEF5DB") %>% 
-                    add_header_above(c("Sample size"=2), background = "#666666", color = "#ffffff")
-                output_data = gsub("</th></tr>.*</thead>","</thead>", output_data)
-                v$res = output_data
+            output_data = data.frame(
+              V1 = c("Significance level", "Power (1-beta)", "Ratio of sample size, treat/control", "Allowable difference", "SD", "Margin", "Drop rate (%)", "Result", "Sample Size - Treat", "Sample Size - Control", "Total sample size"),
+              V2 = c(input$alpha_rct_c, input$beta_rct_c, input$r_rct_c, input$rct_mean_diff, input$rct_sd, input$rct_delta_c, input$dr_c, "", res$n_treat, res$n_control, res$n_total)
+            ) %>% 
+              knitr::kable("html", escape = F, align=c("l", "c")) %>% 
+              kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
+              row_spec(8, bold = T, background = "#EEF5DB") %>% 
+              add_header_above(c("Sample size"=2), background = "#666666", color = "#ffffff")
+          }
+          # remove delta (margin) for Equality
+          if (design() %in% c("Equality")){
+            res = rct_continuous(diff=input$rct_mean_diff, sd=input$rct_sd, 
+                                 r=input$r_rct_c, power=input$beta_rct_c, alpha=input$alpha_rct_c, drop_rate = input$dr_c/100, design=design())
+            output_data = data.frame(
+              V1 = c("Significance level", "Power (1-beta)", "Ratio of sample size, treat/control", "Allowable difference", "SD", "Drop rate (%)", "Result", "Sample Size - Treat", "Sample Size - Control", "Total sample size"),
+              V2 = c(input$alpha_rct_c, input$beta_rct_c, input$r_rct_c, input$rct_mean_diff, input$rct_sd, input$dr_c, "", res$n_treat, res$n_control, res$n_total)
+            ) %>% 
+              knitr::kable("html", escape = F, align=c("l", "c")) %>% 
+              kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
+              row_spec(7, bold = T, background = "#EEF5DB") %>% 
+              add_header_above(c("Sample size"=2), background = "#666666", color = "#ffffff")
+          }   
+          
+          # shape output for result rendering  
+          output_data = gsub("</th></tr>.*</thead>","</thead>", output_data)
+          v$res = output_data
         }
-        if (design() %in% c("NonInferiority", "Superiority", "Equivalence") & input$rctDesign=="dichotomous"){
+        if (design() %in% c("NonInferiority", "Superiority", "Equivalence", "Equality") & input$rctDesign=="dichotomous"){
             if (input$radiobar1 == "proportion") {
+              if (design() %in% c("NonInferiority", "Superiority", "Equivalence")){
                 res = rct_proportion(treat=input$rct_p_treat, control=input$rct_p_control,  
-                                 delta=input$rct_delta_p, 
-                                 r=input$r_rct_p, power=input$beta_rct_p, alpha=input$alpha_rct_p, drop_rate = input$dr_d/100, design=design())
+                                     delta=input$rct_delta_p, 
+                                     r=input$r_rct_p, power=input$beta_rct_p, alpha=input$alpha_rct_p, drop_rate = input$dr_d/100, design=design())
                 output_data = data.frame(
-                    V1 = c("Significance level", "Power (1-beta)", "Ratio of sample size, treat/control", "Expected proportion in the treatment group", "Expected proportion in the control group","Margin", "Drop rate (%)", "Result", "Sample Size - Treat", "Sample Size - Control", "Total sample size"),
-                    V2 = c(input$alpha_rct_p, input$beta_rct_p, input$r_rct_p, input$rct_p_treat, input$rct_p_control, input$rct_delta_p,input$dr_d, "", res$n_treat, res$n_control, res$n_total)
-                ) %>% 
-                    knitr::kable("html", escape = F, align=c("l", "c")) %>% 
-                    kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
-                    row_spec(8, bold = T, background = "#EEF5DB") %>% 
-                    add_header_above(c("Sample size"=2), background = "#666666", color = "#ffffff")
-                output_data = gsub("</th></tr>.*</thead>","</thead>", output_data)
-                v$res = output_data
+                  V1 = c("Significance level", "Power (1-beta)", "Ratio of sample size, treat/control", "Expected proportion in the treatment group", "Expected proportion in the control group","Margin", "Drop rate (%)", "Result", "Sample Size - Treat", "Sample Size - Control", "Total sample size"),
+                  V2 = c(input$alpha_rct_p, input$beta_rct_p, input$r_rct_p, input$rct_p_treat, input$rct_p_control, input$rct_delta_p,input$dr_d, "", res$n_treat, res$n_control, res$n_total)
+                ) %>%
+                  knitr::kable("html", escape = F, align=c("l", "c")) %>% 
+                  kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
+                  row_spec(8, bold = T, background = "#EEF5DB") %>% 
+                  add_header_above(c("Sample size"=2), background = "#666666", color = "#ffffff")
+              }
+              
+              # remove delta (margin) for Equality
+              if (design() %in% c("Equality")){
+                res = rct_proportion(treat=input$rct_p_treat, control=input$rct_p_control,  
+                                     r=input$r_rct_p, power=input$beta_rct_p, alpha=input$alpha_rct_p, drop_rate = input$dr_d/100, design=design())
+                output_data = data.frame(
+                  V1 = c("Significance level", "Power (1-beta)", "Ratio of sample size, treat/control", "Expected proportion in the treatment group", "Expected proportion in the control group", "Drop rate (%)", "Result", "Sample Size - Treat", "Sample Size - Control", "Total sample size"),
+                  V2 = c(input$alpha_rct_p, input$beta_rct_p, input$r_rct_p, input$rct_p_treat, input$rct_p_control, input$dr_d, "", res$n_treat, res$n_control, res$n_total)
+                ) %>%
+                  knitr::kable("html", escape = F, align=c("l", "c")) %>% 
+                  kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
+                  row_spec(7, bold = T, background = "#EEF5DB") %>% 
+                  add_header_above(c("Sample size"=2), background = "#666666", color = "#ffffff")
+              }
+              
+              # reshape output for result rendering
+              output_data = gsub("</th></tr>.*</thead>","</thead>", output_data)
+              v$res = output_data
             } else {
+              if (design() %in% c("NonInferiority", "Superiority", "Equivalence")){
                 res = rct_proportion(OR = input$rct_p_or, control=input$rct_p_control2, 
                                      delta=input$rct_deltaexp_p, 
                                      r=input$r_rct_p, power=input$beta_rct_p, alpha=input$alpha_rct_p, drop_rate = input$dr_d/100, design=design())
                 output_data = data.frame(
-                    V1 = c("Significance level", "Power (1-beta)", "Ratio of sample size, treat/control", "Odds ratio","Margin in log-scale", "Result", "Sample Size - Treat", "Sample Size - Control", "Total sample size"),
-                    V2 = c(input$alpha_rct_p, input$beta_rct_p, input$r_rct_p, input$rct_p_or, input$rct_deltaexp_p, "", res$n_treat, res$n_control, res$n_total)
-                ) %>% 
-                    knitr::kable("html", escape = F, align=c("l", "c")) %>% 
-                    kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
-                    row_spec(6, bold = T, background = "#EEF5DB") %>% 
-                    add_header_above(c("Sample size"=2), background = "#666666", color = "#ffffff")
+                  V1 = c("Significance level", "Power (1-beta)", "Ratio of sample size, treat/control", "Odds ratio","Margin in log-scale", "Result", "Sample Size - Treat", "Sample Size - Control", "Total sample size"),
+                  V2 = c(input$alpha_rct_p, input$beta_rct_p, input$r_rct_p, input$rct_p_or, input$rct_deltaexp_p, "", res$n_treat, res$n_control, res$n_total)
+                ) %>%
+                  knitr::kable("html", escape = F, align=c("l", "c")) %>% 
+                  kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
+                  row_spec(6, bold = T, background = "#EEF5DB") %>% 
+                  add_header_above(c("Sample size"=2), background = "#666666", color = "#ffffff")
+              }
+              
+              # remove delta (margin) for Equality
+              if (design() %in% c("Equality")){
+                res = rct_proportion(OR = input$rct_p_or, control=input$rct_p_control2, 
+                                     r=input$r_rct_p, power=input$beta_rct_p, alpha=input$alpha_rct_p, drop_rate = input$dr_d/100, design=design())
+                output_data = data.frame(
+                  V1 = c("Significance level", "Power (1-beta)", "Ratio of sample size, treat/control", "Odds ratio", "Result", "Sample Size - Treat", "Sample Size - Control", "Total sample size"),
+                  V2 = c(input$alpha_rct_p, input$beta_rct_p, input$r_rct_p, input$rct_p_or, "", res$n_treat, res$n_control, res$n_total)
+                ) %>%
+                  knitr::kable("html", escape = F, align=c("l", "c")) %>% 
+                  kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
+                  row_spec(5, bold = T, background = "#EEF5DB") %>% 
+                  add_header_above(c("Sample size"=2), background = "#666666", color = "#ffffff")
+              }
+              
+                # reshape output for result rendering
                 output_data = gsub("</th></tr>.*</thead>","</thead>", output_data)
                 v$res = output_data
             }
         }
-        if (design() %in% c("NonInferiority", "Superiority", "Equivalence") & input$rctDesign=="tte") {
+        if (design() %in% c("NonInferiority", "Superiority", "Equivalence", "Equality") & input$rctDesign=="tte") {
             if (input$radiobar2 == "known") {
-                res = rct_survival(HR=input$rct_s_hr, delta=input$rct_delta_s, pi_treat=input$rct_s_treat, pi_control=input$rct_s_control, r=input$r_rct_s, power=input$beta_rct_s, alpha=input$alpha_rct_s)
+              if (design() %in% c("NonInferiority", "Superiority", "Equivalence")){
+                res = rct_survival(delta=input$rct_delta_s, ta=input$rct_s_timea, tb=input$rct_s_timeb, k=input$r_rct_s, power=input$beta_rct_s, alpha=input$alpha_rct_s, 
+                                   mT=input$rct_s_treat, mC=input$rct_s_control,
+                                   design=design())
+              }
+              # remove delta (margin) for Equality
+              if (design() %in% c("Equality")){
+                res = rct_survival(ta=input$rct_s_timea, tb=input$rct_s_timeb, k=input$r_rct_s, power=input$beta_rct_s, alpha=input$alpha_rct_s, 
+                                   mT=input$rct_s_treat, mC=input$rct_s_control,
+                                   design=design())
+              }
             } else {
-                res = rct_survival(HR=input$rct_s_hr, delta=input$rct_delta_s, ta=input$rct_s_timea, tb=input$rct_s_timeb, lambda=input$rct_s_lambda0, r=input$r_rct_s, power=input$beta_rct_s, alpha=input$alpha_rct_s)
+              if (design() %in% c("NonInferiority", "Superiority", "Equivalence")){
+                res = rct_survival(delta=input$rct_delta_s, ta=input$rct_s_timea, tb=input$rct_s_timeb, k=input$r_rct_s, power=input$beta_rct_s, alpha=input$alpha_rct_s, 
+                                   lambdaT=input$rct_s_lambdat, lambdaC=input$rct_s_lambdac,
+                                   design=design())
+              }
+              # remove delta (margin) for Equality 
+              if (design() %in% c("Equality")){
+                res = rct_survival(ta=input$rct_s_timea, tb=input$rct_s_timeb, k=input$r_rct_s, power=input$beta_rct_s, alpha=input$alpha_rct_s, 
+                                   lambdaT=input$rct_s_lambdat, lambdaC=input$rct_s_lambdac,
+                                   design=design())
+              } 
             }
+          
+          if (design() %in% c("NonInferiority", "Superiority", "Equivalence")){
             output_data = data.frame(
-                V1 = c("Significance level", "Power (1-beta)", "Ratio of sample size, treat/control", "Hazard ratio", "Margin", "Probability of event in the treat group", "Probability of event in the control group", "Result", "Sample Size - Treat", "Sample Size - Control", "Total sample size"),
-                V2 = c(input$alpha_rct_s, input$beta_rct_s, input$r_rct_s, input$rct_s_hr, input$rct_delta_s, round(res$pi_treat, 3), round(res$pi_control, 3), "", res$n_treat, res$n_control, res$n_total)
+              V1 = c("Significance level", "Power (1-beta)", "Ratio of sample size, treat/control", 
+                     "Margin", 
+                     "Hazard for the treatment group", "Hazard for the control group", 
+                     "Median survival time for the treatment group", "Median survival time for the control group",
+                     "Probability of event for treatment", "Probability of event for control",
+                     "Combined probability of event",
+                     "Result", 
+                     "Sample Size - Treat", "Sample Size - Control", "Total sample size"),
+              V2 = c(input$alpha_rct_s, input$beta_rct_s, input$r_rct_s, 
+                     input$rct_delta_s, 
+                     round(res$lambdaT, 2), round(res$lambdaC, 2), 
+                     round(res$mT, 2), round(res$mC, 2), 
+                     round(res$Pr_treat, 2), round(res$Pr_control, 2),
+                     round(res$Pr, 2), 
+                     "", 
+                     res$n_treat, res$n_control, res$n_total)
             ) %>% 
-                knitr::kable("html", escape = F, align=c("l", "c")) %>% 
-                kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
-                row_spec(8, bold = T, background = "#EEF5DB") %>% 
-                add_header_above(c("Sample size"=2), background = "#666666", color = "#ffffff")
-            output_data = gsub("</th></tr>.*</thead>","</thead>", output_data)
-            v$res = output_data
+              knitr::kable("html", escape = F, align=c("l", "c")) %>% 
+              kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
+              row_spec(12, bold = T, background = "#EEF5DB") %>% 
+              add_header_above(c("Sample size"=2), background = "#666666", color = "#ffffff")
+          }
+          
+          # remove delta (margin) for Equality 
+          if (design() %in% c("Equality")){
+            output_data = data.frame(
+              V1 = c("Significance level", "Power (1-beta)", "Ratio of sample size, treat/control", 
+                     "Hazard for the treatment group", "Hazard for the control group", 
+                     "Median survival time for the treatment group", "Median survival time for the control group",
+                     "Probability of event for treatment", "Probability of event for control",
+                     "Combined probability of event",
+                     "Result", 
+                     "Sample Size - Treat", "Sample Size - Control", "Total sample size"),
+              V2 = c(input$alpha_rct_s, input$beta_rct_s, input$r_rct_s, 
+                     round(res$lambdaT, 2), round(res$lambdaC, 2), 
+                     round(res$mT, 2), round(res$mC, 2), 
+                     round(res$Pr_treat, 2), round(res$Pr_control, 2),
+                     round(res$Pr, 2), 
+                     "", 
+                     res$n_treat, res$n_control, res$n_total)
+            ) %>% 
+              knitr::kable("html", escape = F, align=c("l", "c")) %>% 
+              kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>% 
+              row_spec(11, bold = T, background = "#EEF5DB") %>% 
+              add_header_above(c("Sample size"=2), background = "#666666", color = "#ffffff")
+          }
+          
+          # reshape output for result rendering
+          output_data = gsub("</th></tr>.*</thead>","</thead>", output_data)
+          v$res = output_data
         }
         if (design() == "CaseControl" & input$ccDesign=="unmatched") {
             twoside = ifelse(is.null(input$checkbox1), F, T)
