@@ -3,7 +3,7 @@ library(tidyverse)
 library(sf)
 library(readxl)
 
-census_api_key("1f9ec8043c07df314c33eb363518931cc231aa05", install = T)
+census_api_key("MY_KEY", install = T)
 income = get_acs(
   geography = "tract", 
   variables = c(
