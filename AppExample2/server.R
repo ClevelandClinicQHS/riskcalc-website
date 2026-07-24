@@ -4,6 +4,7 @@ calculate_bmi <- expression({
     bmi = data$weight / (data$height)^2 * 703
   } else (
     bmi = data$weight / (data$height/100)^2
+    
   )
   bmi
 })
