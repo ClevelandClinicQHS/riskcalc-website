@@ -47,7 +47,7 @@ shinyServer(function(input, output, session){
       validate(need(!is.na(input$onset_age), "Please input the age at seizure onset."))
       validate(need(input$onset_age <= age_at_surgery(), "Age at seizure onset must be less than or equal to the age at surgery."))
       
-      (age_at_surgery() - input$onset_age) / age_at_surgery()
+      10 * ((age_at_surgery() - input$onset_age) / age_at_surgery())
       
     })
   
@@ -58,15 +58,16 @@ shinyServer(function(input, output, session){
       {
         # Make the input data frame
         data.frame(
-          Sex = input$sex,
-          Age = age_at_surgery(),
-          PercentOfLifeWithEpilepsy = life_with_epilepsy(),
-          Technique = input$technique,
-          PreviousSurgery = ifelse(input$previous_surgery, "Yes", "No"),
-          SurgicalComplications = ifelse(input$complications, "Yes", "No"),
-          Infection = ifelse(input$infection, "Yes", "No"),
-          AsepticMeningitis = ifelse(input$aseptic_meningitis, "Yes", "No"),
-          EVD = ifelse(input$evd, "Yes", "No")
+          male = as.numeric(input$sex == "Male"),
+          age = age_at_surgery(),
+          pct_life_epilepsy_per10 = life_with_epilepsy(),
+          prior_surgery = ifelse(input$previous_surgery, 1, 0),
+          functional = ifelse(input$technique == "Functional", 1, 0),
+          modified_anatomical = ifelse(input$technique == "modified_anatomical", 1, 0),
+          complication = ifelse(input$complications, 1, 0),
+          infection = ifelse(input$infection, 1, 0),
+          aseptic_meningitis = ifelse(input$aseptic_meningitis, 1, 0),
+          evd = ifelse(input$evd, 1, 0)
         )
         
       }
