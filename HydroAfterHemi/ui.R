@@ -5,15 +5,13 @@
 
 # Build the user interface
 fluidPage(
-  ### DEVELOPMENT INDICATION
-  h3("APP CURRENTLY IN DEVELOPMENT", style = "text-align: center; background-color: tomato; color: black"),
   
   # App theme and title
   shinyjs::useShinyjs(),
   theme = shinytheme("flatly"),
   tags$head(tags$link(rel="shortcut icon", href="../assets/icons/favicon.ico", type="image/x-icon")),
   tags$head(tags$link(rel="apple-touch-icon", href="../assets/icons/apple-touch-icon.png", type="image/x-icon")),
-  titlePanel("Predict the probability of hydrocephalus after hemispherectomy in pediatric epilepsy"),
+  titlePanel("The Hydrocephalus after Surgical Hemispherectomy (Hash) Score"),
 
   # Google Analytics
   tags$head(includeHTML("../google-analytics.html")),
